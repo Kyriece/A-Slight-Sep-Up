@@ -9,6 +9,7 @@ import store from "../../store";
 const Header = (props) => {
     const user = store.getState().security.user
     const isLoggedIn = store.getState().security.validToken 
+    console.log(user)
     return (
         <nav className="navbar navbar-expand-sm navbar-dark bg-primary mb-4">
             <div className="container">
@@ -38,7 +39,11 @@ const Header = (props) => {
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
                             <a className="nav-link " >
-                                {user.username}
+                                {user.userStatus === "user" && <>{user.username}</>}
+
+                                {user.userStatus === "publisher" && <>publisher: {user.username}</>}
+
+                                {user.userStatus === "admin" && <>admin: {user.username}</>}
                             </a>
                         </li>
                         <li className="nav-item">

@@ -14,6 +14,7 @@ class Register extends Component {
       fullName: "",
       password: "",
       confirmPassword: "",
+      userStatus: "",
       errors: {}
     };
     this.onChange = this.onChange.bind(this);
@@ -22,11 +23,13 @@ class Register extends Component {
 
   onSubmit(e) {
     e.preventDefault();
+    console.log(this.state)
     const newUser = {
       username: this.state.username,
       fullName: this.state.fullName,
       password: this.state.password,
-      confirmPassword: this.state.confirmPassword
+      confirmPassword: this.state.confirmPassword,
+      userStatus: this.state.userStatus
     };
 
     this.props.createNewUser(newUser, this.props.history);
@@ -86,6 +89,18 @@ class Register extends Component {
                       value={this.state.confirmPassword}
                       onChange={this.onChange}
                     />
+                  </div>
+                  <div className="form-group">
+                    <select className="form-select" 
+                    aria-label="Default select example"
+                    value={this.state.userStatus}
+                    name="userStatus"
+                    onChange={this.onChange}>
+                      <option disabled value = "">Select user type</option>
+                      <option value="user">User</option>
+                      <option value="admin">Admin</option>
+                      <option value="publisher">Publisher</option>
+                    </select>
                   </div>
                   <input type="submit" className="btn btn-info btn-block mt-4" />
                 </form>
