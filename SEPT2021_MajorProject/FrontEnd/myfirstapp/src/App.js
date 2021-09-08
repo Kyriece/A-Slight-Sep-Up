@@ -21,6 +21,8 @@ import Login from "./components/UserManagement/Login";
 
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import AdminBoard from "./components/AdminBoard";
+import ProducerBoard from "./components/ProducerBoard";
 
 const jwtToken = localStorage.jwtToken; // Defaults to undefined.
 
@@ -52,6 +54,8 @@ const App = () => {
 
             <SecureRoute exact path="/dashboard" component={Dashboard} />
             <SecureRoute exact path="/addPerson" component={AddPerson} />
+            <SecureRoute exact path="/adminboard" component={AdminBoard} />
+            <SecureRoute exact path="/producerboard" component={ProducerBoard} />
           </Switch>
         </div>
       </Router>

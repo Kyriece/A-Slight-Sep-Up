@@ -5,6 +5,8 @@ import classnames from "classnames";
 import { login } from "../../actions/securityActions";
 import Header from "../Layout/Header";
 
+import store from "../../store";
+
 class Login extends Component {
   constructor() {
     super();
@@ -19,13 +21,23 @@ class Login extends Component {
 
   componentDidMount() {
     if (this.props.security.validToken) {
+      const user = store.getState().security.user
       this.props.history.push("/dashboard");
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.security.validToken) {
-      this.props.history.push("/dashboard");
+      const user = store.getState().security.user
+      if(user.userStatus === "admin"){
+        this.props.history.push("/adminboard");
+      }
+      else if(user.userStatus === "publisher"){
+        this.props.history.push("/producerboard");
+      }
+      else{
+        this.props.history.push("/dashboard");
+      }
     }
 
     if (nextProps.errors) {
