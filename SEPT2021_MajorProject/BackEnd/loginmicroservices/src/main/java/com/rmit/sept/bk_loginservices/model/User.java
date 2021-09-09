@@ -25,6 +25,7 @@ public class User implements UserDetails {
     private String fullName;
     @NotBlank(message = "Password field is required")
     private String password;
+    private String userstatus;
     @Transient
     private String confirmPassword;
     private Date create_At;
@@ -99,6 +100,14 @@ public class User implements UserDetails {
     @PreUpdate
     protected void onUpdate(){
         this.update_At = new Date();
+    }
+
+    public String getUserStatus(){
+        return userstatus;
+    }
+
+    public void setUserStatus(String userstatus){
+    this.userstatus = userstatus;
     }
 
     /*
