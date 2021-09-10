@@ -30,6 +30,10 @@ public class User implements UserDetails {
     private String confirmPassword;
     private Date create_At;
     private Date update_At;
+    // account locking/enabling
+    private boolean accountNonLocked;
+    private boolean accountEnabled;
+    private Date lockTime;
 
     //OneToMany with Project
 
@@ -94,7 +98,12 @@ public class User implements UserDetails {
 
     @PrePersist
     protected void onCreate(){
+
         this.create_At = new Date();
+        this.accountNonLocked = true;
+        if (!this.userstatus.equals("publisher")) {
+            this.accountEnabled = true;
+        }
     }
 
     @PreUpdate
@@ -108,6 +117,24 @@ public class User implements UserDetails {
 
     public void setUserStatus(String userstatus){
     this.userstatus = userstatus;
+    }
+
+    public void setAccountNonLocked(boolean accountNonLocked) { this.accountNonLocked = accountNonLocked;}
+
+    public boolean isAccountEnabled() {
+        return accountEnabled;
+    }
+
+    public void setAccountEnabled(boolean accountEnabled) {
+        this.accountEnabled = accountEnabled;
+    }
+
+    public Date getLockTime() {
+        return lockTime;
+    }
+
+    public void setLockTime(Date lockTime) {
+        this.lockTime = lockTime;
     }
 
     /*
@@ -129,7 +156,12 @@ public class User implements UserDetails {
     @Override
     @JsonIgnore
     public boolean isAccountNonLocked() {
-        return true;
+
+        if (this.accountNonLocked == true) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
@@ -141,6 +173,10 @@ public class User implements UserDetails {
     @Override
     @JsonIgnore
     public boolean isEnabled() {
-        return true;
+        if (this.accountEnabled == true) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
