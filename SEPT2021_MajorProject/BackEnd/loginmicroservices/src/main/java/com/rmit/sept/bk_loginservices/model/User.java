@@ -156,12 +156,7 @@ public class User implements UserDetails {
     @Override
     @JsonIgnore
     public boolean isAccountNonLocked() {
-
-        if (this.accountNonLocked == true) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.accountNonLocked;
     }
 
     @Override
@@ -173,10 +168,6 @@ public class User implements UserDetails {
     @Override
     @JsonIgnore
     public boolean isEnabled() {
-        if (this.accountEnabled == true) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.accountEnabled;
     }
 }

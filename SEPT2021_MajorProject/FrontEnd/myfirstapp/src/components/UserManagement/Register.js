@@ -103,6 +103,8 @@ class Register extends Component {
                     </select>
                   </div>
                   <input type="submit" className="btn btn-info btn-block mt-4" />
+                  <br/>
+                  <center><p>Already have an account? Sign in <a href="/Login">here</a></p></center>
                 </form>
               </div>
             </div>
