@@ -3,6 +3,8 @@ package com.rmit.sept.bk_loginservices.security;
 import com.rmit.sept.bk_loginservices.services.CustomUserDetailsService;
 import com.rmit.sept.bk_loginservices.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.authentication.LockedException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
@@ -26,7 +28,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
-                                    FilterChain filterChain) throws ServletException, IOException {
+                                    FilterChain filterChain) throws ServletException, IOException, DisabledException, LockedException {
 
         try {
 
@@ -44,6 +46,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
             }
 
+        }catch (DisabledException ex) {
+            logger.error("User account is disabled", ex);
+        }catch (LockedException ex) {
+            logger.error("User account is locked", ex);
         }catch (Exception ex){
             logger.error("Could not set user authentication in security context", ex);
         }

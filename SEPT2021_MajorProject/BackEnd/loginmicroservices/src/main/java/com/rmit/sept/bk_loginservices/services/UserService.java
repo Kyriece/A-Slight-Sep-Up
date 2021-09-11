@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.util.Date;
+
 @Service
 public class UserService {
 
@@ -41,6 +43,17 @@ public class UserService {
             throw new UsernameAlreadyExistsException("Username '"+newUser.getUsername()+"' already exists");
         }
 
+    }
+
+    public void lock(User user) {
+        user.setAccountNonLocked(false);
+        user.setLockTime(new Date());
+        userRepository.save(user);
+    }
+
+    public void enable(User user) {
+        user.setAccountEnabled(true);
+        userRepository.save(user);
     }
 
 
