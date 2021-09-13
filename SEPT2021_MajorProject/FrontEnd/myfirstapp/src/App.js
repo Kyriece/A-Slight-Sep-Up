@@ -18,6 +18,7 @@ import AddPerson from "./components/Persons/AddPerson";
 import Landing from "./components/Layout/Landing";
 import Register from "./components/UserManagement/Register";
 import Login from "./components/UserManagement/Login";
+import UserManager from "./UserManager";
 
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -51,6 +52,7 @@ const App = () => {
             <Route exact path="/" component={Landing} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/userManager" component={UserManager} />
 
             <SecureRoute exact path="/dashboard" component={Dashboard} />
             <SecureRoute exact path="/addPerson" component={AddPerson} />
