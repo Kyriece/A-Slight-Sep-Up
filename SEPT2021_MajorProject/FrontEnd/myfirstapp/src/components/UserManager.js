@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
 import {connect} from 'react-redux';
-import {getUsers} from "./actions/userActions";
+import {getUsers} from "../actions/userActions";
 
 
 class UserManager extends Component {
@@ -11,18 +11,14 @@ class UserManager extends Component {
     }
 
     buildUserList(userList) {
-        return userList.map((user)=>(
+        let userObject = userList.map((user)=>(
             <tr key={user.id}>
                 <td>{user.id}</td>
-                <td>{user.username}</td>
                 <td>{user.fullName}</td>
-                <td>{user.userstatus}</td>
-                <td>{user.create_At}</td>
-                <td>{user.accountNonLocked}</td>
-                <td>{user.accountEnabled}</td>
-                <td>{user.lockTime}</td>
+                <td>{user.userStatus}</td>
             </tr>
-        ))
+        ));
+        return userObject;
     }
 
     getUserData(userObjects) {
@@ -35,10 +31,28 @@ class UserManager extends Component {
         return userList;
     }
 
+    getDataItems(data) {
+        return data.map((dataItem)=>(
+            <tr key={dataItem.id}>
+                <td>{dataItem.id}</td>
+                <td>{dataItem.fullName}</td>
+                <td>{dataItem.userStatus}</td>
+                <td>{dataItem.username}</td>
+
+            </tr>
+        ))
+    }
+
     render() {
-        const {persons} = this.props.person
-        const userList = this.getUserData({persons})
-        const userTable = this.buildUserList(userList)
+        // const {users} = this.props.user
+        // const userList = this.getUserData({users})
+        // const {userTable} = this.buildUserList(userList)
+        const {users} = this.props.user;
+        let userList = [];
+        for (let i =0; i < users.length; i++) {
+            userList.push(users[i]);
+        }
+        const lotsofpeople = this.getDataItems(userList)
 
         return (
             <div>
@@ -59,7 +73,7 @@ class UserManager extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {userTable}
+                        {lotsofpeople}
                     </tbody>
                 </table>
             </div>

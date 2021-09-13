@@ -18,7 +18,7 @@ import AddPerson from "./components/Persons/AddPerson";
 import Landing from "./components/Layout/Landing";
 import Register from "./components/UserManagement/Register";
 import Login from "./components/UserManagement/Login";
-import UserManager from "./UserManager";
+import UserManager from "./components/UserManager";
 
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";

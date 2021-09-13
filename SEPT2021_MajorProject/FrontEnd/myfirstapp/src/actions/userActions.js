@@ -11,7 +11,7 @@ export async function getUser(id) {
 };
 
 export const getUsers = () => async dispatch => {
-    const res = await axios.get("http://localhost:8080/api/person/all");
+    const res = await axios.get("http://localhost:8080/api/users/all");
     dispatch({
         type: GET_USERS,
         payload: res.data
