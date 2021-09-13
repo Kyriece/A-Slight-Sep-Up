@@ -56,5 +56,10 @@ public class UserService {
         userRepository.save(user);
     }
 
+    // calls CRUDREPO built in findall megthod
+    public Iterable<User> findAllUsers() {
+        return userRepository.findAll();
+    }
+
 
 }
