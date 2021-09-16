@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from "prop-types";
 import {connect} from 'react-redux';
 import {getUsers} from "../actions/userActions";
+import Header from "./Layout/Header";
 
 
 class UserManager extends Component {
@@ -10,53 +11,31 @@ class UserManager extends Component {
         this.props.getUsers();
     }
 
-    buildUserList(userList) {
-        let userObject = userList.map((user)=>(
-            <tr key={user.id}>
-                <td>{user.id}</td>
-                <td>{user.fullName}</td>
-                <td>{user.userStatus}</td>
-            </tr>
-        ));
-        return userObject;
-    }
-
-    getUserData(userObjects) {
-        let userList = [];
-
-        for (let i =0; i < userObjects.length; i++) {
-            userList.push(userObjects[i]);
-        }
-
-        return userList;
-    }
-
     getDataItems(data) {
         return data.map((dataItem)=>(
             <tr key={dataItem.id}>
                 <td>{dataItem.id}</td>
+                <td>{dataItem.username}</td>
                 <td>{dataItem.fullName}</td>
                 <td>{dataItem.userStatus}</td>
-                <td>{dataItem.username}</td>
-
             </tr>
         ))
     }
 
     render() {
-        // const {users} = this.props.user
-        // const userList = this.getUserData({users})
-        // const {userTable} = this.buildUserList(userList)
+
         const {users} = this.props.user;
         let userList = [];
         for (let i =0; i < users.length; i++) {
             userList.push(users[i]);
         }
-        const lotsofpeople = this.getDataItems(userList)
+        const userstable = this.getDataItems(userList)
 
         return (
+            <>
+            <Header/>
             <div>
-                <h1> User Manager Page </h1>
+                <h1 className="display-4 text-center"> User Manager Page </h1>
                 <br/>
                 <br/>
                 <table className = "table table-striped">
@@ -66,17 +45,14 @@ class UserManager extends Component {
                             <td>username</td>
                             <td>fullName</td>
                             <td>userstatus</td>
-                            <td>create_At</td>
-                            <td>accountNonLocked</td>
-                            <td>accountEnabled</td>
-                            <td>lockTime</td>
                         </tr>
                     </thead>
                     <tbody>
-                        {lotsofpeople}
+                        {userstable}
                     </tbody>
                 </table>
             </div>
+            </>
         );
     }
 }
