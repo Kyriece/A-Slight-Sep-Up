@@ -1,0 +1,20 @@
+version: '3'
+services:
+  sep-it-up-db:
+    image: mongo:4.2.2
+    environment:
+      MONGO_INITDB_DATABASE: sep-it-up
+    ports:
+      - 27017:27017
+  sep-it-up-frontend:
+    image: sep-it-up-frontend:latest
+    environment:
+      PORT: 3000
+    ports:
+      - 3000:3000
+  sep-it-up-backend:
+    image: sep-it-up-backend:latest
+    environment:
+      MONGODB_URI: mongodb://sep-it-up-db:27017/sep-it-up
+    ports:
+      - 8080:8080
