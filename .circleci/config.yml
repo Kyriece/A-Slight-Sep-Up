@@ -24,7 +24,7 @@ jobs:
             echo $DOCKERHUB_PASS | docker login -u s3848845 --password-stdin
       - run:
           name: build image
-          command: cd SEPT2021_MajorProject && docker build --file=FrontEnd/myfirstapp/frontend.dockerfile -t sep-frontend .
+          command: cd SEPT2021_MajorProject && docker build --file=FrontEnd/myfirstapp/frontend.dockerfile -t s3848845/sep-frontend:latest .
 
       - run:
           name: publish to dockerhub
