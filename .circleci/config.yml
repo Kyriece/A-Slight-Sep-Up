@@ -12,14 +12,16 @@ jobs: # a collection of steps
 
       - restore_cache: # restore the saved cache after the first run or if pom.xml has changed
           # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
-          key: circleci-appointmentservicebackend-{{ checksum "pom.xml" }}
+          keys: 
+          - loginmicroservices-{{ checksum "pom.xml" }}
+          - loginmicroservices-
 
       - run: mvn dependency:go-offline # gets the project dependencies
 
       - save_cache: # saves the project dependencies
           paths:
             - ~/.m2
-          key: circleci-appointmentservicebackend-{{ checksum "pom.xml" }}
+          key: loginmicroservices-{{ checksum "pom.xml" }}
 
       - run: mvn package # run the actual tests
 
