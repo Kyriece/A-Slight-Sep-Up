@@ -1,6 +1,6 @@
 # A-Slight-Sep-Up
 
-github link:https://github.com/Kyriece/A-Slight-Sep-Up
+github link:https://github.com/vi-ca/A-Slight-Sep-Up
 
 jira link:https://a-slight-sep-up.atlassian.net/ (redowan has already been added to the jira)
 
