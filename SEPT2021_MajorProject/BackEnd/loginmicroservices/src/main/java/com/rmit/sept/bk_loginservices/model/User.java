@@ -30,6 +30,7 @@ public class User implements UserDetails {
     private String confirmPassword;
     private Date create_At;
     private Date update_At;
+    private boolean publisherrequest;
     // account locking/enabling
     private boolean accountNonLocked;
     private boolean accountEnabled;
@@ -38,6 +39,15 @@ public class User implements UserDetails {
     //OneToMany with Project
 
     public User() {
+
+    }
+
+    public User(String username, String fullName, String password, String userstatus) {
+        this.username = username;
+        this.fullName = fullName;
+        this.password = password;
+        this.userstatus = userstatus;
+
     }
 
     public Long getId() {
@@ -94,6 +104,14 @@ public class User implements UserDetails {
 
     public void setUpdate_At(Date update_At) {
         this.update_At = update_At;
+    }
+
+    public Boolean getpublisherrequest() {
+        return publisherrequest;
+    }
+
+    public void setpublisherrequest(boolean publisherrequest){
+        this.publisherrequest = publisherrequest;
     }
 
     @PrePersist

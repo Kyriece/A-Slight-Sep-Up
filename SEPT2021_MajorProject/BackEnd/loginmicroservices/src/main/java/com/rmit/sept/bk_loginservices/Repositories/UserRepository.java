@@ -10,6 +10,8 @@ public interface UserRepository extends CrudRepository<User, Long> {
     User findByUsername(String username);
     User getById(Long id);
 
+    //void setThepublisherrequest(boolean publisherrequest);
+
     @Override
     Iterable<User> findAll();
 }

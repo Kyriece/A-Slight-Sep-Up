@@ -18,6 +18,7 @@ class UserManager extends Component {
                 <td>{dataItem.username}</td>
                 <td>{dataItem.fullName}</td>
                 <td>{dataItem.userStatus}</td>
+                <td>{dataItem.publisherRequest}</td>
             </tr>
         ))
     }
@@ -25,6 +26,7 @@ class UserManager extends Component {
     render() {
 
         const {users} = this.props.user;
+        console.log(users);
         let userList = [];
         for (let i =0; i < users.length; i++) {
             userList.push(users[i]);
@@ -45,6 +47,7 @@ class UserManager extends Component {
                             <td>username</td>
                             <td>fullName</td>
                             <td>userstatus</td>
+                            <td>publisherrequest</td>
                         </tr>
                     </thead>
                     <tbody>

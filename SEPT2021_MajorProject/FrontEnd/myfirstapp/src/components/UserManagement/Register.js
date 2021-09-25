@@ -40,6 +40,7 @@ class Register extends Component {
   }
 
   render() {
+    const { errors } = this.state;
     return (
       <>
         <Header />
@@ -53,32 +54,47 @@ class Register extends Component {
                   <div className="form-group">
                     <input
                       type="text"
-                      className="form-control form-control-lg"
+                      className={classnames("form-control form-control-lg", {
+                        "is-invalid": errors.username
+                      })}
                       placeholder="Full Name"
                       name="fullName"
                       value={this.state.fullName}
                       onChange={this.onChange}
                     />
+                     {errors.username && (
+                      <div className="invalid-feedback">{errors.username}</div>
+                    )}
                   </div>
                   <div className="form-group">
                     <input
                       type="text"
-                      className="form-control form-control-lg"
+                      className className={classnames("form-control form-control-lg", {
+                        "is-invalid": errors.username
+                      })}
                       placeholder="Email Address (Username)"
                       name="username"
                       value={this.state.username}
                       onChange={this.onChange}
                     />
+                     {errors.username && (
+                      <div className="invalid-feedback">{errors.username}</div>
+                    )}
                   </div>
                   <div className="form-group">
                     <input
                       type="password"
-                      className="form-control form-control-lg"
+                      className={classnames("form-control form-control-lg", {
+                        "is-invalid": errors.password
+                      })}
                       placeholder="Password"
                       name="password"
                       value={this.state.password}
                       onChange={this.onChange}
                     />
+                     {errors.password && (
+                      <div className="invalid-feedback">{errors.password}</div>
+                    )}
                   </div>
                   <div className="form-group">
                     <input
@@ -117,10 +133,12 @@ class Register extends Component {
 
 Register.propTypes = {
   createNewUser: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object.isRequired,
+  security: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
+  security: state.security,
   errors: state.errors
 });
 export default connect(

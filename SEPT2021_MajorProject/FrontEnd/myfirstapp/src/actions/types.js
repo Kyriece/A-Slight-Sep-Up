@@ -4,3 +4,5 @@ export const GET_PERSON = "GET_PERSON";
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
 export const GET_USERS = "GET_USERS";
 export const GET_USER = "GET_USER";
+export const SET_PUBREQUEST = "SET_PUBREQUEST";
+export const UPDATE_USER= "UPDATE_USER";

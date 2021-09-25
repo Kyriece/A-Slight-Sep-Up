@@ -51,8 +51,8 @@ class Login extends Component {
       username: this.state.username,
       password: this.state.password
     };
-
-    this.props.login(LoginRequest);
+    console.log(LoginRequest);  
+    this.props.login(LoginRequest, this.props.history);
   }
 
   onChange(e) {

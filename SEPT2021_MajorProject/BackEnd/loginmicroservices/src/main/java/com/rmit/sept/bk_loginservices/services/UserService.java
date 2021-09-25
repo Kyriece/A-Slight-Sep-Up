@@ -45,6 +45,20 @@ public class UserService {
 
     }
 
+    public User save (User user){
+        return userRepository.save(user);
+    }
+
+    public void updatePubUser(User user){
+        user.setpublisherrequest(true);
+        userRepository.save(user);
+    }
+
+    public User findByID(Long id){
+        return userRepository.getById(id);
+
+    }
+
     public void lock(User user) {
         user.setAccountNonLocked(false);
         user.setLockTime(new Date());
@@ -61,5 +75,14 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    // public void sendpublisherrequests(){
+    //     userRepository.setThepublisherrequest(true);
+    // }
+
+    public void deleteAllUsers() {
+        if(userRepository.count() > 0) {
+            userRepository.deleteAll();
+        }
+    }
 
 }

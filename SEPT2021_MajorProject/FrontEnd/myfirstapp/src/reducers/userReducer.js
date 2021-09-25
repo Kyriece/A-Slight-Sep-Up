@@ -1,4 +1,4 @@
-import {GET_USER, GET_USERS} from "../actions/types";
+import {GET_USER, GET_USERS, SET_PUBREQUEST} from "../actions/types";
 
 const initialState = {
     users: [],
@@ -19,6 +19,12 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 user: action.payload
+            };
+
+        case SET_PUBREQUEST:
+            return {
+                 ...state,
+                users: action.payload
             };
 
         default:

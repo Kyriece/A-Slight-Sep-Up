@@ -1,20 +1,24 @@
 import React, { Component } from 'react';
-
 import { getUser } from "../../actions/userActions";
 import { logout } from "../../actions/securityActions";
 import securityReducer from "../../reducers/securityReducer";
-
 import store from "../../store";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUserPlus,
+  faSignInAlt,
+  faSignOutAlt,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Header = (props) => {
     const user = store.getState().security.user
     const isLoggedIn = store.getState().security.validToken 
-    console.log(user)
+    //console.log(user)
     return (
         <nav className="navbar navbar-expand-sm navbar-dark bg-primary mb-4">
             <div className="container">
             <a className="navbar-brand" href="/dashboard">
-                Person Management Tool
+                Bookaroo
             </a>
             <button
                 className="navbar-toggler"
@@ -38,7 +42,7 @@ const Header = (props) => {
                     /* If user === true (Logged In) */
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
-                            <a className="nav-link " >
+                            <a className="nav-link " href="/Profile">
                                 {user.userStatus === "user" && <>{user.username}</>}
 
                                 {user.userStatus === "publisher" && <>publisher: {user.username}</>}
@@ -60,11 +64,13 @@ const Header = (props) => {
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
                             <a className="nav-link " href="/register">
+                            <FontAwesomeIcon icon={faUserPlus} />
                                 Sign Up
                             </a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="/login">
+                                <FontAwesomeIcon icon={faSignInAlt} />
                                 Login
                             </a>
                         </li>

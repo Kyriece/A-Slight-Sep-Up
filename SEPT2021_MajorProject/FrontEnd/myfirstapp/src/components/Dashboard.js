@@ -1,31 +1,21 @@
 import React, { Component } from 'react'
 import Person from './Persons/Person'
-import CreatePersonButton from './Persons/CreatePersonButton';
 import Header from "./Layout/Header";
+import { Link } from 'react-router-dom';
+import store from "../store";
+
 
 class Dashboard extends Component {
+
     render() {
+        const user = store.getState().security.user
+        console.log(user);
         return (
             <>
                 <Header />
-                <div className="Persons">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <h1 className="display-4 text-center">Category 1</h1>
-                            <Person/>
-                        </div>
-                    </div>
-                </div>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-12">
-                                <h1 className="display-4 text-center">Category 2</h1>
-                                <Person/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <Link className="btn btn-lg btn-primary mr-2" to="/UpdateUser">
+                <h1>welcome {user.username}</h1>
+                </Link>
             </>
     
         )

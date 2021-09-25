@@ -19,6 +19,9 @@ import Landing from "./components/Layout/Landing";
 import Register from "./components/UserManagement/Register";
 import Login from "./components/UserManagement/Login";
 import UserManager from "./components/UserManager";
+//import UserToPublisher from "./components/UserToPublisher";
+import Update from "./components/UserManagement/Update";
+import profile from "./components/UserManagement/profile";
 
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -53,6 +56,9 @@ const App = () => {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/userManager" component={UserManager} />
+            {/* <Route exact path="/UserToPublisher" component={UserToPublisher} /> */}
+            {/* <Route exact path="/Update" component={Update} /> */}
+            <Route exact path="/profile" component={profile} />
 
             <SecureRoute exact path="/dashboard" component={Dashboard} />
             <SecureRoute exact path="/addPerson" component={AddPerson} />

@@ -1,6 +1,8 @@
 package com.rmit.sept.bk_loginservices.web;
 
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+import com.rmit.sept.bk_loginservices.Repositories.UserRepository;
 import com.rmit.sept.bk_loginservices.model.User;
 import com.rmit.sept.bk_loginservices.payload.JWTLoginSucessReponse;
 import com.rmit.sept.bk_loginservices.payload.LoginRequest;
@@ -27,7 +29,7 @@ import static com.rmit.sept.bk_loginservices.security.SecurityConstant.TOKEN_PRE
 
 @RestController
 @RequestMapping("/api/users")
-public class UserController {
+public class UserController{
 
     @Autowired
     private MapValidationErrorService mapValidationErrorService;
@@ -86,4 +88,23 @@ public class UserController {
         return userService.findAllUsers();
     }
 
+    // @CrossOrigin(origins = "http://localhost:3000")
+    // @GetMapping("/requestlist")
+    // public Iterable<User>  getbypublisherrequestlist(){
+    //     return userService.findAllpublisherrequests();
+    // }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @PutMapping("/updaterequest/{id}")
+    public ResponseEntity<?> updateUser(@PathVariable(value = "id")Long userId,
+    @Valid @RequestBody User userDetails){
+        User user = userService.findByID(userId);
+        user.setUsername(userDetails.getUsername());
+		user.setFullName(userDetails.getFullName());
+        user.setpublisherrequest(userDetails.getpublisherrequest());
+        final User updatedUser = userService.save(user);
+
+        return ResponseEntity.ok(updatedUser);
+    
+    }
 }
