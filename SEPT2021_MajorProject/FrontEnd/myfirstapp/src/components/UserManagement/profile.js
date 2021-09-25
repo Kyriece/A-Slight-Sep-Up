@@ -13,6 +13,7 @@ class profile extends Component{
                 <>
                 <Header/>
                 <div>
+                    <h1 className="display-4 text-center"> {user.id} </h1>
                     <h1 className="display-4 text-center"> {user.username} </h1>
                     <h1 className="display-4 text-center"> {user.fullName} </h1>
                     <h1 className="display-4 text-center"> {user.publisherRequest} </h1>

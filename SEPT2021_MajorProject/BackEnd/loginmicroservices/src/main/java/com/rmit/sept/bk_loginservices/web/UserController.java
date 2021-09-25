@@ -100,7 +100,7 @@ public class UserController{
     @Valid @RequestBody User userDetails){
         User user = userService.findByID(userId);
         user.setUsername(userDetails.getUsername());
-		user.setFullName(userDetails.getFullName());
+        user.setFullName(userDetails.getFullName());
         user.setpublisherrequest(userDetails.getpublisherrequest());
         final User updatedUser = userService.save(user);
 

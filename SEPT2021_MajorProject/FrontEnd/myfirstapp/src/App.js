@@ -57,7 +57,7 @@ const App = () => {
             <Route exact path="/login" component={Login} />
             <Route exact path="/userManager" component={UserManager} />
             {/* <Route exact path="/UserToPublisher" component={UserToPublisher} /> */}
-            {/* <Route exact path="/Update" component={Update} /> */}
+            <Route exact path="/Update" component={Update} />
             <Route exact path="/profile" component={profile} />
 
             <SecureRoute exact path="/dashboard" component={Dashboard} />
