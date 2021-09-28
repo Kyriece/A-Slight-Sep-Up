@@ -18,7 +18,7 @@ class UserManager extends Component {
                 <td>{dataItem.username}</td>
                 <td>{dataItem.fullName}</td>
                 <td>{dataItem.userStatus}</td>
-                <td>{dataItem.publisherRequest}</td>
+                <td>{dataItem.publisherrequest ? <div>TRUE</div> : <div>FALSE</div>}</td>
             </tr>
         ))
     }

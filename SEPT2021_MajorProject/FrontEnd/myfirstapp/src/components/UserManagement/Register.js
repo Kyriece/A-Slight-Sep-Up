@@ -10,11 +10,11 @@ class Register extends Component {
     super();
 
     this.state = {
-      username: "",
-      fullName: "",
-      password: "",
-      confirmPassword: "",
-      userStatus: "",
+      username: "root@root.com",
+      fullName: "rooty",
+      password: "123qwe123qwe",
+      confirmPassword: "123qwe123qwe",
+      userStatus: "user",
       errors: {}
     };
     this.onChange = this.onChange.bind(this);

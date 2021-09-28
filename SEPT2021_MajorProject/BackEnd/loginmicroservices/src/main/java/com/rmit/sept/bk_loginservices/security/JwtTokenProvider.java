@@ -29,7 +29,6 @@ public class JwtTokenProvider {
         claims.put("userStatus", user.getUserStatus());
         claims.put("accountNonLocked", user.isAccountNonLocked());
         claims.put("accountEnabled", user.isEnabled());
-        claims.put("publisherrequest", user.getpublisherrequest());
 
         return Jwts.builder()
                 .setSubject(userId)
