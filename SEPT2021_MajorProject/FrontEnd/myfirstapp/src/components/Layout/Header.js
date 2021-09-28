@@ -8,6 +8,7 @@ import {
   faUserPlus,
   faSignInAlt,
   faSignOutAlt,
+  faUserCog,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Header = (props) => {
@@ -42,6 +43,12 @@ const Header = (props) => {
                     /* If user === true (Logged In) */
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
+                            <a className="nav-link" href="/UpdateUser">
+                                <FontAwesomeIcon icon ={faUserCog} />
+                                User Profile
+                            </a>
+                        </li>
+                        <li className="nav-item">
                             <a className="nav-link " href="/Profile">
                                 {user.userStatus === "user" && <>{user.username}</>}
 
@@ -62,6 +69,12 @@ const Header = (props) => {
                     
                     : /* Else user === undefined (Logged Out) */
                     <ul className="navbar-nav ml-auto">
+                        <li className="nav-item">
+                            <a className="nav-link" href="/UpdateUser">
+                                <FontAwesomeIcon icon ={faUserCog} />
+                                User Profile
+                            </a>
+                        </li>
                         <li className="nav-item">
                             <a className="nav-link " href="/register">
                             <FontAwesomeIcon icon={faUserPlus} />

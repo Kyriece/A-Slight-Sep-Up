@@ -8,7 +8,21 @@ class ProducerBoard extends Component {
         return (
             <>
                 <Header />
-                <h1>This is Publisher's page</h1>
+                <div className="landing">
+                    <div className="light-overlay landing-inner text-dark">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-md-12 text-center">
+                                    <h1 className="display-3 mb-4">
+                                        Welcome Producer
+                                    </h1>
+                                    <hr />
+                                    <p>Put Producer stuff here!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </>
     
         )
