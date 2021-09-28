@@ -63,3 +63,7 @@ img {
 .form-control::placeholder {
   color: #bbb !important;
 }
+
+.profile-img{
+  float: left;
+}
