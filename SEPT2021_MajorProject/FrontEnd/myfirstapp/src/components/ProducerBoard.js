@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Person from './Persons/Person'
 import CreatePersonButton from './Persons/CreatePersonButton';
 import Header from "./Layout/Header";
+import Footer from "./Layout/Footer";
+
 
 class ProducerBoard extends Component {
     render() {
@@ -23,6 +25,7 @@ class ProducerBoard extends Component {
                         </div>
                     </div>
                 </div>
+                <Footer />
             </>
     
         )

@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import {connect} from 'react-redux';
 import {getUser} from "../../actions/userActions";
 import Header from "../Layout/Header";
+import Footer from "../Layout/Footer";
+
 import store from "../../store";
 
 class profile extends Component{
@@ -18,7 +20,8 @@ class profile extends Component{
                     <h1 className="display-4 text-center"> {user.fullName} </h1>
                     <h1 className="display-4 text-center"> {user.publisherRequest} </h1>
                     <h1 className="display-4 text-center"> {user.userStatus} </h1>
-                </div>
+                </div>        
+                <Footer />
                 </>
             );
         }

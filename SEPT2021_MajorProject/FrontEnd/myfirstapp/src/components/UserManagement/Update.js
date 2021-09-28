@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import {connect} from 'react-redux';
 import {getUser} from "../../actions/userActions";
 import Header from "../Layout/Header";
+import Footer from "../Layout/Footer";
+
 import store from "../../store";
 
 import Checkbox from "rc-checkbox";
@@ -107,6 +109,7 @@ class Update extends Component{
           </div>
         </div>
       </div>
+      <Footer />
     </>
       );
     }

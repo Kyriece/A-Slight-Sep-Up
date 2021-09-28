@@ -14,6 +14,7 @@ import SecureRoute from "./securityUtils/SecureRoute";
 
 import Dashboard from "./components/Dashboard";
 import Header from "./components/Layout/Header";
+import Footer from "./components/Layout/Footer";
 import AddPerson from "./components/Persons/AddPerson";
 import Landing from "./components/Layout/Landing";
 import Register from "./components/UserManagement/Register";
@@ -22,6 +23,7 @@ import UserManager from "./components/UserManager";
 //import UserToPublisher from "./components/UserToPublisher";
 import Update from "./components/UserManagement/Update";
 import profile from "./components/UserManagement/profile";
+import ContactUs from "./components/ContactUs";
 
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -59,6 +61,7 @@ const App = () => {
             {/* <Route exact path="/UserToPublisher" component={UserToPublisher} /> */}
             <Route exact path="/Update" component={Update} />
             <Route exact path="/profile" component={profile} />
+            <Route exact path="/ContactUs" component={ContactUs} />
 
             <SecureRoute exact path="/dashboard" component={Dashboard} />
             <SecureRoute exact path="/addPerson" component={AddPerson} />

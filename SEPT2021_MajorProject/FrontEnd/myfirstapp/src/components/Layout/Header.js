@@ -4,6 +4,7 @@ import { logout } from "../../actions/securityActions";
 import securityReducer from "../../reducers/securityReducer";
 import store from "../../store";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import {
   faUserPlus,
   faSignInAlt,
@@ -60,9 +61,12 @@ const Header = (props) => {
                         <li className="nav-item">
                             <div onClick={() => {
                                 store.dispatch(logout());
-                                window.location.href = "/";
+                                window.location.href = "/login";
                             }}>
+                              <a className="nav-link">
+                              <FontAwesomeIcon icon ={faSignOutAlt} />
                                 Logout
+                                </a>
                             </div>
                         </li>
                     </ul>

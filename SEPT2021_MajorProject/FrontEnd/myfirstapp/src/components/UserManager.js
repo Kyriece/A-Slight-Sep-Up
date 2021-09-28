@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import {connect} from 'react-redux';
 import {getUsers} from "../actions/userActions";
 import Header from "./Layout/Header";
+import Footer from "./Layout/Footer";
 
 
 class UserManager extends Component {
@@ -55,6 +56,8 @@ class UserManager extends Component {
                     </tbody>
                 </table>
             </div>
+            <Footer />
+
             </>
         );
     }
