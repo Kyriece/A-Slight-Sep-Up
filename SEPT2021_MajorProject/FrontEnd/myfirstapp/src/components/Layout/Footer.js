@@ -21,8 +21,8 @@ return (
 		<Row>
 		<Column>
 			<Heading>About Us</Heading>
-			<FooterLink href="#">Aim</FooterLink>
-			<FooterLink href="#">Background</FooterLink>
+			<FooterLink href="/AboutUs">Aim</FooterLink>
+			<FooterLink href="/AboutUs">Background</FooterLink>
 		</Column>
 		<Column>
 			<Heading>Contact Us</Heading>

@@ -23,7 +23,9 @@ import UserManager from "./components/UserManager";
 //import UserToPublisher from "./components/UserToPublisher";
 import Update from "./components/UserManagement/Update";
 import profile from "./components/UserManagement/profile";
-import ContactUs from "./components/ContactUs";
+import ContactUs from "./components/Information/ContactUs";
+import AboutUs from "./components/Information/AboutUs";
+
 
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -62,6 +64,7 @@ const App = () => {
             <Route exact path="/Update" component={Update} />
             <Route exact path="/profile" component={profile} />
             <Route exact path="/ContactUs" component={ContactUs} />
+            <Route exact path="/AboutUs" component={AboutUs} />
 
             <SecureRoute exact path="/dashboard" component={Dashboard} />
             <SecureRoute exact path="/addPerson" component={AddPerson} />
