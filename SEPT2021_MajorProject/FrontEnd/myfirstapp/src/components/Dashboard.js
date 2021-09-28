@@ -13,9 +13,21 @@ class Dashboard extends Component {
         return (
             <>
                 <Header />
-                <Link className="btn btn-lg btn-primary mr-2" to="/Update">
-                <h1>welcome {user.username}</h1>
-                </Link>
+                <div className="landing">
+                    <div className="light-overlay landing-inner text-dark">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-md-12 text-center">
+                                    <h1 className="display-3 mb-4">
+                                        Dashboard
+                                    </h1>
+                                    <hr />
+                                    <p>Display Books here!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </>
     
         )
