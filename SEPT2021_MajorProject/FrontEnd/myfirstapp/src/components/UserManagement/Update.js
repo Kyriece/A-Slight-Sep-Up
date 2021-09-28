@@ -6,7 +6,7 @@ import Header from "../Layout/Header";
 import store from "../../store";
 
 import Checkbox from "rc-checkbox";
-const OPTIONS = ["YES", "NO"];
+const OPTIONS = ["Publisher"];
 
 class Update extends Component{
   state = {
@@ -19,9 +19,23 @@ class Update extends Component{
     )
   };
 
-  handleCheckboxChange = changeEvent => {
-    console.log("HANDLE CALED");
+  selectAllCheckboxes = isSelected => {
+    Object.keys(this.state.checkboxes).forEach(checkbox => {
+      // BONUS: Can you explain why we pass updater function to setState instead of an object?
+      this.setState(prevState => ({
+        checkboxes: {
+          ...prevState.checkboxes,
+          [checkbox]: isSelected
+        }
+      }));
+    });
+  };
 
+  selectAll = () => this.selectAllCheckboxes(true);
+
+  deselectAll = () => this.selectAllCheckboxes(false);
+
+  handleCheckboxChange = changeEvent => {
     const { name } = changeEvent.target;
 
     this.setState(prevState => ({
@@ -33,15 +47,13 @@ class Update extends Component{
   };
 
   handleFormSubmit = formSubmitEvent => {
-    console.log("SUBMIT CALED");
     formSubmitEvent.preventDefault();
-    console.log("SUBMIT 2 CALED");
-    
+
     Object.keys(this.state.checkboxes)
       .filter(checkbox => this.state.checkboxes[checkbox])
-        .forEach(checkbox => {
-          console.log(checkbox, "is selected.");
-        });
+      .forEach(checkbox => {
+        console.log(checkbox, "is selected.");
+      });
   };
 
   createCheckbox = option => (
@@ -72,8 +84,21 @@ class Update extends Component{
         <div className="row mt-5">
           <div className="col-sm-12">
             <form onSubmit={this.handleFormSubmit}>
-              {this.createCheckboxes()}
               <div className="form-group mt-2">
+                <button
+                  type="button"
+                  className="btn btn-outline-primary mr-2"
+                  onClick={this.selectAll}
+                >
+                  Publisher Request
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-outline-primary mr-2"
+                  onClick={this.deselectAll}
+                >
+                  Cancel
+                </button>
                 <button type="submit" className="btn btn-primary">
                   Save
                 </button>
