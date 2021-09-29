@@ -4,10 +4,12 @@ import { logout } from "../../actions/securityActions";
 import securityReducer from "../../reducers/securityReducer";
 import store from "../../store";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import {
   faUserPlus,
   faSignInAlt,
   faSignOutAlt,
+  faUserCog,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Header = (props) => {
@@ -59,6 +61,12 @@ const Header = (props) => {
                     /* If user === true (Logged In) */
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
+                            <a className="nav-link" href="/UpdateUser">
+                                <FontAwesomeIcon icon ={faUserCog} />
+                                User Profile
+                            </a>
+                        </li>
+                        <li className="nav-item">
                             <a className="nav-link " href="/Profile">
                                 {user.userStatus === "user" && <>{user.username}</>}
 
@@ -70,15 +78,24 @@ const Header = (props) => {
                         <li className="nav-item">
                             <div onClick={() => {
                                 store.dispatch(logout());
-                                window.location.href = "/";
+                                window.location.href = "/login";
                             }}>
+                              <a className="nav-link">
+                              <FontAwesomeIcon icon ={faSignOutAlt} />
                                 Logout
+                                </a>
                             </div>
                         </li>
                     </ul>
                     
                     : /* Else user === undefined (Logged Out) */
                     <ul className="navbar-nav ml-auto">
+                        <li className="nav-item">
+                            <a className="nav-link" href="/UpdateUser">
+                                <FontAwesomeIcon icon ={faUserCog} />
+                                User Profile
+                            </a>
+                        </li>
                         <li className="nav-item">
                             <a className="nav-link " href="/register">
                             <FontAwesomeIcon icon={faUserPlus} />

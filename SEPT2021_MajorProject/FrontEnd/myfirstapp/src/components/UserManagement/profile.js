@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import {connect} from 'react-redux';
 import {UpdateUser} from "../../actions/userActions";
 import Header from "../Layout/Header";
+import Footer from "../Layout/Footer";
+
 import store from "../../store";
 
 class profile extends Component{
@@ -27,6 +29,7 @@ class profile extends Component{
                             </div>
                         </li>
                 </div>
+                <Footer />
                 </>
             );
         }

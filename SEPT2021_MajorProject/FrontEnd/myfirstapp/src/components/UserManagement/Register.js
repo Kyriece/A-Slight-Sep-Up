@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import classnames from "classnames";
 import Header from "../Layout/Header";
 import MyToast from "../MyToast"
+import Footer from "../Layout/Footer";
+
 
 class Register extends Component {
   constructor() {
@@ -127,6 +129,8 @@ class Register extends Component {
             </div>
           </div>
         </div>
+        <Footer />
+
       </>
     );
   }

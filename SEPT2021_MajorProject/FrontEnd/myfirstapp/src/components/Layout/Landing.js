@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header";
+import Footer from "./Footer";
 
 class Landing extends Component {
   render() {
@@ -30,6 +31,7 @@ class Landing extends Component {
             </div>
           </div>
         </div>
+        <Footer />
       </>
     );
   }
