@@ -4,6 +4,7 @@ import * as PropTypes from 'prop-types'
 import { connect } from "react-redux";
 import classnames from "classnames";
 import Header from "../Layout/Header";
+import MyToast from "../MyToast"
 
 class Register extends Component {
   constructor() {

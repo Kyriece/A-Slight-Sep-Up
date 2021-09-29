@@ -22,6 +22,8 @@ import UserManager from "./components/UserManager";
 //import UserToPublisher from "./components/UserToPublisher";
 import Update from "./components/UserManagement/Update";
 import profile from "./components/UserManagement/profile";
+import Book from "./components/Books/Book";
+import BookList from "./components/Books/BookList";
 
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -59,6 +61,9 @@ const App = () => {
             {/* <Route exact path="/UserToPublisher" component={UserToPublisher} /> */}
             {/* <Route exact path="/Update" component={Update} /> */}
             <Route exact path="/profile" component={profile} />
+            <Route path="/add" exact component={Book} />
+            <Route path="/edit/:id" exact component={Book} />
+            <Route path="/list" exact component={BookList} />
 
             <SecureRoute exact path="/dashboard" component={Dashboard} />
             <SecureRoute exact path="/addPerson" component={AddPerson} />
