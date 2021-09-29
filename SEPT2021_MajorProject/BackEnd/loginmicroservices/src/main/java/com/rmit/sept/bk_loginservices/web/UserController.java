@@ -98,7 +98,7 @@ public class UserController{
     // }
 
     @PutMapping("/updaterequest")
-    public ResponseEntity<?> updateUser(@Valid @RequestBody String id, BindingResult result){
+    public ResponseEntity<?> updateUser(@Valid @RequestBody String id){
         System.out.println(id);
         String usable = extractInt(id);
         System.out.println(usable);
