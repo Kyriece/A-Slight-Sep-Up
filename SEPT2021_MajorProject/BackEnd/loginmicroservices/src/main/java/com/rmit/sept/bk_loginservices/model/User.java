@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.Collection;
 
 
+@Table(name = "user", schema="login")
 @Entity
 public class User implements UserDetails {
     @Id

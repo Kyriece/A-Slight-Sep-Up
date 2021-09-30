@@ -12,4 +12,4 @@ password varchar(19),
 update_at timestamp, 
 username varchar(255) unique, 
 userstatus varchar(255), 
-primary key (id))
+primary key (id)) engine=InnoDB
