@@ -48,10 +48,17 @@ protected void configure(HttpSecurity http) throws Exception {
                         "/**/*.css",
                         "/**/*.js"
                 ).permitAll()
-    .antMatchers("/api/*").permitAll()
-    .anyRequest()
-    .authenticated();
+    .antMatchers("/api/**").permitAll()
+    .antMatchers("/api/books/**").permitAll()
+    .anyRequest().authenticated();
 	}
+
+    @Bean
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+    // ALTHOUGH THIS SEEMS LIKE USELESS CODE,
+    // IT'S REQUIRED TO PREVENT SPRING BOOT AUTO-CONFIGURATION
+    return super.authenticationManagerBean();
+}
 
 // @Bean
 // CorsConfigurationSource corsConfigurationSource() {

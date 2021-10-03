@@ -104,6 +104,8 @@ public class UserController{
         System.out.println(usable);
         long userId = Long.parseLong(usable);
         System.out.println(userId);
+
+        //actual put request
         User user = userService.findByID(userId);
         user.setpublisherrequest(true);
         userService.saveUser(user);

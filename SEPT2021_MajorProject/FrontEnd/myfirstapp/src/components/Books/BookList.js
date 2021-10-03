@@ -43,12 +43,10 @@ class BookList extends Component {
   }
 
   sortData = () => {
-    setTimeout(() => {
       this.state.sortDir === "asc"
         ? this.setState({ sortDir: "desc" })
         : this.setState({ sortDir: "asc" });
-      this.findAllBooks(this.state.currentPage);
-    }, 500);
+      this.findAllBooks(this.state.currentPage);  
   };
 
   componentDidMount() {
@@ -84,15 +82,12 @@ class BookList extends Component {
 
   deleteBook = (bookId) => {
     this.props.deleteBook(bookId);
-    setTimeout(() => {
       if (this.props.bookObject != null) {
         this.setState({ show: true });
-        setTimeout(() => this.setState({ show: false }), 3000);
         this.findAllBooks(this.state.currentPage);
       } else {
         this.setState({ show: false });
       }
-    }, 1000);
   };
 
   changePage = (event) => {
@@ -202,7 +197,7 @@ class BookList extends Component {
             type={"danger"}
           />
         </div>
-        <Card className={"border border-dark bg-dark text-white"}>
+        <Card className={"border border-white bg-white text-black"}>
           <Card.Header>
             <div style={{ float: "left" }}>
               <FontAwesomeIcon icon={faList} /> Book List
@@ -213,7 +208,7 @@ class BookList extends Component {
                   placeholder="Search"
                   name="search"
                   value={search}
-                  className={"info-border bg-dark text-white"}
+                  className={"info-border bg-white text-black"}
                   onChange={this.searchChange}
                 />
                 <InputGroup.Append>
@@ -238,7 +233,7 @@ class BookList extends Component {
             </div>
           </Card.Header>
           <Card.Body>
-            <Table bordered hover striped variant="dark">
+            <Table bordered hover striped variant="white">
               <thead>
                 <tr>
                   <th>Title</th>
@@ -332,7 +327,7 @@ class BookList extends Component {
                     </Button>
                   </InputGroup.Prepend>
                   <FormControl
-                    className={"page-num bg-dark"}
+                    className={"page-num bg-white"}
                     name="currentPage"
                     value={currentPage}
                     onChange={this.changePage}

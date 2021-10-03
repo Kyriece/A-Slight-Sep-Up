@@ -54,7 +54,6 @@ class Book extends Component {
 
   findAllLanguages = () => {
     this.props.fetchLanguages();
-    setTimeout(() => {
       let bookLanguages = this.props.bookObject.languages;
       if (bookLanguages) {
         this.setState({
@@ -66,12 +65,10 @@ class Book extends Component {
         });
         this.findAllGenres();
       }
-    }, 100);
   };
 
   findAllGenres = () => {
     this.props.fetchGenres();
-    setTimeout(() => {
       let bookGenres = this.props.bookObject.genres;
       if (bookGenres) {
         this.setState({
@@ -82,12 +79,10 @@ class Book extends Component {
           ),
         });
       }
-    }, 100);
   };
 
   findBookById = (bookId) => {
     this.props.fetchBook(bookId);
-    setTimeout(() => {
       let book = this.props.bookObject.book;
       if (book != null) {
         this.setState({
@@ -101,7 +96,6 @@ class Book extends Component {
           genre: "Horror",
         });
       }
-    }, 1000);
   };
 
   resetBook = () => {
@@ -122,14 +116,11 @@ class Book extends Component {
     };
 
     this.props.saveBook(book);
-    setTimeout(() => {
       if (this.props.bookObject.book != null) {
         this.setState({ show: true, method: "post" });
-        setTimeout(() => this.setState({ show: false }), 3000);
       } else {
         this.setState({ show: false });
       }
-    }, 2000);
     this.setState(this.initialState);
   };
 
@@ -146,15 +137,12 @@ class Book extends Component {
       language: this.state.language,
       genre: this.state.genre,
     };
-    this.props.updateBook(book);
-    setTimeout(() => {
+    this.props.updateBook(book)
       if (this.props.bookObject.book != null) {
         this.setState({ show: true, method: "put" });
-        setTimeout(() => this.setState({ show: false }), 3000);
       } else {
         this.setState({ show: false });
       }
-    }, 2000);
     this.setState(this.initialState);
   };
 

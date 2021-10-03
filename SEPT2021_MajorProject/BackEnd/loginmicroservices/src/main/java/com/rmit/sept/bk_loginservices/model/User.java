@@ -39,7 +39,6 @@ public class User implements UserDetails {
     //OneToMany with Project
 
     public User() {
-
     }
 
     public User(String username, String fullName, String password, String userstatus) {
@@ -47,7 +46,6 @@ public class User implements UserDetails {
         this.fullName = fullName;
         this.password = password;
         this.userstatus = userstatus;
-
     }
 
     public Long getId() {
