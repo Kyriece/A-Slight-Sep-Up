@@ -40,8 +40,8 @@ class Book extends Component {
     coverPhotoURL: "",
     isbnNumber: "",
     price: "",
-    language: "English",
-    genre: "Horror",
+    language: "",
+    genre: "",
   };
 
   componentDidMount() {
@@ -92,8 +92,8 @@ class Book extends Component {
           coverPhotoURL: book.coverPhotoURL,
           isbnNumber: book.isbnNumber,
           price: book.price,
-          language: "English",
-          genre: "Horror",
+          language: book.language,
+          genre: book.genre,
         });
       }
   };
@@ -111,8 +111,8 @@ class Book extends Component {
       coverPhotoURL: this.state.coverPhotoURL,
       isbnNumber: this.state.isbnNumber,
       price: this.state.price,
-      language: "English",
-      genre: "Horror",
+      language: this.state.language,
+      genre: this.state.genre,
     };
 
     this.props.saveBook(book);
@@ -279,11 +279,15 @@ class Book extends Component {
                     value={language}
                     className={"bg-white text-blacke"}
                   >
-                    {this.state.languages.map((language) => (
-                      <option key={language.value} value={language.value}>
-                        {language.display}
-                      </option>
-                    ))}
+                    <option disabled value = "">Select Language</option>
+                      <option value="French">French</option>
+                      <option value="English">English</option>
+                      <option value="Spanish">Spanish</option>
+                      <option value="Vietnamese">Vietnamese</option>
+                      <option value="Russian">Russian</option>
+                      <option value="Mandarin">Mandarin</option>
+                      <option value="Arabic">Arabic</option>
+                      <option value="Hindi">Hindi</option>
                   </Form.Control>
                 </Form.Group>
                 <Form.Group as={Col} controlId="formGridGenre">
@@ -297,11 +301,15 @@ class Book extends Component {
                     value={genre}
                     className={"bg-white text-black"}
                   >
-                    {this.state.genres.map((genre) => (
-                      <option key={genre.value} value={genre.value}>
-                        {genre.display}
-                      </option>
-                    ))}
+                   <option disabled value = "">Select Genre</option>
+                      <option value="Textbook">Textbook</option>
+                      <option value="Science">Science</option>
+                      <option value="History">History</option>
+                      <option value="Fantasy">Fantasy</option>
+                      <option value="Biography">Biography</option>
+                      <option value="Horror">Horror</option>
+                      <option value="Romance">Romance</option>
+
                   </Form.Control>
                 </Form.Group>
               </Form.Row>

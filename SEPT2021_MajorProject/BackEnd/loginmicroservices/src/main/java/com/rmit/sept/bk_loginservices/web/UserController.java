@@ -87,8 +87,13 @@ public class UserController{
     
     @GetMapping("/all")
     public Iterable<User> getAllUsers(Principal principal) {
-        System.out.println("test if works");
         return userService.findAllUsers();
+    }
+
+    @GetMapping("/usertopublisher")
+    public Iterable<User> getPubUsers(Principal principal) {
+        System.out.println("test if works");
+        return userService.findByPublisherRequest(true);
     }
 
     // @CrossOrigin(origins = "http://localhost:3000")

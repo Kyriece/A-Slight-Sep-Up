@@ -14,4 +14,6 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
     @Override
     Iterable<User> findAll();
+
+    Iterable<User> getBypublisherrequest(Boolean request);
 }
