@@ -293,6 +293,12 @@ class BookList extends Component {
                           >
                             <FontAwesomeIcon icon={faTrash} />
                           </Button>
+                          <Link
+                            to={"BookProfile/" + book.id}
+                            className="btn btn-sm btn-outline-primary"
+                          >
+                            <FontAwesomeIcon icon={faSearch} />
+                          </Link>{" "}
                         </ButtonGroup>
                       </td>
                     </tr>

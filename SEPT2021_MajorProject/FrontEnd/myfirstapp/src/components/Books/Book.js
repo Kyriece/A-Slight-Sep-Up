@@ -84,6 +84,8 @@ class Book extends Component {
   findBookById = (bookId) => {
     this.props.fetchBook(bookId);
       let book = this.props.bookObject.book;
+      console.log(book);
+      console.log(this.state);
       if (book != null) {
         this.setState({
           id: book.id,
@@ -96,6 +98,7 @@ class Book extends Component {
           genre: book.genre,
         });
       }
+      console.log(book);
   };
 
   resetBook = () => {
