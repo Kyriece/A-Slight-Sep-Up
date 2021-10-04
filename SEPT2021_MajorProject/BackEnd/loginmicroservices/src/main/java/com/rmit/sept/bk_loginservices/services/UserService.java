@@ -59,6 +59,11 @@ public class UserService {
 
     }
 
+    public Iterable<User> findByPublisherRequest(boolean value){
+        return userRepository.getBypublisherrequest(true);
+
+    }
+
     public void lock(User user) {
         user.setAccountNonLocked(false);
         user.setLockTime(new Date());

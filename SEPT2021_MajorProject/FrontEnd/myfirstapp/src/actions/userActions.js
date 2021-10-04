@@ -1,5 +1,5 @@
 import axios from "axios";
-import {GET_USERS, GET_USER, GET_ERRORS, SET_PUBREQUEST, UPDATE_USER} from "./types";
+import {GET_USERS, GET_USER, GET_ERRORS, SET_PUBREQUEST, UPDATE_USER, GET_PUBUSERS} from "./types";
 import setJWTToken from "../securityUtils/setJWTToken";
 import jwt_decode from "jwt-decode";
 
@@ -12,6 +12,14 @@ export const getUsers = () => async dispatch => {
     const res = await axios.get("http://localhost:8080/api/users/all");
     dispatch({
         type: GET_USERS,
+        payload: res.data
+    });
+};
+
+export const getPubUsers = () => async dispatch => {
+    const res = await axios.get("http://localhost:8080/api/users/usertopublisher");
+    dispatch({
+        type: GET_PUBUSERS,
         payload: res.data
     });
 };

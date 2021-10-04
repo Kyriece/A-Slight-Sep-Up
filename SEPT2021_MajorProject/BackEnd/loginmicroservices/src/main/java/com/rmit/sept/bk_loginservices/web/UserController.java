@@ -87,8 +87,13 @@ public class UserController{
     
     @GetMapping("/all")
     public Iterable<User> getAllUsers(Principal principal) {
-        System.out.println("test if works");
         return userService.findAllUsers();
+    }
+
+    @GetMapping("/usertopublisher")
+    public Iterable<User> getPubUsers(Principal principal) {
+        System.out.println("test if works");
+        return userService.findByPublisherRequest(true);
     }
 
     // @CrossOrigin(origins = "http://localhost:3000")
@@ -98,12 +103,14 @@ public class UserController{
     // }
 
     @PutMapping("/updaterequest")
-    public ResponseEntity<?> updateUser(@Valid @RequestBody String id, BindingResult result){
+    public ResponseEntity<?> updateUser(@Valid @RequestBody String id){
         System.out.println(id);
         String usable = extractInt(id);
         System.out.println(usable);
         long userId = Long.parseLong(usable);
         System.out.println(userId);
+
+        //actual put request
         User user = userService.findByID(userId);
         user.setpublisherrequest(true);
         userService.saveUser(user);

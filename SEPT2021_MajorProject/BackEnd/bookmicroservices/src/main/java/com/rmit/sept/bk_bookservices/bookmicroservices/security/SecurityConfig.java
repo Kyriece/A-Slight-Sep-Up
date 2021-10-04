@@ -1,5 +1,6 @@
 package com.rmit.sept.bk_bookservices.bookmicroservices.security;
 
+import org.assertj.core.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,31 +12,64 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import com.rmit.sept.bk_bookservices.bookmicroservices.service.BookService;
+import com.rmit.sept.bk_bookservices.bookmicroservices.service.*;
+
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private BookService bookService;
+@Autowired
+BookServiceImpl bookServiceImpl;
 
-    @Autowired
-	private JwtTokenProvider tokenProvider;
 
-    @Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http.cors();
-		http.csrf().disable().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-				.authorizeRequests().antMatchers("/api/*").permitAll().anyRequest().authenticated();
-		http.apply(new JwtTokenConfigurer(tokenProvider));
+
+@Override
+protected void configure(HttpSecurity http) throws Exception {
+	http.cors().and().csrf().disable()
+	.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+    .and()
+    .headers().frameOptions().sameOrigin().
+    and().
+	authorizeRequests().
+    antMatchers(
+                        "/",
+                        "/favicon.ico",
+                        "/**/*.png",
+                        "/**/*.gif",
+                        "/**/*.svg",
+                        "/**/*.jpg",
+                        "/**/*.html",
+                        "/**/*.css",
+                        "/**/*.js"
+                ).permitAll()
+    .antMatchers("/api/**").permitAll()
+    .antMatchers("/api/books/**").permitAll()
+    .anyRequest().authenticated();
 	}
-    
-}
 
-@Bean
-public BCryptPasswordEncoder passwordEncoder() {
-    return new BCryptPasswordEncoder();
+    // @Bean
+    // public AuthenticationManager authenticationManagerBean() throws Exception {
+    // // ALTHOUGH THIS SEEMS LIKE USELESS CODE,
+    // // IT'S REQUIRED TO PREVENT SPRING BOOT AUTO-CONFIGURATION
+    // return super.authenticationManagerBean();
+// }
+
+// @Bean
+// CorsConfigurationSource corsConfigurationSource() {
+//         CorsConfiguration configuration = new CorsConfiguration();
+//         configuration.setAllowedOrigins(Arrays.asList("*"));
+//         configuration.setAllowedMethods(Arrays.asList("*"));
+//         configuration.setAllowedHeaders(Arrays.asList("*"));
+//         configuration.setAllowCredentials(true);
+//         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//         source.registerCorsConfiguration("/**", configuration);
+//         return source;
+//     }
+    
 }

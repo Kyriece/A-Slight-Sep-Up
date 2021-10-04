@@ -6,6 +6,7 @@ export const GET_USERS = "GET_USERS";
 export const GET_USER = "GET_USER";
 export const SET_PUBREQUEST = "SET_PUBREQUEST";
 export const UPDATE_USER= "UPDATE_USER";
+export const GET_PUBUSERS= "GET_PUBUSERS";
 
 //tim addition
 export const SAVE_BOOK_REQUEST = "SAVE_BOOK_REQUEST";

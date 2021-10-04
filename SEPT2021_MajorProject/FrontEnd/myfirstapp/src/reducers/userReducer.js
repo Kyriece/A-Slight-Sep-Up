@@ -1,4 +1,4 @@
-import {GET_USER, GET_USERS, SET_PUBREQUEST, UPDATE_USER} from "../actions/types";
+import {GET_USER, GET_USERS, SET_PUBREQUEST, UPDATE_USER, GET_PUBUSERS} from "../actions/types";
 
 const initialState = {
     users: [],
@@ -24,6 +24,12 @@ export default function(state = initialState, action) {
         case UPDATE_USER:
             return {
                  ...state,
+                user: action.payload
+            };
+        
+        case GET_PUBUSERS:
+            return {
+                ...state,
                 user: action.payload
             };
 

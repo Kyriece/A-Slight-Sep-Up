@@ -22,7 +22,9 @@ class Dashboard extends Component {
                           Dashboard
                         </h1>
                         <hr />
-                        <p>Display Books here!</p>
+                        <Link className="btn btn-lg btn-primary mr-2" to="/UpdateUser">
+                        <h1>welcome {user.username}</h1>
+                        </Link>
                       </div>
                     </div>
                   </div>

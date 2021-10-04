@@ -13,23 +13,12 @@ class AdminBoard extends Component {
         return (
             <>
                 <Header />
-                <div className="landing">
-                    <div className="light-overlay landing-inner text-dark">
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-md-12 text-center">
-                                    <h1 className="display-3 mb-4">
-                                        Welcome admin {user.username}
-                                    </h1>
-                                    <hr />
-                                    <Link className="btn btn-lg btn-primary mr-2" to="/userManager">
-                                        User Management
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <Link className="btn btn-lg btn-primary mr-2" to="/UserManager">
+                <h1>This is Admin page</h1>
+                </Link>
+                <Link className="btn btn-lg btn-primary mr-2" to="/UserManager2">
+                <h1>Users who want to be publishers</h1>
+                </Link>
             </>
 
         )

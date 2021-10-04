@@ -40,8 +40,8 @@ class Book extends Component {
     coverPhotoURL: "",
     isbnNumber: "",
     price: "",
-    language: "English",
-    genre: "Horror",
+    language: "",
+    genre: "",
   };
 
   componentDidMount() {
@@ -54,7 +54,6 @@ class Book extends Component {
 
   findAllLanguages = () => {
     this.props.fetchLanguages();
-    setTimeout(() => {
       let bookLanguages = this.props.bookObject.languages;
       if (bookLanguages) {
         this.setState({
@@ -66,12 +65,10 @@ class Book extends Component {
         });
         this.findAllGenres();
       }
-    }, 100);
   };
 
   findAllGenres = () => {
     this.props.fetchGenres();
-    setTimeout(() => {
       let bookGenres = this.props.bookObject.genres;
       if (bookGenres) {
         this.setState({
@@ -82,12 +79,10 @@ class Book extends Component {
           ),
         });
       }
-    }, 100);
   };
 
   findBookById = (bookId) => {
     this.props.fetchBook(bookId);
-    setTimeout(() => {
       let book = this.props.bookObject.book;
       if (book != null) {
         this.setState({
@@ -97,11 +92,10 @@ class Book extends Component {
           coverPhotoURL: book.coverPhotoURL,
           isbnNumber: book.isbnNumber,
           price: book.price,
-          language: "English",
-          genre: "Horror",
+          language: book.language,
+          genre: book.genre,
         });
       }
-    }, 1000);
   };
 
   resetBook = () => {
@@ -117,19 +111,16 @@ class Book extends Component {
       coverPhotoURL: this.state.coverPhotoURL,
       isbnNumber: this.state.isbnNumber,
       price: this.state.price,
-      language: "English",
-      genre: "Horror",
+      language: this.state.language,
+      genre: this.state.genre,
     };
 
     this.props.saveBook(book);
-    setTimeout(() => {
       if (this.props.bookObject.book != null) {
         this.setState({ show: true, method: "post" });
-        setTimeout(() => this.setState({ show: false }), 3000);
       } else {
         this.setState({ show: false });
       }
-    }, 2000);
     this.setState(this.initialState);
   };
 
@@ -146,15 +137,12 @@ class Book extends Component {
       language: this.state.language,
       genre: this.state.genre,
     };
-    this.props.updateBook(book);
-    setTimeout(() => {
+    this.props.updateBook(book)
       if (this.props.bookObject.book != null) {
         this.setState({ show: true, method: "put" });
-        setTimeout(() => this.setState({ show: false }), 3000);
       } else {
         this.setState({ show: false });
       }
-    }, 2000);
     this.setState(this.initialState);
   };
 
@@ -244,7 +232,7 @@ class Book extends Component {
                       {this.state.coverPhotoURL !== "" && (
                         <Image
                           src={this.state.coverPhotoURL}
-                          roundedRight
+                          // roundedright
                           width="40"
                           height="38"
                         />
@@ -291,11 +279,15 @@ class Book extends Component {
                     value={language}
                     className={"bg-white text-blacke"}
                   >
-                    {this.state.languages.map((language) => (
-                      <option key={language.value} value={language.value}>
-                        {language.display}
-                      </option>
-                    ))}
+                    <option disabled value = "">Select Language</option>
+                      <option value="French">French</option>
+                      <option value="English">English</option>
+                      <option value="Spanish">Spanish</option>
+                      <option value="Vietnamese">Vietnamese</option>
+                      <option value="Russian">Russian</option>
+                      <option value="Mandarin">Mandarin</option>
+                      <option value="Arabic">Arabic</option>
+                      <option value="Hindi">Hindi</option>
                   </Form.Control>
                 </Form.Group>
                 <Form.Group as={Col} controlId="formGridGenre">
@@ -309,11 +301,15 @@ class Book extends Component {
                     value={genre}
                     className={"bg-white text-black"}
                   >
-                    {this.state.genres.map((genre) => (
-                      <option key={genre.value} value={genre.value}>
-                        {genre.display}
-                      </option>
-                    ))}
+                   <option disabled value = "">Select Genre</option>
+                      <option value="Textbook">Textbook</option>
+                      <option value="Science">Science</option>
+                      <option value="History">History</option>
+                      <option value="Fantasy">Fantasy</option>
+                      <option value="Biography">Biography</option>
+                      <option value="Horror">Horror</option>
+                      <option value="Romance">Romance</option>
+
                   </Form.Control>
                 </Form.Group>
               </Form.Row>

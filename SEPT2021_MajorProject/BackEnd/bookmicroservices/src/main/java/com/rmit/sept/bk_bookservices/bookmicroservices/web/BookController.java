@@ -20,9 +20,9 @@ import com.rmit.sept.bk_bookservices.bookmicroservices.model.Book;
 import com.rmit.sept.bk_bookservices.bookmicroservices.service.IPageService;
 import com.rmit.sept.bk_bookservices.bookmicroservices.service.IService;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/books")   
-@CrossOrigin("*")
 public class BookController implements Resource<Book>{
 
     @Autowired
@@ -65,6 +65,12 @@ public class BookController implements Resource<Book>{
 	public ResponseEntity<String> deleteById(Long id) {
 		return new ResponseEntity<>(bookService.deleteById(id), HttpStatus.OK);
 	}
+
+	// @GetMapping("/all")
+    // public Iterable<User> getAllUsers(Principal principal) {
+    //     System.out.println("test if works");
+    //     return userService.findAllUsers();
+    // }
 
 	@GetMapping("/languages")
 	public  ResponseEntity<Set<String>> findAllLanguages() {
