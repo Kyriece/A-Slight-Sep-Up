@@ -122,3 +122,15 @@ export const fetchGenres = () => {
       });
   };
 };
+
+export const getBookbyId = (id) => async dispatch =>{
+  try{
+  const res = await axios.get("http://localhost:8081/api/books/" + id);
+  dispatch({
+    type: BT.GET_BOOK,
+    payload: res.data
+});
+  }catch (error){
+    console.log(error.response);
+  }
+};

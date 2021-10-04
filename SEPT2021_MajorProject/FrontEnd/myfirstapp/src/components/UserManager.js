@@ -16,7 +16,7 @@ class UserManager extends Component {
         return data.map((dataItem)=>(
             <tr key={dataItem.id}>
                 <td>{dataItem.id}</td>
-                <td>{dataItem.username}</td>
+                <td>{dataItem.ti}</td>
                 <td>{dataItem.fullName}</td>
                 <td>{dataItem.userStatus}</td>
                 <td>{dataItem.publisherrequest ? <div>TRUE</div> : <div>FALSE</div>}</td>

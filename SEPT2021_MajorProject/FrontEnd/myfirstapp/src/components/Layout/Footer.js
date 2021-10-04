@@ -12,7 +12,7 @@ Column,
 FooterLink,
 Heading,
 Rights,
-} from "./FooterStyles";
+} from "../Layout/FooterStyles";
 
 const Footer = () => {
 return (
