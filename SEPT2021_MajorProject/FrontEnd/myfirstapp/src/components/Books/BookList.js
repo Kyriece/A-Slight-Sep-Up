@@ -265,12 +265,7 @@ class BookList extends Component {
                   books.map((book) => (
                     <tr key={book.id}>
                       <td>
-                        <Image
-                          src={book.coverPhotoURL}
-                          roundedCircle
-                          width="25"
-                          height="25"
-                        />{" "}
+                      <img src={book.coverPhotoURL} style={{width: '150px', height: '250px'}}/>
                         {book.title}
                       </td>
                       <td>{book.author}</td>
