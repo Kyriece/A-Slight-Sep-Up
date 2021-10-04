@@ -4,6 +4,7 @@ import { logout } from "../../actions/securityActions";
 import securityReducer from "../../reducers/securityReducer";
 import store from "../../store";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import {
   faUserPlus,
   faSignInAlt,
@@ -31,13 +32,30 @@ const Header = (props) => {
             </button>
 
             <div className="collapse navbar-collapse" id="mobile-nav">
-                <ul className="navbar-nav mr-auto">
+            {isLoggedIn ?
+            <ul className="navbar-nav mr-auto">
+            <li className="nav-item">
+                <a className="nav-link" href="/add">
+                    add book
+                </a>
+                <a className="nav-link" href="/list">
+                    book list
+                </a>
+            </li>
+            </ul>
+
+
+            :
+            <ul className="navbar-nav mr-auto">
                     <li className="nav-item">
                         <a className="nav-link" href="/dashboard">
                             Dashboard
                         </a>
                     </li>
                 </ul>
+
+            }
+                
 
                 {isLoggedIn ? 
                     /* If user === true (Logged In) */
@@ -60,9 +78,12 @@ const Header = (props) => {
                         <li className="nav-item">
                             <div onClick={() => {
                                 store.dispatch(logout());
-                                window.location.href = "/";
+                                window.location.href = "/login";
                             }}>
+                              <a className="nav-link">
+                              <FontAwesomeIcon icon ={faSignOutAlt} />
                                 Logout
+                                </a>
                             </div>
                         </li>
                     </ul>

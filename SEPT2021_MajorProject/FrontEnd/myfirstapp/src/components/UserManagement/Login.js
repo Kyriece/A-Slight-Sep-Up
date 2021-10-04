@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import classnames from "classnames";
 import { login } from "../../actions/securityActions";
 import Header from "../Layout/Header";
-
+import Footer from "../Layout/Footer";
 import store from "../../store";
 
 class Login extends Component {
@@ -106,6 +106,7 @@ class Login extends Component {
             </div>
           </div>
         </div>
+        <Footer />
       </>
     );
   }

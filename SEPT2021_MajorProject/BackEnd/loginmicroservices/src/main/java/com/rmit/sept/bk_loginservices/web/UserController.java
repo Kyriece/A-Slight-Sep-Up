@@ -26,7 +26,7 @@ import java.security.Principal;
 
 import static com.rmit.sept.bk_loginservices.security.SecurityConstant.TOKEN_PREFIX;
 
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/users")
 public class UserController{
@@ -40,8 +40,6 @@ public class UserController{
     @Autowired
     private UserValidator userValidator;
 
-
-    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody User user, BindingResult result){
         // Validate passwords match
@@ -63,11 +61,13 @@ public class UserController{
     private AuthenticationManager authenticationManager;
 
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest, BindingResult result){
+        System.out.println("step 0");
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
+        System.out.println("step 1");
         if(errorMap != null) return errorMap;
+        System.out.println("step 2");
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
@@ -75,16 +75,19 @@ public class UserController{
                         loginRequest.getPassword()
                 )
         );
+        System.out.println("step 3");
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
+        System.out.println("step 4");
         String jwt = TOKEN_PREFIX +  tokenProvider.generateToken(authentication);
+        System.out.println("step 5");
 
         return ResponseEntity.ok(new JWTLoginSucessReponse(true, jwt));
     }
-
-    @CrossOrigin(origins = "http://localhost:3000")
+    
     @GetMapping("/all")
     public Iterable<User> getAllUsers(Principal principal) {
+        System.out.println("test if works");
         return userService.findAllUsers();
     }
 
@@ -94,17 +97,28 @@ public class UserController{
     //     return userService.findAllpublisherrequests();
     // }
 
-    @CrossOrigin(origins = "http://localhost:3000")
-    @PutMapping("/updaterequest/{id}")
-    public ResponseEntity<?> updateUser(@PathVariable(value = "id")Long userId,
-    @Valid @RequestBody User userDetails){
+    @PutMapping("/updaterequest")
+    public ResponseEntity<?> updateUser(@Valid @RequestBody String id, BindingResult result){
+        System.out.println(id);
+        String usable = extractInt(id);
+        System.out.println(usable);
+        long userId = Long.parseLong(usable);
+        System.out.println(userId);
         User user = userService.findByID(userId);
-        user.setUsername(userDetails.getUsername());
-		user.setFullName(userDetails.getFullName());
-        user.setpublisherrequest(userDetails.getpublisherrequest());
-        final User updatedUser = userService.save(user);
-
-        return ResponseEntity.ok(updatedUser);
+        user.setpublisherrequest(true);
+        userService.saveUser(user);
+        return new ResponseEntity<User>(user, HttpStatus.OK);
     
+    }
+
+    static String extractInt(String str)
+    {
+        str = str.replaceAll("[^\\d]", " ");
+        str = str.trim();
+        str = str.replaceAll(" +", " ");
+        if (str.equals(""))
+            return "-1";
+  
+        return str;
     }
 }

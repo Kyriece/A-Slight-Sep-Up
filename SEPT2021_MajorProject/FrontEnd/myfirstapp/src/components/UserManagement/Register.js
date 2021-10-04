@@ -4,17 +4,20 @@ import * as PropTypes from 'prop-types'
 import { connect } from "react-redux";
 import classnames from "classnames";
 import Header from "../Layout/Header";
+// import MyToast from "../MyToast"
+import Footer from "../Layout/Footer";
+
 
 class Register extends Component {
   constructor() {
     super();
 
     this.state = {
-      username: "",
-      fullName: "",
-      password: "",
-      confirmPassword: "",
-      userStatus: "",
+      username: "root@root.com",
+      fullName: "rooty",
+      password: "123qwe123qwe",
+      confirmPassword: "123qwe123qwe",
+      userStatus: "user",
       errors: {}
     };
     this.onChange = this.onChange.bind(this);
@@ -126,6 +129,8 @@ class Register extends Component {
             </div>
           </div>
         </div>
+        <Footer />
+
       </>
     );
   }

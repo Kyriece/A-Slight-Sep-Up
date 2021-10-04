@@ -4,6 +4,7 @@ public class SecurityConstant {
 
     public static final String SIGN_UP_URLS = "/api/users/**";
     public static final String OTHER_URLS = "/api/user/**";
+    public static final String BOOK_URLS = "/api/books/**";
     public static final String H2_URL = "/h2-console/**";
     public static final String SECRET ="SecretKeyToGenJWTs";
     public static final String TOKEN_PREFIX= "Bearer ";
