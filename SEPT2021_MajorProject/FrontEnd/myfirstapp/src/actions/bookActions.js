@@ -3,6 +3,7 @@ import axios from "axios";
 
 export const saveBook = (book) => {
   return (dispatch) => {
+    console.log(book);
     dispatch({
       type: BT.SAVE_BOOK_REQUEST,
     });
@@ -34,6 +35,7 @@ export const fetchBook = (bookId) => {
 };
 
 export const updateBook = (book) => {
+  console.log(book);
   return (dispatch) => {
     dispatch({
       type: BT.UPDATE_BOOK_REQUEST,

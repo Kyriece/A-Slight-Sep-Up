@@ -42,6 +42,9 @@ class Book extends Component {
     price: "",
     language: "",
     genre: "",
+    blurb: "",
+    authorDescription: "",
+    rating: "",
   };
 
   componentDidMount() {
@@ -84,7 +87,6 @@ class Book extends Component {
   findBookById = (bookId) => {
     this.props.fetchBook(bookId);
       let book = this.props.bookObject.book;
-      console.log(book);
       console.log(this.state);
       if (book != null) {
         this.setState({
@@ -96,6 +98,9 @@ class Book extends Component {
           price: book.price,
           language: book.language,
           genre: book.genre,
+          blurb: book.blurb,
+          authorDescription: book.authorDescription,
+          rating: book.rating,
         });
       }
       console.log(book);
@@ -116,6 +121,9 @@ class Book extends Component {
       price: this.state.price,
       language: this.state.language,
       genre: this.state.genre,
+      blurb: this.state.blurb,
+      authorDescription: this.state.authorDescription,
+      rating: this.state.rating,
     };
 
     this.props.saveBook(book);
@@ -139,6 +147,9 @@ class Book extends Component {
       price: this.state.price,
       language: this.state.language,
       genre: this.state.genre,
+      blurb: this.state.blurb,
+      authorDescription: this.state.authorDescription,
+      rating: this.state.rating,
     };
     this.props.updateBook(book)
       if (this.props.bookObject.book != null) {
@@ -160,9 +171,8 @@ class Book extends Component {
   };
 
   render() {
-    const { title, author, coverPhotoURL, isbnNumber, price, language, genre } =
+    const { title, author, coverPhotoURL, isbnNumber, price, language, genre, blurb, authorDescription, rating } =
       this.state;
-
     return (
       <>
       <Header/>
@@ -271,6 +281,19 @@ class Book extends Component {
                     placeholder="Enter Book Price"
                   />
                 </Form.Group>
+                <Form.Group as={Col} controlId="formGridPrice">
+                  <Form.Label>Rating</Form.Label>
+                  <Form.Control
+                    required
+                    autoComplete="off"
+                    type="test"
+                    name="rating"
+                    value={rating}
+                    onChange={this.bookChange}
+                    className={"bg-white text-black"}
+                    placeholder="Enter Book Rating (Out of 5)"
+                  />
+                </Form.Group>
                 <Form.Group as={Col} controlId="formGridLanguage">
                   <Form.Label>Language</Form.Label>
                   <Form.Control
@@ -314,6 +337,40 @@ class Book extends Component {
                       <option value="Romance">Romance</option>
 
                   </Form.Control>
+                </Form.Group>
+              </Form.Row>
+              <Form.Row>
+                <Form.Group as={Col} controlId="formGridTitle">
+                  <Form.Label>Blurb</Form.Label>
+                  <Form.Control
+                    required
+                    autoComplete="off"
+                    type="test"
+                    as="textarea"
+                    rows={5}
+                    name="blurb"
+                    value={blurb}
+                    onChange={this.bookChange}
+                    className={"bg-white text-black"}
+                    placeholder="Enter Book Blurb"
+                  />
+                </Form.Group>
+              </Form.Row>
+              <Form.Row>
+                <Form.Group as={Col} controlId="formGridAuthor">
+                  <Form.Label>Author Description</Form.Label>
+                  <Form.Control
+                    required
+                    autoComplete="off"
+                    type="test"
+                    name="authorDescription"
+                    as="textarea"
+                    rows={3}
+                    value={authorDescription}
+                    onChange={this.bookChange}
+                    className={"bg-white text-black"}
+                    placeholder="Enter Author Description"
+                  />
                 </Form.Group>
               </Form.Row>
             </Card.Body>

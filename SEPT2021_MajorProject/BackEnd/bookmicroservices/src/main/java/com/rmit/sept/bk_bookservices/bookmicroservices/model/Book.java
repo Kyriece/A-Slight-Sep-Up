@@ -35,6 +35,15 @@ public class Book {
 	@Column(nullable = false)
 	private String genre;
 
+	@Column(nullable = false, length = 1800)
+	private String blurb;
+
+	@Column(nullable = false, length = 600)
+	private String authorDescription;
+
+	@Column(nullable = false)
+	private Double rating;
+
 	public Long getId() {
 		return id;
 	}
@@ -97,5 +106,29 @@ public class Book {
 
 	public void setGenre(String genre) {
 		this.genre = genre;
+	}
+
+	public void setBlurb(String blurb) {
+		this.blurb = blurb;
+	}
+
+	public String getBlurb() {
+		return blurb;
+	}
+
+	public void setAuthorDescription(String authorDescription) {
+		this.authorDescription = authorDescription;
+	}
+
+	public String getAuthorDescription() {
+		return authorDescription;
+	}
+
+	public Double getRating() {
+		return rating;
+	}
+
+	public void setRating(Double rating) {
+		this.rating = rating;
 	}
 }

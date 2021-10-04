@@ -48,10 +48,10 @@ if (jwtToken) {
 
   const currentTime = Date.now() / 1000;
   
-  if (jwt_decode(jwtToken).exp < currentTime) {
-    store.dispatch(logout());
-    window.location.href = "/";
-  }
+  // if (jwt_decode(jwtToken).exp < currentTime) {
+  //   store.dispatch(logout());
+  //   window.location.href = "/";
+  // }
 }
 
 const App = () => {

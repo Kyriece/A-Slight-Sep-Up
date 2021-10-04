@@ -28,6 +28,9 @@ class BookProfile extends Component{
         price: "",
         language: "",
         genre: "",
+        blurb: "",
+        authorDescription: "",
+        rating: "",
       };
 
     componentWillMount(){
@@ -40,7 +43,10 @@ class BookProfile extends Component{
             isbnNumber:result.data.isbnNumber,
             price:result.data.price,
             language:result.data.language,
-            genre:result.data.genre
+            genre:result.data.genre,
+            blurb:result.data.blurb,
+            authorDescription:result.data.authorDescription,
+            rating:result.data.rating
           });
         });
 
@@ -58,7 +64,7 @@ class BookProfile extends Component{
                 
                 <>
                 <Header />
-                <div class="container profile">
+                <div class="container profile" style={{paddingBottom: '430px'}}>
                     <div class="column" >
                         <div class="col-md-4">
                             <div style={{ paddingRight: '50px', float: 'left', width: '300px', height: '400px' }}>
@@ -70,14 +76,13 @@ class BookProfile extends Component{
                         <br></br>
                         <h1 className="display-4 text-center"> {this.state.title}</h1>
                         <div></div>
-                        <p1 className="display-8 text-center"> A blurb is a short description of a book that is written for promotional purposes. Traditionally, it would be found on the inside back cover of a hardback. As paperback publishing developed, readers began seeing the blurb appearing on the back cover. Generally, 150-200 words are more than enough for a full blurb.
-                            In the modern publishing landscape, where more books are being purchased online than in bricks and mortar stores, you are more likely to encounter blurbs on the product page of Amazon or any other digital retailer. Sometimes, you will hear them referred to as ‘book descriptions.’ So now that we have our basic definition out of the way, let’s roll up our sleeves and get to work. </p1>
+                        <p1 className="display-8 text-center" >{this.state.blurb}</p1>
                     </div>
                 </div>
                 <div class="container profile">
                     <div class = "column">
                         <div class="col-md-4" style={{ float:'left', width: '300px'}}>
-                            <h3 >Rating: 5/5</h3>
+                            <h3 >Rating: {this.state.rating}/5</h3>
                             <Link className="btn btn-lg btn-secondary mr-2" to="/bookProfile">
                             Add to cart: ${this.state.price}
                             </Link>
@@ -92,7 +97,7 @@ class BookProfile extends Component{
                     <div class = "column">
                         <div class="col-md-4" style={{ float:'left', width: '300px', paddingRight: "30px"}}> 
                             <h3>About the Author</h3>
-                            <p >Write about the author here bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla bla</p>
+                            <p >{this.state.authorDescription}</p>
                         </div>
                     </div>
                     <div>
