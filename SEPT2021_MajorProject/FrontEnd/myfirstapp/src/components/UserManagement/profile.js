@@ -8,6 +8,10 @@ import Footer from "../Layout/Footer";
 import store from "../../store";
 
 class profile extends Component{
+
+
+
+    
         render() {
             const user = store.getState().security.user
             console.log(user);

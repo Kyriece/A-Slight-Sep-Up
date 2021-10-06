@@ -42,6 +42,10 @@ class Book extends Component {
     price: "",
     language: "",
     genre: "",
+    blurb: "",
+    authorDescription: "",
+    rating: "",
+    tableOfContents: "",
   };
 
   componentDidMount() {
@@ -84,6 +88,7 @@ class Book extends Component {
   findBookById = (bookId) => {
     this.props.fetchBook(bookId);
       let book = this.props.bookObject.book;
+      console.log(this.state);
       if (book != null) {
         this.setState({
           id: book.id,
@@ -94,8 +99,13 @@ class Book extends Component {
           price: book.price,
           language: book.language,
           genre: book.genre,
+          blurb: book.blurb,
+          authorDescription: book.authorDescription,
+          rating: book.rating,
+          tableOfContents: book.tableOfContents,
         });
       }
+      console.log(book);
   };
 
   resetBook = () => {
@@ -113,6 +123,10 @@ class Book extends Component {
       price: this.state.price,
       language: this.state.language,
       genre: this.state.genre,
+      blurb: this.state.blurb,
+      authorDescription: this.state.authorDescription,
+      rating: this.state.rating,
+      tableOfContents: this.state.tableOfContents,
     };
 
     this.props.saveBook(book);
@@ -136,6 +150,10 @@ class Book extends Component {
       price: this.state.price,
       language: this.state.language,
       genre: this.state.genre,
+      blurb: this.state.blurb,
+      authorDescription: this.state.authorDescription,
+      rating: this.state.rating,
+      tableOfContents: this.state.tableOfContents,
     };
     this.props.updateBook(book)
       if (this.props.bookObject.book != null) {
@@ -157,9 +175,8 @@ class Book extends Component {
   };
 
   render() {
-    const { title, author, coverPhotoURL, isbnNumber, price, language, genre } =
+    const { title, author, coverPhotoURL, isbnNumber, price, language, genre, blurb, authorDescription, rating, tableOfContents } =
       this.state;
-
     return (
       <>
       <Header/>
@@ -268,6 +285,19 @@ class Book extends Component {
                     placeholder="Enter Book Price"
                   />
                 </Form.Group>
+                <Form.Group as={Col} controlId="formGridPrice">
+                  <Form.Label>Rating</Form.Label>
+                  <Form.Control
+                    required
+                    autoComplete="off"
+                    type="test"
+                    name="rating"
+                    value={rating}
+                    onChange={this.bookChange}
+                    className={"bg-white text-black"}
+                    placeholder="Enter Book Rating (Out of 5)"
+                  />
+                </Form.Group>
                 <Form.Group as={Col} controlId="formGridLanguage">
                   <Form.Label>Language</Form.Label>
                   <Form.Control
@@ -311,6 +341,60 @@ class Book extends Component {
                       <option value="Romance">Romance</option>
 
                   </Form.Control>
+                </Form.Group>
+              </Form.Row>
+              <Form.Row>
+                <Form.Group as={Col} controlId="formGridTitle">
+                  <Form.Label>Blurb</Form.Label>
+                  <Form.Control
+                    required
+                    autoComplete="off"
+                    type="test"
+                    as="textarea"
+                    rows={5}
+                    name="blurb"
+                    value={blurb}
+                    onChange={this.bookChange}
+                    maxlength="1400"
+                    className={"bg-white text-black"}
+                    placeholder="Enter Book Blurb"
+                  />
+                </Form.Group>
+              </Form.Row>
+              <Form.Row>
+                <Form.Group as={Col} controlId="formGridTitle">
+                  <Form.Label>Table of Contents</Form.Label>
+                  <Form.Control
+                    required
+                    autoComplete="off"
+                    type="test"
+                    as="textarea"
+                    rows={3}
+                    name="tableOfContents"
+                    value={tableOfContents}
+                    onChange={this.bookChange}
+                    maxlength="800"
+                    className={"bg-white text-black"}
+                    placeholder="Enter Book of Contents ................ 1"
+                  />
+                </Form.Group>
+              </Form.Row>
+              <Form.Row>
+                <Form.Group as={Col} controlId="formGridAuthor">
+                  <Form.Label>Author Description</Form.Label>
+                  <Form.Control
+                    required
+                    autoComplete="off"
+                    type="test"
+                    name="authorDescription"
+                    as="textarea"
+                    rows={3}
+                    maxlength="600"
+                    value={authorDescription}
+                    onChange={this.bookChange}
+                    className={"bg-white text-black"}
+                    placeholder="Enter Author Description"
+                  />
                 </Form.Group>
               </Form.Row>
             </Card.Body>

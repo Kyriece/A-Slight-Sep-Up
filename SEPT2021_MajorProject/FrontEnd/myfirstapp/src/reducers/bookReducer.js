@@ -1,8 +1,8 @@
 import * as BT from "../actions/types";
 
 const initialState = {
-  book: "",
-  error: "",
+  book: [],
+  error: {},
 };
 
 const reducer = (state = initialState, action) => {
@@ -13,6 +13,7 @@ const reducer = (state = initialState, action) => {
     case BT.DELETE_BOOK_REQUEST:
     case BT.FETCH_LANGUAGES_REQUEST:
     case BT.FETCH_GENRES_REQUEST:
+    case BT.GET_BOOK:
       return {
         ...state,
       };
@@ -46,6 +47,11 @@ const reducer = (state = initialState, action) => {
         genres: "",
         error: action.payload,
       };
+      case BT.GET_BOOK:
+        return {
+          book: "",
+          error: action.payload,
+        };
     default:
       return state;
   }
