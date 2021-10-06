@@ -91,7 +91,7 @@ const Header = (props) => {
                     : /* Else user === undefined (Logged Out) */
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
-                            <a className="nav-link" href="/UpdateUser">
+                            <a className="nav-link" href="/profile">
                                 <FontAwesomeIcon icon ={faUserCog} />
                                 User Profile
                             </a>

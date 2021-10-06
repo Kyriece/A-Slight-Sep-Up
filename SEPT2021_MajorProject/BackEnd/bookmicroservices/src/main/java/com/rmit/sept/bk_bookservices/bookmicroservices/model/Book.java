@@ -35,7 +35,7 @@ public class Book {
 	@Column(nullable = false)
 	private String genre;
 
-	@Column(nullable = false, length = 1800)
+	@Column(nullable = false, length = 1400)
 	private String blurb;
 
 	@Column(nullable = false, length = 600)
@@ -43,6 +43,9 @@ public class Book {
 
 	@Column(nullable = false)
 	private Double rating;
+
+	@Column(nullable = false, length = 800)
+	private String tableOfContents;
 
 	public Long getId() {
 		return id;
@@ -130,5 +133,13 @@ public class Book {
 
 	public void setRating(Double rating) {
 		this.rating = rating;
+	}
+
+	public String getTableOfContents() {
+		return tableOfContents;
+	}
+
+	public void setTableOfContents(String tableOfContents) {
+		this.tableOfContents = tableOfContents;
 	}
 }

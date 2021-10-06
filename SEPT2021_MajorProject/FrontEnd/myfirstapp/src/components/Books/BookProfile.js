@@ -31,6 +31,7 @@ class BookProfile extends Component{
         blurb: "",
         authorDescription: "",
         rating: "",
+        tableOfContents: "",
       };
 
     componentWillMount(){
@@ -46,7 +47,8 @@ class BookProfile extends Component{
             genre:result.data.genre,
             blurb:result.data.blurb,
             authorDescription:result.data.authorDescription,
-            rating:result.data.rating
+            rating:result.data.rating,
+            tableOfContents:result.data.tableOfContents
           });
         });
 
@@ -64,22 +66,22 @@ class BookProfile extends Component{
                 
                 <>
                 <Header />
-                <div class="container profile" style={{paddingBottom: '430px'}}>
+                <div class="container profile" style={{paddingBottom: '400px'}}>
                     <div class="column" >
                         <div class="col-md-4">
-                            <div style={{ paddingRight: '50px', float: 'left', width: '300px', height: '400px' }}>
+                            <div style={{ paddingRight: '50px', float: 'left', width: '300px' }}>
                                 <img src={this.state.coverPhotoURL} alt="" style={{height: '100%'}} />
                             </div>
                         </div>
                     </div>
-                    <div style={{ paddingLeft: '20px', float:'left', width:'790px', height:'400px' }}>
+                    <div style={{ paddingLeft: '20px', float:'left', width:'790px', height:'100%' }}>
                         <br></br>
                         <h1 className="display-4 text-center"> {this.state.title}</h1>
                         <div></div>
                         <p1 className="display-8 text-center" >{this.state.blurb}</p1>
                     </div>
                 </div>
-                <div class="container profile">
+                <div class="container profile" >
                     <div class = "column">
                         <div class="col-md-4" style={{ float:'left', width: '300px'}}>
                             <h3 >Rating: {this.state.rating}/5</h3>
@@ -100,8 +102,9 @@ class BookProfile extends Component{
                             <p >{this.state.authorDescription}</p>
                         </div>
                     </div>
-                    <div>
-                    <h3 style={{ float:"left", width: '790px'}}> main book content here  </h3>
+                    <div style={{ float:"left", width: '600px'}}>
+                    <h3> Table of contents <br></br>  </h3>
+                    <p>{this.state.tableOfContents}</p>
                     </div>
                 </div>
             </>
