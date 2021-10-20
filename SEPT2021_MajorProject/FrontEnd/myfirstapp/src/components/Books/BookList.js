@@ -24,11 +24,13 @@ import {
   faFastForward,
   faSearch,
   faTimes,
+  faEye,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import MyToast from "../MyToast";
 import axios from "axios";
 import Header from "../Layout/Header";
+import store from "../../store";
 
 class BookList extends Component {
   constructor(props) {
@@ -185,7 +187,8 @@ class BookList extends Component {
 
   render() {
     const { books, currentPage, totalPages, search } = this.state;
-
+    const user = store.getState().security.user
+    console.log(user);
     return (
       <>
       <Header/>
@@ -265,12 +268,7 @@ class BookList extends Component {
                   books.map((book) => (
                     <tr key={book.id}>
                       <td>
-                        <Image
-                          src={book.coverPhotoURL}
-                          roundedCircle
-                          width="25"
-                          height="25"
-                        />{" "}
+                      <img src={book.coverPhotoURL} style={{width: '150px', height: '250px'}}/>
                         {book.title}
                       </td>
                       <td>{book.author}</td>
@@ -280,12 +278,14 @@ class BookList extends Component {
                       <td>{book.genre}</td>
                       <td>
                         <ButtonGroup>
-                          <Link
-                            to={"edit/" + book.id}
-                            className="btn btn-sm btn-outline-primary"
-                          >
-                            <FontAwesomeIcon icon={faEdit} />
-                          </Link>{" "}
+                          {user.userStatus === "admin" &&
+                          <>
+                            <Link
+                              to={"edit/" + book.id}
+                              className="btn btn-sm btn-outline-primary"
+                            >
+                              <FontAwesomeIcon icon={faEdit} />
+                            </Link>{" "}
                           <Button
                             size="sm"
                             variant="outline-danger"
@@ -293,6 +293,14 @@ class BookList extends Component {
                           >
                             <FontAwesomeIcon icon={faTrash} />
                           </Button>
+                          </>
+                          }
+                          <Link
+                            to={"BookProfile/" + book.id}
+                            className="btn btn-sm btn-outline-primary"
+                          >
+                            <FontAwesomeIcon icon={faEye} />
+                          </Link>{" "}
                         </ButtonGroup>
                       </td>
                     </tr>

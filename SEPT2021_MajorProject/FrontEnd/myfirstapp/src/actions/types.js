@@ -8,7 +8,7 @@ export const SET_PUBREQUEST = "SET_PUBREQUEST";
 export const UPDATE_USER= "UPDATE_USER";
 export const GET_PUBUSERS= "GET_PUBUSERS";
 
-//tim addition
+export const GET_BOOK = "GET_BOOK";
 export const SAVE_BOOK_REQUEST = "SAVE_BOOK_REQUEST";
 export const FETCH_BOOK_REQUEST = "FETCH_BOOK_REQUEST";
 export const UPDATE_BOOK_REQUEST = "UPDATE_BOOK_REQUEST";

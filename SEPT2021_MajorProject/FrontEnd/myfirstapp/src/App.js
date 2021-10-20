@@ -34,6 +34,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import AdminBoard from "./components/AdminBoard";
 import ProducerBoard from "./components/ProducerBoard";
 import UserManager2 from "./components/UserManager2";
+import BookProfile from "./components/Books/BookProfile";
 
 const jwtToken = localStorage.jwtToken; // Defaults to undefined.
 
@@ -47,10 +48,10 @@ if (jwtToken) {
 
   const currentTime = Date.now() / 1000;
   
-  if (jwt_decode(jwtToken).exp < currentTime) {
-    store.dispatch(logout());
-    window.location.href = "/";
-  }
+  // if (jwt_decode(jwtToken).exp < currentTime) {
+  //   store.dispatch(logout());
+  //   window.location.href = "/";
+  // }
 }
 
 const App = () => {
@@ -67,6 +68,7 @@ const App = () => {
             {/* <Route exact path="/UserToPublisher" component={UserToPublisher} /> */}
             <Route exact path="/Update" component={Update} />
             <Route exact path="/profile" component={profile} />
+            <Route path="/BookProfile/:id" component={BookProfile} />
             <Route path="/add" exact component={Book} />
             <Route path="/edit/:id" exact component={Book} />
             <Route path="/list" exact component={BookList} />
