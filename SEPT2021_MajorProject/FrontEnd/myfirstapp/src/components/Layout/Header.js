@@ -61,7 +61,7 @@ const Header = (props) => {
                     /* If user === true (Logged In) */
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
-                            <a className="nav-link" href="/UpdateUser">
+                            <a className="nav-link" href="/Profile">
                                 <FontAwesomeIcon icon ={faUserCog} />
                                 User Profile
                             </a>
