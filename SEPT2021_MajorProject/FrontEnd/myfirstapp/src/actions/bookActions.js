@@ -20,9 +20,6 @@ export const saveBook = (book) => {
 
 export const fetchBook = (bookId) => {
   return (dispatch) => {
-    dispatch({
-      type: BT.FETCH_BOOK_REQUEST,
-    });
     axios
       .get("http://localhost:8081/api/books/" + bookId)
       .then((response) => {
@@ -32,6 +29,16 @@ export const fetchBook = (bookId) => {
         dispatch(bookFailure(error));
       });
   };
+};
+
+export const findBookById = async (id) => {
+  return await axios.get("http://localhost:8081/api/books/" + id)
+    .then(async (res) => {
+      return await res.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
 
 export const updateBook = (book) => {
@@ -125,14 +132,14 @@ export const fetchGenres = () => {
   };
 };
 
-export const getBookbyId = (id) => async dispatch =>{
-  try{
-  const res = await axios.get("http://localhost:8081/api/books/" + id);
-  dispatch({
-    type: BT.GET_BOOK,
-    payload: res.data
-});
-  }catch (error){
+export const getBookbyId = (id) => async dispatch => {
+  try {
+    const res = await axios.get("http://localhost:8081/api/books/" + id);
+    dispatch({
+      type: BT.GET_BOOK,
+      payload: res.data
+    });
+  } catch (error) {
     console.log(error.response);
   }
 };

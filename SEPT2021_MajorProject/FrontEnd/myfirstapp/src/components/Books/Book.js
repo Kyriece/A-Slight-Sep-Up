@@ -7,6 +7,7 @@ import {
   updateBook,
   fetchLanguages,
   fetchGenres,
+  getBookbyId
 } from "../../actions/bookActions";
 
 import { Card, Form, Button, Col, InputGroup, Image } from "react-bootstrap";
@@ -22,15 +23,17 @@ import MyToast from "../MyToast"
 
 import Header from "../Layout/Header";
 
+import store from "../../store";
+
 class Book extends Component {
   constructor(props) {
     super(props);
     this.state = this.initialState;
-    this.state = {
-      genres: [],
-      languages: [],
-      show: false,
-    };
+    // this.state = {
+    //   genres: [],
+    //   languages: [],
+    //   show: false,
+    // };
   }
 
   initialState = {
@@ -51,7 +54,7 @@ class Book extends Component {
   componentDidMount() {
     const bookId = +this.props.match.params.id;
     if (bookId) {
-      this.findBookById(bookId);
+      this.props.fetchBook(bookId);
     }
     this.findAllLanguages();
   }
@@ -88,7 +91,6 @@ class Book extends Component {
   findBookById = (bookId) => {
     this.props.fetchBook(bookId);
       let book = this.props.bookObject.book;
-      console.log(this.state);
       if (book != null) {
         this.setState({
           id: book.id,
@@ -135,7 +137,7 @@ class Book extends Component {
       } else {
         this.setState({ show: false });
       }
-    this.setState(this.initialState);
+      this.props.history.push("/list");
   };
 
   updateBook = (event) => {
