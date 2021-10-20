@@ -4,9 +4,11 @@ import com.rmit.sept.bk_requests.repository.RequestRepository;
 
 import java.util.Collection;
 
-import com.rmit.sept.bk_requests.model.Requests;
+import com.rmit.sept.bk_requests.model.AdminRequests;
 import com.rmit.sept.bk_requests.repository.RequestRepository;
 
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,14 +18,30 @@ public class RequestService {
     @Autowired
 	private RequestRepository requestRepository;
 
-	public Collection<Requests> findAllRequests() {
+    public AdminRequests createRequest(AdminRequests newRequest, String userString, String requestString){
+        newRequest.setUser(userString);
+        newRequest.setrequestComment(requestString);
+        return requestRepository.save(newRequest);
+       
+    }
+
+	public Collection<AdminRequests> findAllRequests() {
 		return requestRepository.findAll();
 	}
 
-    public Requests saveorUpdateUser (Requests request){
+    public AdminRequests saveorUpdateRequest (AdminRequests request){
         return requestRepository.save(request);
     }
 
-    public Requests 
+	public String deleteById(Long id) {
+		JSONObject jsonObject = new JSONObject();
+		try {
+			requestRepository.deleteById(id);
+			jsonObject.put("message", "Book deleted successfully");
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return jsonObject.toString();
+	}
     
 }

@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "requests")
-public class Requests {
+public class AdminRequests {
     @Id
 	@GeneratedValue
 	private Long id;
@@ -18,6 +18,14 @@ public class Requests {
 
     @Column(nullable = false)
 	private String requestComment;
+
+	public AdminRequests() {
+    }
+
+    public AdminRequests(String user, String requestComment) {
+        this.user = user;
+        this.requestComment = requestComment;
+    }
 
     public void setId(Long id) {
 		this.id = id;
