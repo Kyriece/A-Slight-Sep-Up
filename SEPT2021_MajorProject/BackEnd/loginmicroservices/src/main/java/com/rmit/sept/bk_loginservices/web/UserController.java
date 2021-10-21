@@ -72,13 +72,9 @@ public class UserController{
                         loginRequest.getPassword()
                 )
         );
-        System.out.println("step 3");
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        System.out.println("step 4");
         String jwt = TOKEN_PREFIX +  tokenProvider.generateToken(authentication);
-        System.out.println("step 5");
-
         return ResponseEntity.ok(new JWTLoginSucessReponse(true, jwt));
     }
     

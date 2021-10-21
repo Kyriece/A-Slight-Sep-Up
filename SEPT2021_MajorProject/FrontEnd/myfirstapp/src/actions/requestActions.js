@@ -13,7 +13,7 @@ export const createRequests = (AdminReq, history) => async dispatch => {
   }
 };
 
-export const getPersons = () => async dispatch => {
+export const getRequests = () => async dispatch => {
   const res = await axios.get("http://localhost:8082/api/requests/all");
   dispatch({
     type: GET_REQS,
