@@ -6,6 +6,8 @@ workflows:
           context: tanuki-keyword
       - build-backend-login: 
           context: vicarox-keyword
+      - build-backend-book: 
+          context: vicarox-keyword
 jobs:
   build:
     docker:
