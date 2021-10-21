@@ -1,6 +1,6 @@
 # We don't want to start from scratch.
 # That is why we tell node here to use the openjdk image with java 12 as base.
-FROM openjdk:13
+FROM openjdk:13-alpine
 
 # Create an application directory
 RUN mkdir -p /app
