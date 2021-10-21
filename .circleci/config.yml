@@ -56,7 +56,7 @@ jobs:
             echo $DOCKERHUB_PASS | docker login -u vicarox --password-stdin
       - run: 
           name: build dependancies
-          command: cd SEPT2021_MajorProject && docker build --file=BackEnd/loginmicroservices/Dockerfile -t vicarox/login-microservices:1.0 .
+          command: cd SEPT2021_MajorProject/BackEnd/loginmicroservices && docker build --file=Dockerfile -t vicarox/login-microservices:1.0 .
       - run:
           name: publish to dockerhub
           command: |
