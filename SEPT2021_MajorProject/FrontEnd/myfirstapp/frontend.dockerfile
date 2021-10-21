@@ -20,9 +20,7 @@ RUN npm run build
 
 # Expose $PORT on container.
 # We use a varibale here as the port is something that can differ on the environment.
-EXPOSE $PORT
-
-ENV NUXT_PORT=$PORT
+EXPOSE 3000
 
 # Start the app
 CMD [ "npm", "start" ]

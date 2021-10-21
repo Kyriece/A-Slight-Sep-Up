@@ -1,20 +1,14 @@
 version: '3'
 services:
-  sep-it-up-db:
-    image: mongo:4.2.2
-    environment:
-      MONGO_INITDB_DATABASE: sep-it-up
-    ports:
-      - 27017:27017
-  sep-it-up-frontend:
-    image: sep-it-up-frontend:latest
-    environment:
-      PORT: 3000
-    ports:
-      - 3000:3000
-  sep-it-up-backend:
-    image: sep-it-up-backend:latest
-    environment:
-      MONGODB_URI: mongodb://sep-it-up-db:27017/sep-it-up
+  sep-it-up-login:
+    image: vicarox/login-microservices:1.0
     ports:
       - 8080:8080
+  sep-it-up-book:
+    image: vicarox/book-microservices:1.0
+    ports:
+      - 8081:8081
+  sep-it-up: 
+    image: s3848845/sep-frontend:latest
+    ports:
+      - 3000:3000
