@@ -37,7 +37,7 @@ public class RequestService {
 		JSONObject jsonObject = new JSONObject();
 		try {
 			requestRepository.deleteById(id);
-			jsonObject.put("message", "Book deleted successfully");
+			jsonObject.put("message", "request deleted successfully");
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

@@ -23,3 +23,7 @@ export const LANGUAGES_FAILURE = "LANGUAGES_FAILURE";
 export const FETCH_GENRES_REQUEST = "FETCH_GENRES_REQUEST";
 export const GENRES_SUCCESS = "GENRES_SUCCESS";
 export const GENRES_FAILURE = "GENRES_FAILURE";
+
+export const CREATE_REQ = "CREATE_REQ";
+export const DELETE_REQ = "DELETE_REQ";
+export const GET_REQ = "GET_REQS";
