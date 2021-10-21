@@ -10,7 +10,7 @@ WORKDIR /app
 # EXPOSE 8080
 # Copy or project directory (locally) in the current directory of our docker image (/app)
 
-ADD ./SEPT2021_MajorProject/BackEnd/loginmicroservices/target/loginmicroservices-0.0.1.jar ./app.jar
+ADD /target/loginmicroservices-0.0.1.jar ./app.jar
 
 
 # Expose $PORT on container.
