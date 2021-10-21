@@ -52,9 +52,10 @@ class ContactUs extends Component {
                                         Contact Us!
                                     </h1>
                                     <hr />
-                                    <p>If you have any issues, send through an email to the address below. Please expect a 24-48 hour reply period. Thank you for your patience.</p>
+                                    <p>If you have any issues, want to suggest a book for us to stock or anything else - submit a request below!</p>
+                                    
+                                    <p> Alternatively, send through an email to the address below. </p>
                                     <p>support@bookaroo.com.au</p>
-                                    <p> alternatively, submit a request below! </p>
                                     <form onSubmit={handleSubmit}>
                                       <fieldset>  
                                         <input className="formBox" type="text" name="name" placeholder="Request Title"/>

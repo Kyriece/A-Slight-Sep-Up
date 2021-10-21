@@ -9,23 +9,27 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "requests")
 public class AdminRequests {
-    @Id
+  @Id
 	@GeneratedValue
 	private Long id;
 
-    @Column(nullable = false)
+  @Column(nullable = false)
 	private String user;
 
-    @Column(nullable = false)
+  @Column(nullable = false)
+  private String email;
+
+  @Column(nullable = false)
 	private String requestComment;
 
 	public AdminRequests() {
-    }
+  }
 
-    public AdminRequests(String user, String requestComment) {
-        this.user = user;
-        this.requestComment = requestComment;
-    }
+  public AdminRequests(String user, String requestComment, String email) {
+    this.user = user;
+    this.requestComment = requestComment;
+    this.email = email;
+  }
 
     public void setId(Long id) {
 		this.id = id;
@@ -33,11 +37,20 @@ public class AdminRequests {
 
     public String getUser() {
 		return user;
-	}
+    }
 
-	public void setUser(String user) {
+    public void setUser(String user) {
 		this.user = user;
-	}
+    }
+
+    public void setEmail(String email) {
+      this.email = email;
+    }
+
+    public String getEmail() {
+      return email;
+    }
+
 
     public String getRequestComment() {
 		return requestComment;
