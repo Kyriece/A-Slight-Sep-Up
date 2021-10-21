@@ -1,4 +1,4 @@
-package com.rmit.sept.bk_requests.web;
+package com.rmit.sept.bk_requests.requests.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties.Admin;
@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.security.Principal;
 import java.util.Collection;
 
-import com.rmit.sept.bk_requests.model.AdminRequests;
-import com.rmit.sept.bk_requests.repository.RequestRepository;
-import com.rmit.sept.bk_requests.services.RequestService;
+import com.rmit.sept.bk_requests.requests.model.AdminRequests;
+import com.rmit.sept.bk_requests.requests.repository.RequestRepository;
+import com.rmit.sept.bk_requests.requests.services.RequestService;
 
 @CrossOrigin("*")
 @RestController

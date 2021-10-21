@@ -1,11 +1,11 @@
-package com.rmit.sept.bk_requests.services;
+package com.rmit.sept.bk_requests.requests.services;
 
-import com.rmit.sept.bk_requests.repository.RequestRepository;
+import com.rmit.sept.bk_requests.requests.repository.RequestRepository;
 
 import java.util.Collection;
 
-import com.rmit.sept.bk_requests.model.AdminRequests;
-import com.rmit.sept.bk_requests.repository.RequestRepository;
+import com.rmit.sept.bk_requests.requests.model.AdminRequests;
+import com.rmit.sept.bk_requests.requests.repository.RequestRepository;
 
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;

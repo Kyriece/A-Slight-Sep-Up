@@ -1,8 +1,8 @@
-package com.rmit.sept.bk_requests.repository;
+package com.rmit.sept.bk_requests.requests.repository;
 
 import java.util.Collection;
 
-import com.rmit.sept.bk_requests.model.AdminRequests;
+import com.rmit.sept.bk_requests.requests.model.AdminRequests;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

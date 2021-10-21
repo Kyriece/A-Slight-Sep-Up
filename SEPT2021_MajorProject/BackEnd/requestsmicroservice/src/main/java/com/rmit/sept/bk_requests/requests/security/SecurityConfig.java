@@ -1,4 +1,4 @@
-package com.rmit.sept.bk_requests.security;
+package com.rmit.sept.bk_requests.requests.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 
-import com.rmit.sept.bk_requests.services.RequestService;
+import com.rmit.sept.bk_requests.requests.services.RequestService;
 
 
 @Configuration

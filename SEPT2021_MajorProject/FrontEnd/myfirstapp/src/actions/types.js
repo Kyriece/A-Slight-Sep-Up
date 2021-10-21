@@ -26,4 +26,4 @@ export const GENRES_FAILURE = "GENRES_FAILURE";
 
 export const CREATE_REQ = "CREATE_REQ";
 export const DELETE_REQ = "DELETE_REQ";
-export const GET_REQ = "GET_REQS";
+export const GET_REQ = "GET_REQ";

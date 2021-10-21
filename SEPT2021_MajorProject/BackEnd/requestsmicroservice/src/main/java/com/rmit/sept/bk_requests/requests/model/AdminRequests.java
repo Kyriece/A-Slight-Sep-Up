@@ -1,4 +1,4 @@
-package com.rmit.sept.bk_requests.model;
+package com.rmit.sept.bk_requests.requests.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,10 +22,13 @@ public class AdminRequests {
   @Column(nullable = false)
 	private String requestComment;
 
+  @Column(nullable = false)
+	private String title;
+
 	public AdminRequests() {
   }
 
-  public AdminRequests(String user, String requestComment, String email) {
+  public AdminRequests(String user, String requestComment, String email, String title) {
     this.user = user;
     this.requestComment = requestComment;
     this.email = email;
@@ -60,6 +63,12 @@ public class AdminRequests {
 		this.requestComment = requestComment;
 	}
 
+    public void setTitle(String title) {  
+      this.title = title;
+    }
 
+    public String getTitle() {
+      return title;
+    }
 
 }
