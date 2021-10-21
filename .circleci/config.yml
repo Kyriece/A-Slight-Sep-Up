@@ -35,24 +35,30 @@ jobs:
           name: publish to dockerhub
           command: |
             docker push s3848845/sep-frontend:latest
+
   build-backend-login: 
     docker:
-      - image: vicarox/login-microservices:1.0
+      - image: vicarox/login-microservices:latest
         auth: 
             username: vicarox
             password: $DOCKERHUB_PASS
     steps:
-      - checkout
+      - checkout      
+      - setup_remote_docker:
+          version: 20.10.6
       - run:
           name: get the docker client
           command: apk add docker-cli
-      - setup_remote_docker:
-          version: 20.10.6
+
       - run: 
           name: login to docker
           command: |
             echo $DOCKERHUB_PASS | docker login -u vicarox --password-stdin
       - run: 
           name: build dependancies
-          command: cd SEPT2021_MajorProject && docker build --file=BackEnd/loginmicroservices/Dockerfile -t vicarox/login-microservices .
-
+          command: cd SEPT2021_MajorProject && docker build --file=BackEnd/loginmicroservices/Dockerfile -t vicarox/login-microservices:latest .
+      - run:
+          name: publish to dockerhub
+          command: |
+            docker push vicarox/login-microservices:latest
+            
