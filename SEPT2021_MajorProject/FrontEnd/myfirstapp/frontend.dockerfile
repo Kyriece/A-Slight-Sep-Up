@@ -18,6 +18,8 @@ COPY FrontEnd/myfirstapp/ .
 # Build the app
 RUN npm run build
 
+RUN npm start
+
 # Expose $PORT on container.
 # We use a varibale here as the port is something that can differ on the environment.
 EXPOSE 3000
