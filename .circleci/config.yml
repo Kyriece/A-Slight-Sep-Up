@@ -4,6 +4,8 @@ workflows:
     jobs:
       - build:
           context: tanuki-keyword
+      - build-backend-login: 
+          context: vicarox-keyword
 jobs:
   build:
     docker:
@@ -24,7 +26,7 @@ jobs:
             echo $DOCKERHUB_PASS | docker login -u s3848845 --password-stdin
       - run: 
           name: build dependancies
-          command: cd ./SEPT2021/FrontEnd/myfirstapp && npm install
+          command: cd ./SEPT2021_MajorProject/FrontEnd/myfirstapp && npm install
       - run:
           name: build image
           command: cd SEPT2021_MajorProject && docker build --file=FrontEnd/myfirstapp/frontend.dockerfile -t s3848845/sep-frontend:latest .
@@ -33,3 +35,24 @@ jobs:
           name: publish to dockerhub
           command: |
             docker push s3848845/sep-frontend:latest
+  build-backend-login: 
+    docker:
+      - image: vicarox/login-microservices:1.0
+        auth: 
+            username: vicarox
+            password: $DOCKERHUB_PASS
+    steps:
+      - checkout
+      - run:
+          name: get the docker client
+          command: apk add docker-cli
+      - setup_remote_docker:
+          version: 20.10.6
+      - run: 
+          name: login to docker
+          command: |
+            echo $DOCKERHUB_PASS | docker login -u vicarox --password-stdin
+      - run: 
+          name: build dependancies
+          command: cd SEPT2021_MajorProject && docker build --file=BackEnd/loginmicroservices/Dockerfile -t vicarox/login-microservices .
+
