@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "userbooklisting")
-public class UserBookListing {
+public class Listing {
 
     @Id
     @GeneratedValue
@@ -20,9 +20,9 @@ public class UserBookListing {
     @Column(nullable = false)
     private Double bookPrice;
 
-    public UserBookListing() {}
+    public Listing() {}
 
-    public UserBookListing(Long userID, Long bookID, Double bookPrice) {
+    public Listing(Long userID, Long bookID, Double bookPrice) {
         this.userID = userID;
         this.bookID = bookID;
         this.bookPrice = bookPrice;

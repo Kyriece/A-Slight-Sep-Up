@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Collection;
 
 @Repository
-public interface UserBookListingRepository extends CrudRepository<UserBookListing, Long> {
+public interface ListingRepository extends CrudRepository<UserBookListing, Long> {
 
     UserBookListing getById(Long id);
 

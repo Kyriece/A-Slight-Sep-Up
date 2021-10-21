@@ -13,8 +13,8 @@ import java.util.Collection;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/userbooklistings")
-public class UserBookListingController {
+@RequestMapping("/api/listings")
+public class ListingController {
 
     @Autowired
     private UserBookListingService userBookListingService;
