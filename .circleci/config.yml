@@ -38,7 +38,7 @@ jobs:
 
   build-backend-login: 
     docker:
-      - image: vicarox/login-microservices:latest
+      - image: vicarox/login-microservices:1.0
         auth: 
             username: vicarox
             password: $DOCKERHUB_PASS
@@ -56,9 +56,9 @@ jobs:
             echo $DOCKERHUB_PASS | docker login -u vicarox --password-stdin
       - run: 
           name: build dependancies
-          command: cd SEPT2021_MajorProject && docker build --file=BackEnd/loginmicroservices/Dockerfile -t vicarox/login-microservices:latest .
+          command: cd SEPT2021_MajorProject && docker build --file=BackEnd/loginmicroservices/Dockerfile -t vicarox/login-microservices:1.0 .
       - run:
           name: publish to dockerhub
           command: |
-            docker push vicarox/login-microservices:latest
+            docker push vicarox/login-microservices:1.0
             
