@@ -61,4 +61,31 @@ jobs:
           name: publish to dockerhub
           command: |
             docker push vicarox/login-microservices:1.0
-            
+
+              build-backend-login: 
+    
+  build-backend-book: 
+    docker:
+      - image: vicarox/book-microservices:1.0
+        auth: 
+            username: vicarox
+            password: $DOCKERHUB_PASS
+    steps:
+      - checkout      
+      - setup_remote_docker:
+          version: 20.10.6
+      - run:
+          name: get the docker client
+          command: apk add docker-cli
+
+      - run: 
+          name: login to docker
+          command: |
+            echo $DOCKERHUB_PASS | docker login -u vicarox --password-stdin
+      - run: 
+          name: build dependancies
+          command: cd SEPT2021_MajorProject/BackEnd/bookmicroservices && ./mvnw package && docker build -t vicarox/book-microservices:1.0 .
+      - run:
+          name: publish to dockerhub
+          command: |
+            docker push vicarox/book-microservices:1.0
