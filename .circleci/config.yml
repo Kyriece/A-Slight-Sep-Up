@@ -84,7 +84,7 @@ jobs:
             echo $DOCKERHUB_PASS | docker login -u vicarox --password-stdin
       - run: 
           name: build dependancies
-          command: cd SEPT2021_MajorProject/BackEnd/bookmicroservices && ./mvn package && docker build -t vicarox/book-microservices:1.0 .
+          command: cd SEPT2021_MajorProject/BackEnd/bookmicroservices && ./mvnw package && docker build -t vicarox/book-microservices:1.0 .
       - run:
           name: publish to dockerhub
           command: |
