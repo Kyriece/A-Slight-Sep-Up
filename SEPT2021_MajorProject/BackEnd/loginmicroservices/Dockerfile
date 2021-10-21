@@ -9,6 +9,8 @@ RUN mkdir -p /app
 WORKDIR /app
 # EXPOSE 8080
 # Copy or project directory (locally) in the current directory of our docker image (/app)
+
+RUN mvn package
 ADD ./SEPT2021_MajorProject/BackEnd/loginmicroservices/target/loginmicroservices-0.0.1.jar ./app.jar
 
 
