@@ -7,6 +7,7 @@ import store from '../../store';
 import axios from 'axios';
 import {PayPalButtons} from '@paypal/react-paypal-js';
 
+import Footer from "../Layout/Footer"
 
 import { getBookbyId } from "../../actions/bookActions";
 
@@ -109,6 +110,7 @@ class BookProfile extends Component{
                     <p>{this.state.tableOfContents}</p>
                     </div>
                 </div>
+                <Footer />
             </>
         );
     }

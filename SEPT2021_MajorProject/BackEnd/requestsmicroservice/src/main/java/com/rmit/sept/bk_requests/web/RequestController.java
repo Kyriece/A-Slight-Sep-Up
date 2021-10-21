@@ -28,9 +28,9 @@ public class RequestController {
     private RequestService requestService;
 
     @PostMapping("/newRequest")
-    public ResponseEntity<?> createRequest (@RequestBody String userName, String requestComment){
+    public ResponseEntity<?> createRequest (@RequestBody AdminRequests adminRequests){
 
-        AdminRequests newRequest = new AdminRequests(userName, requestComment);
+        AdminRequests newRequest = adminRequests;
         requestService.saveorUpdateRequest(newRequest);
 
         return  new ResponseEntity<AdminRequests>(newRequest, HttpStatus.CREATED);
@@ -39,7 +39,6 @@ public class RequestController {
     @GetMapping("/all")
     public Collection<AdminRequests> getAllRequest(Principal principle) {
         return requestService.findAllRequests();
-        
     }
 
     @DeleteMapping("/deleteRequest")

@@ -63,11 +63,8 @@ public class UserController{
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest, BindingResult result){
-        System.out.println("step 0");
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
-        System.out.println("step 1");
         if(errorMap != null) return errorMap;
-        System.out.println("step 2");
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(

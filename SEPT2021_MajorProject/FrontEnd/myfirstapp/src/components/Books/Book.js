@@ -23,6 +23,8 @@ import MyToast from "../MyToast"
 
 import Header from "../Layout/Header";
 
+import Footer from "../Layout/Footer"
+
 import store from "../../store";
 
 class Book extends Component {
@@ -419,6 +421,7 @@ class Book extends Component {
             </Card.Footer>
           </Form>
         </Card>
+        <Footer />
       </div>
       </>
     );
