@@ -5,8 +5,6 @@ import {
   saveBook,
   fetchBook,
   updateBook,
-  fetchLanguages,
-  fetchGenres,
   getBookbyId
 } from "../../actions/bookActions";
 
@@ -438,9 +436,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     saveBook: (book) => dispatch(saveBook(book)),
     fetchBook: (bookId) => dispatch(fetchBook(bookId)),
-    updateBook: (book) => dispatch(updateBook(book)),
-    fetchLanguages: () => dispatch(fetchLanguages()),
-    fetchGenres: () => dispatch(fetchGenres()),
+    updateBook: (book) => dispatch(updateBook(book))
   };
 };
 

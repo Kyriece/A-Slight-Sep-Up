@@ -3,7 +3,6 @@ import axios from "axios";
 
 export const saveBook = (book) => {
   return (dispatch) => {
-    console.log(book);
     dispatch({
       type: BT.SAVE_BOOK_REQUEST,
     });
@@ -11,6 +10,7 @@ export const saveBook = (book) => {
       .post("http://localhost:8081/api/books", book)
       .then((response) => {
         dispatch(bookSuccess(response.data));
+        alert("save succesful")
       })
       .catch((error) => {
         dispatch(bookFailure(error));
@@ -88,49 +88,6 @@ const bookFailure = (error) => {
   };
 };
 
-export const fetchLanguages = () => {
-  return (dispatch) => {
-    dispatch({
-      type: BT.FETCH_LANGUAGES_REQUEST,
-    });
-    axios
-      .get("http://localhost:8081/api/books/languages")
-      .then((response) => {
-        dispatch({
-          type: BT.LANGUAGES_SUCCESS,
-          payload: response.data,
-        });
-      })
-      .catch((error) => {
-        dispatch({
-          type: BT.LANGUAGES_FAILURE,
-          payload: error,
-        });
-      });
-  };
-};
-
-export const fetchGenres = () => {
-  return (dispatch) => {
-    dispatch({
-      type: BT.FETCH_GENRES_REQUEST,
-    });
-    axios
-      .get("http://localhost:8081/api/books/genres")
-      .then((response) => {
-        dispatch({
-          type: BT.GENRES_SUCCESS,
-          payload: response.data,
-        });
-      })
-      .catch((error) => {
-        dispatch({
-          type: BT.GENRES_FAILURE,
-          payload: error,
-        });
-      });
-  };
-};
 
 export const getBookbyId = (id) => async dispatch => {
   try {
