@@ -47,6 +47,4 @@ public class AdminRequests {
 		this.requestComment = requestComment;
 	}
 
-
-
 }

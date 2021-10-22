@@ -16,6 +16,7 @@ import java.security.Principal;
 import java.util.Collection;
 
 import com.rmit.sept.bk_requests.requests.model.AdminRequests;
+import com.rmit.sept.bk_requests.requests.repository.RequestRepository;
 import com.rmit.sept.bk_requests.requests.services.RequestService;
 
 @CrossOrigin("*")

@@ -1,10 +1,13 @@
 import axios from "axios";
-import {CREATE_REQ, GET_REQS} from "./types";
+import {CREATE_REQ, GET_REQ} from "./types";
 
 export const createRequests = (AdminReq, history) => async dispatch => {
   try {
     const res = await axios.post("http://localhost:8082/api/requests/newRequest", AdminReq);
-    history.push("/dashboard");
+    dispatch({
+      type: CREATE_REQ,
+      payload: res.data
+    });
   } catch (err) {
     dispatch({
       type: CREATE_REQ,
@@ -13,10 +16,10 @@ export const createRequests = (AdminReq, history) => async dispatch => {
   }
 };
 
-export const getRequests = () => async dispatch => {
+export const getRequest = () => async dispatch => {
   const res = await axios.get("http://localhost:8082/api/requests/all");
   dispatch({
-    type: GET_REQS,
+    type: GET_REQ,
     payload: res.data
   });
 };
