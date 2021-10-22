@@ -66,19 +66,4 @@ public class BookController implements Resource<Book>{
 		return new ResponseEntity<>(bookService.deleteById(id), HttpStatus.OK);
 	}
 
-	// @GetMapping("/all")
-    // public Iterable<User> getAllUsers(Principal principal) {
-    //     System.out.println("test if works");
-    //     return userService.findAllUsers();
-    // }
-
-	@GetMapping("/languages")
-	public  ResponseEntity<Set<String>> findAllLanguages() {
-        return new ResponseEntity<>(new TreeSet<>(Arrays.asList("French", "Portuguese", "English", "Russian", "Hindi", "Arabic", "Spanish", "Chinese")), HttpStatus.OK);
-    }
-
-    @GetMapping("/genres")
-    public  ResponseEntity<Set<String>> findAllGenres() {
-        return new ResponseEntity<>(new TreeSet<>(Arrays.asList("Technology", "Science", "History", "Fantasy", "Biography", "Horror", "Romance")), HttpStatus.OK);
-    }
 }
