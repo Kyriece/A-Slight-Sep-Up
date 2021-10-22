@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Person from './Persons/Person'
 import CreatePersonButton from './Persons/CreatePersonButton';
 import Header from "./Layout/Header";
+import Footer from "./Layout/Footer";
 import { Link } from 'react-router-dom';
 import { getUser } from "../actions/userActions";
 import store from "../store";
@@ -14,11 +15,12 @@ class AdminBoard extends Component {
             <>
                 <Header />
                 <Link className="btn btn-lg btn-primary mr-2" to="/UserManager">
-                <h1>This is Admin page</h1>
+                <h1>User Manager</h1>
                 </Link>
                 <Link className="btn btn-lg btn-primary mr-2" to="/UserManager2">
-                <h1>Help Requests</h1>
+                <h1>Add Books</h1>
                 </Link>
+                <Footer />
             </>
 
         )

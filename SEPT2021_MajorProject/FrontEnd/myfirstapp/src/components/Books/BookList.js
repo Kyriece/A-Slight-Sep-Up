@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { deleteBook } from "../../actions/bookActions";
 
+import Footer from "../Layout/Footer"
+
 //import "./../../assets/css/Style.css";
 import {
   Card,
@@ -364,6 +366,7 @@ class BookList extends Component {
           ) : null}
         </Card>
       </div>
+      <Footer />
       </>
     );
   }

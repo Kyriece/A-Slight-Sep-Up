@@ -36,7 +36,7 @@ class Login extends Component {
         this.props.history.push("/producerboard");
       }
       else{
-        this.props.history.push("/dashboard");
+        this.props.history.push("/list");
       }
     }
 

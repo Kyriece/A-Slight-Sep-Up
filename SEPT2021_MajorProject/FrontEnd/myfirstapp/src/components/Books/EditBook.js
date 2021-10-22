@@ -6,6 +6,7 @@ import { Card, Form, Button, Col, InputGroup, Image } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Header from "../Layout/Header";
+import Footer from "../Layout/Footer"
 
 import { findBookById, updateBook } from "../../actions/bookActions";
 
@@ -259,6 +260,7 @@ const Book = (props) => {
           </Button>
         </Card.Footer>
       </Form>
+      <Footer />
     </>
   )
 }

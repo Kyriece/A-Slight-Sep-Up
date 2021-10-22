@@ -35,12 +35,14 @@ const Header = (props) => {
             {isLoggedIn ?
             <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-                <a className="nav-link" href="/add">
-                    add book
-                </a>
                 <a className="nav-link" href="/list">
                     book list
                 </a>
+            </li>
+            <li className="nav-item">   
+                {user.userStatus === "user" &&  <a className="nav-link" href="/ContactUs"> suggest book </a>}
+                {user.userStatus === "publisher" &&  <a className="nav-link" href="/add"> add book</a>}
+                {user.userStatus === "admin" &&  <a className="nav-link" href="/add"> add book</a>}
             </li>
             </ul>
 

@@ -5,41 +5,44 @@ import Footer from "../Layout/Footer";
 import { Link } from 'react-router-dom';
 import store from "../../store";
 import './ContactUs.css';
+import { createRequests } from "../../actions/requestActions";
+import * as PropTypes from 'prop-types';
+import { connect } from "react-redux";
 
 
 class ContactUs extends Component {
-//     constructor(){
-//         super();
+  constructor() {
+    super();
 
-//         this.state= {
-//         requestComment = ""
-     
-//     }; 
-//     this.onChange = this.onChange.bind(this);
-//     this.onSubmit = this.onSubmit.bind(this);
+    this.state = {
+      email: "",
+      title: "",
+      requestComment: ""
+    };
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
 
-// }
+  onSubmit(e) {
+    e.preventDefault();
 
-// onChange(e){
-//     this.setState({[e.target.name]: e.target.value});
-// }
-// onSubmit(e){
-//     e.preventDefault();
-//     const newPerson = {
-        
-//     }
+    const curUser = store.getState().security.user 
 
-//     this.props.createPerson(newPerson, this.props.history);
-// }
+    const AdminReq = {
+      user: curUser.fullName,
+      ...this.state
+    };
+
+    this.props.createRequests(AdminReq, this.props.history);
+  }
+
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
 
     render() {
 
-      const handleSubmit = event => {
-        event.preventDefault();
-        alert('You have submitted the form.')
-      }
-        const user = store.getState().security.user
-        console.log(user);
+        
         return (
             <>
                 <Header />
@@ -52,14 +55,24 @@ class ContactUs extends Component {
                                         Contact Us!
                                     </h1>
                                     <hr />
-                                    <p>If you have any issues, send through an email to the address below. Please expect a 24-48 hour reply period. Thank you for your patience.</p>
+                                    <p>If you have any issues, want to suggest a book for us to stock or anything else - submit a request below!</p>
+                                    
+                                    <p> Alternatively, send through an email to the address below. </p>
                                     <p>support@bookaroo.com.au</p>
-                                    <p> alternatively, submit a request below! </p>
-                                    <form onSubmit={handleSubmit}>
+                                    <form onSubmit={this.onSubmit}>
                                       <fieldset>  
-                                        <input className="formBox" type="text" name="name" placeholder="Request Title"/>
-                                        <input className="formBox" type="text" name="info" placeholder="Request Information"/>
-                                        <input className="formBox" type="text" name="email" placeholder="Email"/>
+                                        <input className="formBox" type="text" 
+                                        name="title" placeholder="Request Title"
+                                        value={this.state.title}
+                                         onChange={this.onChange}/>
+                                        <input className="formBox" type="text" 
+                                        name="requestComment" placeholder="Request Information"
+                                        value={this.state.requestComment}
+                                        onChange={this.onChange}/>
+                                        <input className="formBox" type="text" 
+                                        name="email" placeholder="Email"
+                                        value={this.state.email}
+                                        onChange={this.onChange}/>
                                       </fieldset>
                                       <button type="submit">Submit Request</button>
                                     </form>
@@ -74,4 +87,12 @@ class ContactUs extends Component {
         )
     }
 }
-export default ContactUs;
+
+ContactUs.propTypes = {
+  createRequests: PropTypes.func.isRequired
+};
+
+export default connect(
+  null,
+  { createRequests }
+)(ContactUs);
