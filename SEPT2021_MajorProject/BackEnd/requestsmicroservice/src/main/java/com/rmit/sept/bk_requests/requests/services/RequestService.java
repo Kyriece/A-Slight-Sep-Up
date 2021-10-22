@@ -43,5 +43,11 @@ public class RequestService {
 		}
 		return jsonObject.toString();
 	}
+
+	public void deleteAllRequests() {
+		if(requestRepository.count() > 0) {
+			requestRepository.deleteAll();
+		}
+	}
     
 }

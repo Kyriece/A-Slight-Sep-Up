@@ -22,6 +22,7 @@ import Landing from "./components/Layout/Landing";
 import Register from "./components/UserManagement/Register";
 import Login from "./components/UserManagement/Login";
 import UserManager from "./components/UserManager";
+import RequestManager from "./components/RequestManager";
 //import UserToPublisher from "./components/UserToPublisher";
 import Update from "./components/UserManagement/Update";
 import profile from "./components/UserManagement/profile";
@@ -67,6 +68,7 @@ const App = () => {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/userManager" component={UserManager} />
+            <Route exact path="/RequestManager" component={RequestManager} />
             {/* <Route exact path="/UserToPublisher" component={UserToPublisher} /> */}
             <Route exact path="/Update" component={Update} />
             <Route exact path="/profile" component={profile} />

@@ -58,4 +58,10 @@ public class BookServiceImpl implements IService<Book>, IPageService<Book> {
 		return jsonObject.toString();
 	}
 
+	public void deleteAllBooks() {
+		if(bookRepository.count() > 0) {
+			bookRepository.deleteAll();
+		}
+	}
+
 }
