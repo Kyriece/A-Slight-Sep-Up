@@ -36,7 +36,6 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AdminBoard from "./components/AdminBoard";
 import ProducerBoard from "./components/ProducerBoard";
-import UserManager2 from "./components/UserManager2";
 import BookProfile from "./components/Books/BookProfile";
 
 const jwtToken = localStorage.jwtToken; // Defaults to undefined.
@@ -68,7 +67,6 @@ const App = () => {
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/userManager" component={UserManager} />
-            <Route exact path="/userManager2" component={UserManager2} />
             {/* <Route exact path="/UserToPublisher" component={UserToPublisher} /> */}
             <Route exact path="/Update" component={Update} />
             <Route exact path="/profile" component={profile} />

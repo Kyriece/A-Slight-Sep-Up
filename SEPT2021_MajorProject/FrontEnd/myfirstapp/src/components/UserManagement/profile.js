@@ -29,20 +29,21 @@ class profile extends Component {
                                     </svg>
                                 </div>
                                 <div className="text-center mt-3">
-                                    <h3 className="mt-2 mb-0"> username.username {user.username} </h3>
-                                    <h5 className="idd1"> fullName Namefull {user.fullName} </h5>
-                                    <h5 className="name mt-3"> publisherRequest {user.publisherRequest} </h5>
+                                    <h3 className="mt-2 mb-0"> Username: {user.username} </h3>
+                                    <h5 className="idd1"> Name: {user.fullName} </h5>
                                     <div className="px-4 mt-1">
-                                        <p className="fonts"> userStatus is the user status blah blah blah this subject
-                                            is great and we'll do well {user.userStatus} </p></div>
+                                        <p className="fonts"> User Status: {user.userStatus} </p></div>
                                     <div className="buttons">
                                         <button class="btn btn-lg btn-primary mr-2">
-                                            <div onClick={() => {
-                                                console.log("test");
+                                         {user.userStatus === "user" &&  <div onClick={() => {
                                                 store.dispatch(UpdateUser(user.id));
-                                                console.log("testend");
                                             }}>
-                                                publisherRequest
+                                                Become a publisher
+                                            </div>}   
+                                            <div onClick={() => {
+                                            
+                                            }}>
+                                                Edit Profile
                                             </div>
                                         </button>
                                     </div>

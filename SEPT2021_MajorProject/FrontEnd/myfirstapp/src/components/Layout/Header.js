@@ -69,13 +69,11 @@ const Header = (props) => {
                             </a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link " href="/Profile">
-                                {user.userStatus === "user" && <>{user.username}</>}
+                                {user.userStatus === "user" && <a className="nav-link" href="/profile"> {user.username} </a>}
 
-                                {user.userStatus === "publisher" && <>publisher: {user.username}</>}
+                                {user.userStatus === "publisher" && <a className="nav-link" href="/ProducerBoard"> {user.username} </a>}
 
-                                {user.userStatus === "admin" && <>admin: {user.username}</>}
-                            </a>
+                                {user.userStatus === "admin" && <a className="nav-link" href="/AdminBoard"> {user.username} </a>}
                         </li>
                         <li className="nav-item">
                             <div onClick={() => {
