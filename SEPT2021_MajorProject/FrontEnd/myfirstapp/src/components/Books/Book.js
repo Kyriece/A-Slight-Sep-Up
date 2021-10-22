@@ -56,37 +56,7 @@ class Book extends Component {
     if (bookId) {
       this.props.fetchBook(bookId);
     }
-    this.findAllLanguages();
   }
-
-  findAllLanguages = () => {
-    this.props.fetchLanguages();
-      let bookLanguages = this.props.bookObject.languages;
-      if (bookLanguages) {
-        this.setState({
-          languages: [{ value: "", display: "Select Language" }].concat(
-            bookLanguages.map((language) => {
-              return { value: language, display: language };
-            })
-          ),
-        });
-        this.findAllGenres();
-      }
-  };
-
-  findAllGenres = () => {
-    this.props.fetchGenres();
-      let bookGenres = this.props.bookObject.genres;
-      if (bookGenres) {
-        this.setState({
-          genres: [{ value: "", display: "Select Genre" }].concat(
-            bookGenres.map((genre) => {
-              return { value: genre, display: genre };
-            })
-          ),
-        });
-      }
-  };
 
   findBookById = (bookId) => {
     this.props.fetchBook(bookId);
