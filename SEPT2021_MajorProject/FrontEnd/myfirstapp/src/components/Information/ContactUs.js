@@ -15,11 +15,9 @@ class ContactUs extends Component {
     super();
 
     this.state = {
-      id: 0,
-      user: "",
-      email: "Email",
-      title: "Request Title",
-      request_comment: "Detailed Information"
+      email: "",
+      title: "",
+      requestComment: ""
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -27,24 +25,15 @@ class ContactUs extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    console.log(this.state)
-    const loggedInUser = store.getState().security.user
-    console.log(loggedInUser.fullName);
-    this.state.user = loggedInUser.fullName;
-    this.state.id = 0;
+
+    const curUser = store.getState().security.user 
+
     const AdminReq = {
-      id: this.state.id,
-      name: this.state.user,
-      email: this.state.email,
-      title: this.state.title,
-      request_comment: this.state.request_comment,
+      user: curUser.fullName,
+      ...this.state
     };
 
-    if(this.props.createRequests(AdminReq, this.props.history)){
-      this.props.history.push("/ContactUs");
-    }
-
-    alert('You have submitted the form.')
+    this.props.createRequests(AdminReq, this.props.history);
   }
 
   onChange(e) {
@@ -74,12 +63,14 @@ class ContactUs extends Component {
                                       <fieldset>  
                                         <input className="formBox" type="text" 
                                         name="title" placeholder="Request Title"
-                                                              value={this.state.title}
-                                                              onChange={this.onChange}/>
-                                        <input className="formBox" type="text" name="request_comment" placeholder="Request Information"
-                                        value={this.state.request_comment}
+                                        value={this.state.title}
+                                         onChange={this.onChange}/>
+                                        <input className="formBox" type="text" 
+                                        name="requestComment" placeholder="Request Information"
+                                        value={this.state.requestComment}
                                         onChange={this.onChange}/>
-                                        <input className="formBox" type="text" name="email" placeholder="Email"
+                                        <input className="formBox" type="text" 
+                                        name="email" placeholder="Email"
                                         value={this.state.email}
                                         onChange={this.onChange}/>
                                       </fieldset>
@@ -98,16 +89,10 @@ class ContactUs extends Component {
 }
 
 ContactUs.propTypes = {
-  createRequests: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired,
-  security: PropTypes.object.isRequired
+  createRequests: PropTypes.func.isRequired
 };
 
-const mapStateToProps = state => ({
-  security: state.security,
-  errors: state.errors
-});
 export default connect(
-  mapStateToProps,
+  null,
   { createRequests }
 )(ContactUs);

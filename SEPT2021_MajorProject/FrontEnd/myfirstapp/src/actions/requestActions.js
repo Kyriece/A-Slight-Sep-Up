@@ -4,9 +4,10 @@ import {CREATE_REQ, GET_REQ} from "./types";
 export const createRequests = (AdminReq, history) => async dispatch => {
   try {
     const res = await axios.post("http://localhost:8082/api/requests/newRequest", AdminReq);
+    alert('You have submitted the form.');
     dispatch({
       type: CREATE_REQ,
-      payload: res.data
+      payload: {}
     });
   } catch (err) {
     dispatch({
