@@ -33,7 +33,7 @@ public class BookServiceImpl implements IService<Book>, IPageService<Book> {
 
 	@Override
 	public Page<Book> findAll(Pageable pageable) {
-		return bookRepository.findAll(pageable);
+		return bookRepository.findAll(pageable);			
 	}
 
 	@Override
