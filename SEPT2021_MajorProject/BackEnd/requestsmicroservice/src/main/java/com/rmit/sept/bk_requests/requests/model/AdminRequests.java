@@ -13,18 +13,26 @@ public class AdminRequests {
 	@GeneratedValue
 	private Long id;
 
-    @Column(nullable = false)
+    @Column
 	private String user;
 
-    @Column(nullable = false)
+    @Column
 	private String requestComment;
+
+	@Column
+	private String title;
+
+	@Column 
+	private String email;
 
 	public AdminRequests() {
     }
 
-    public AdminRequests(String user, String requestComment) {
+    public AdminRequests(String user, String requestComment, String title, String email) {
         this.user = user;
         this.requestComment = requestComment;
+		this.title = title;
+		this.email = email;
     }
 
     public void setId(Long id) {
@@ -46,5 +54,23 @@ public class AdminRequests {
 	public void setrequestComment(String requestComment) {
 		this.requestComment = requestComment;
 	}
+
+	public String getTitle(){
+		return title;
+	}
+
+	public void setTitle(String title){
+		this.title = title;
+	}
+
+	public String getEmail(){
+		return email;
+	}
+
+	public void setEmail(String email){
+		this.email = email;
+	}
+
+
 
 }
