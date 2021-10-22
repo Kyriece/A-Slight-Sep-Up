@@ -8,6 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @SpringBootTest
@@ -46,6 +50,9 @@ public class BookControllerTest {
     @DisplayName("findAll(pageable, searchtext): If DB has no books. Returns isOK(200) response")
     public void _1_findAll_isOK_noBooksInDB() throws Exception {
 
+//        mockMvc.perform(get(BOOKS_PATH + "/search/"))
+//                .andExpect(status().isOk())
+//                .andExpect(MockMvcResultMatchers.jsonPath("$.size()").value(0));
     }
 
     @Test

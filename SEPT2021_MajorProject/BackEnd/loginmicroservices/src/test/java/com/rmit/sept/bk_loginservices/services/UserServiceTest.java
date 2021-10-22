@@ -42,50 +42,47 @@ public class UserServiceTest {
     @AfterAll
     void afterAll() { userService.deleteAllUsers();}
 
-//    @Test
-//    @DisplayName("saveUser: Successfully saves an admin in the database")
-//    void _1_saveUser_userAttributesEqual_admin() {
-//        User saveUser = userService.saveUser(this.admin);
-//        User dbUser = userRepository.findByUsername(saveUser.getUsername());
-//
-//        assertEquals(1, userRepository.count());
-//        assertEquals("ID is equal", saveUser.getId(), dbUser.getId());
-//        assertEquals("Username is equal", saveUser.getUsername(), dbUser.getUsername());
-//        assertEquals("Fullname is equal", saveUser.getFullName(), dbUser.getFullName());
-//        assertEquals("Userstatus is equal", saveUser.getUserStatus(), dbUser.getUserStatus());
-//        assertEquals("CreateDate is equal", saveUser.getCreate_At(), dbUser.getCreate_At());
-//        assertEquals("AccountEnabled is equal", saveUser.getUsername(), dbUser.getUsername());
-//    }
-//
-//    @Test
-//    @DisplayName("saveUser: Successfully saves a publisher in the database")
-//    void _2_saveUser_userAttributesEqual_publisher() {
-//        User saveUser = userService.saveUser(this.publisher);
-//        User dbUser = userRepository.findByUsername(saveUser.getUsername());
-//
-//        assertEquals(1, userRepository.count());
-//        assertEquals("ID is equal", saveUser.getId(), dbUser.getId());
-//        assertEquals("Username is equal", saveUser.getUsername(), dbUser.getUsername());
-//        assertEquals("Fullname is equal", saveUser.getFullName(), dbUser.getFullName());
-//        assertEquals("Userstatus is equal", saveUser.getUserStatus(), dbUser.getUserStatus());
-//        assertEquals("CreateDate is equal", saveUser.getCreate_At(), dbUser.getCreate_At());
-//        assertEquals("AccountEnabled is equal", saveUser.getUsername(), dbUser.getUsername());
-//    }
-//
-//    @Test
-//    @DisplayName("saveUser: Successfully saves a user in the database")
-//    void _3_saveUser_userAttributesEqual_user() {
-//        User saveUser = userService.saveUser(this.user);
-//        User dbUser = userRepository.findByUsername(saveUser.getUsername());
-//
-//        assertEquals(1, userRepository.count());
-//        assertEquals("ID is equal", saveUser.getId(), dbUser.getId());
-//        assertEquals("Username is equal", saveUser.getUsername(), dbUser.getUsername());
-//        assertEquals("Fullname is equal", saveUser.getFullName(), dbUser.getFullName());
-//        assertEquals("Userstatus is equal", saveUser.getUserStatus(), dbUser.getUserStatus());
-//        assertEquals("CreateDate is equal", saveUser.getCreate_At(), dbUser.getCreate_At());
-//        assertEquals("AccountEnabled is equal", saveUser.getUsername(), dbUser.getUsername());
-//    }
+    @Test
+    @DisplayName("saveUser: Successfully saves an admin in the database")
+    void _1_saveUser_userAttributesEqual_admin() {
+        User saveUser = userService.saveUser(this.admin);
+        User dbUser = userRepository.findByUsername(saveUser.getUsername());
+
+        assertEquals(1, userRepository.count());
+        assertEquals("ID is equal", saveUser.getId(), dbUser.getId());
+        assertEquals("Username is equal", saveUser.getUsername(), dbUser.getUsername());
+        assertEquals("Fullname is equal", saveUser.getFullName(), dbUser.getFullName());
+        assertEquals("Userstatus is equal", saveUser.getUserStatus(), dbUser.getUserStatus());
+        assertEquals("AccountEnabled is equal", saveUser.getUsername(), dbUser.getUsername());
+    }
+
+    @Test
+    @DisplayName("saveUser: Successfully saves a publisher in the database")
+    void _2_saveUser_userAttributesEqual_publisher() {
+        User saveUser = userService.saveUser(this.publisher);
+        User dbUser = userRepository.findByUsername(saveUser.getUsername());
+
+        assertEquals(1, userRepository.count());
+        assertEquals("ID is equal", saveUser.getId(), dbUser.getId());
+        assertEquals("Username is equal", saveUser.getUsername(), dbUser.getUsername());
+        assertEquals("Fullname is equal", saveUser.getFullName(), dbUser.getFullName());
+        assertEquals("Userstatus is equal", saveUser.getUserStatus(), dbUser.getUserStatus());
+        assertEquals("AccountEnabled is equal", saveUser.getUsername(), dbUser.getUsername());
+    }
+
+    @Test
+    @DisplayName("saveUser: Successfully saves a user in the database")
+    void _3_saveUser_userAttributesEqual_user() {
+        User saveUser = userService.saveUser(this.user);
+        User dbUser = userRepository.findByUsername(saveUser.getUsername());
+
+        assertEquals(1, userRepository.count());
+        assertEquals("ID is equal", saveUser.getId(), dbUser.getId());
+        assertEquals("Username is equal", saveUser.getUsername(), dbUser.getUsername());
+        assertEquals("Fullname is equal", saveUser.getFullName(), dbUser.getFullName());
+        assertEquals("Userstatus is equal", saveUser.getUserStatus(), dbUser.getUserStatus());
+        assertEquals("AccountEnabled is equal", saveUser.getUsername(), dbUser.getUsername());
+    }
 
     @Test
     @DisplayName("saveUser: Throws username already exists exception when null passed as arg")

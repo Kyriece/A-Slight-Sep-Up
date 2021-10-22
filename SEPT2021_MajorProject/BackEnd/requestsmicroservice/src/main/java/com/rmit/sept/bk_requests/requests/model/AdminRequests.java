@@ -39,7 +39,11 @@ public class AdminRequests {
 		this.id = id;
     }
 
-    public String getUser() {
+	public Long getId() {
+		return id;
+	}
+
+	public String getUser() {
 		return user;
 	}
 
