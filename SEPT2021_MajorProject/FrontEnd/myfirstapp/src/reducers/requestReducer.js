@@ -1,8 +1,8 @@
 import { CREATE_REQ, GET_REQ} from "../actions/types";
 
 const initialState = {
-    arequests: "",
-    error: "",
+    requests: [],
+    error: {},
   };
   
   export default function(state = initialState, action) {
@@ -10,13 +10,13 @@ const initialState = {
       case CREATE_REQ:
         return {
           ...state,
-          arequests: action.payload
+          requests: action.payload
         };
   
       case GET_REQ:
         return {
           ...state,
-          arequests: action.payload
+          requests: action.payload
         };
   
       default:

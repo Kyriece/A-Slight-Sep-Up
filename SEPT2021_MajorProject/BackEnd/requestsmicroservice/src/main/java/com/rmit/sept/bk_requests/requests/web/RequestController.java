@@ -37,7 +37,7 @@ public class RequestController {
     }
 
     @GetMapping("/all")
-    public Collection<AdminRequests> getAllRequest(Principal principle) {
+    public Iterable<AdminRequests> getAllRequest(Principal principle) {
         return requestService.findAllRequests();
     }
 

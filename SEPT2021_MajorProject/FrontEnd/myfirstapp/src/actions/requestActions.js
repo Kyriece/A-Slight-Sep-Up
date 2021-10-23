@@ -23,4 +23,5 @@ export const getRequest = () => async dispatch => {
     type: GET_REQ,
     payload: res.data
   });
+  return res.data
 };

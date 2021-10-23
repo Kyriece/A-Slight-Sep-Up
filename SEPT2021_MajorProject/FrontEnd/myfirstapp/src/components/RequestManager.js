@@ -1,76 +1,57 @@
-import React, {Component} from 'react';
-import PropTypes from "prop-types";
-import {connect} from 'react-redux';
-import {getRequest} from "../actions/requestActions";
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { getRequest } from "../actions/requestActions";
 import Header from "./Layout/Header";
 import Footer from "./Layout/Footer";
 
 
-class RequestManager extends Component {
+const RequestManager = ({ getRequest }) => {
 
-    componentDidMount() {
-        this.props.getRequest();
-    }
+    const [request, setRequest] = useState();
 
-    getDataItems(data) {
-        return data.map((dataItem)=>(
-            <tr key={dataItem.id}>
-                <td>{dataItem.id}</td>
-                <td>{dataItem.user}</td>
-                <td>{dataItem.title}</td>
-                <td>{dataItem.requestComment}</td>
-                <td>{dataItem.email}</td>
-            </tr>
-        ))
-    }
+    useEffect(() => {
+        async function fetchData () {
+          const res = await getRequest()
+          setRequest(res)
+        }
+        fetchData()
+    }, [])
 
-    render() {
-      console.log(this.props);
-
-        // const {requests} = this.props.request;
-        // console.log(requests);
-        // let requestList = [];
-        // for (let i =0; i < requests.length; i++) {
-        //   requestList.push(requests[i]);
-        // }
-        // const requeststable = this.getDataItems(requestList)
-
-        return (
-            <>
-            <Header/>
-            <div>
-                <h1 className="display-4 text-center"> User Manager Page </h1>
-                <br/>
-                <br/>
-                <table className = "table table-striped">
-                    <thead>
-                        <tr>
-                            <td>id</td>
-                            <td>user</td>
-                            <td>title</td>
-                            <td>request comment</td>
-                            <td>email</td>
+    return <>
+        <Header />
+        <div>
+            <h1 className="display-4 text-center"> User Manager Page </h1>
+            <br />
+            <br />
+            <table className="table table-striped">
+                <thead>
+                    <tr>
+                        <td>id</td>
+                        <td>user</td>
+                        <td>title</td>
+                        <td>request comment</td>
+                        <td>email</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {request && request.map((dataItem) => (
+                        <tr key={dataItem.id}>
+                            <td>{dataItem.id}</td>
+                            <td>{dataItem.user}</td>
+                            <td>{dataItem.title}</td>
+                            <td>{dataItem.requestComment}</td>
+                            <td>{dataItem.email}</td>
                         </tr>
-                    </thead>
-                    {/* <tbody>
-                        {requeststable}
-                    </tbody> */}
-                </table>
-            </div>
-            <Footer />
-
-            </>
-        );
-    }
+                    ))}
+                </tbody>
+            </table>
+        </div>
+        <Footer />
+    </>
 }
 
-RequestManager.propTypes ={
-    request: PropTypes.object.isRequired,
-    getRequest: PropTypes.func.isRequired
-};
-
 const mapStateToProps = state => ({
-  request: state.request
+    request: state.request
 });
 
 export default connect(

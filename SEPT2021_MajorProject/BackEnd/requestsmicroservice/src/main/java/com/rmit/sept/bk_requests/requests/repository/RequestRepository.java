@@ -12,7 +12,7 @@ public interface RequestRepository extends CrudRepository<AdminRequests, Long>{
     
 
     @Override
-    Collection<AdminRequests> findAll();
+    Iterable<AdminRequests> findAll();
 
     AdminRequests getById(Long id);
 }
