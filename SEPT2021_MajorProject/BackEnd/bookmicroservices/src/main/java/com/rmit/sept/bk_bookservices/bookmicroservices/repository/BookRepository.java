@@ -12,6 +12,6 @@ import com.rmit.sept.bk_bookservices.bookmicroservices.model.Book;
 @Repository
 public interface BookRepository extends PagingAndSortingRepository<Book, Long>{
     
-    @Query("FROM Book b WHERE b.title LIKE %:searchText% OR b.author LIKE %:searchText% OR b.language LIKE %:searchText% OR b.genre LIKE %:searchText% ORDER BY b.price ASC")
+    @Query("FROM Book b WHERE b.title LIKE %:searchText% OR b.author LIKE %:searchText% OR b.language LIKE %:searchText% OR b.genre LIKE %:searchText% OR b.isbnNumber LIKE %:searchText% ORDER BY b.price ASC")
     Page<Book> findAllBooks(Pageable pageable, @Param("searchText") String searchText);
 }

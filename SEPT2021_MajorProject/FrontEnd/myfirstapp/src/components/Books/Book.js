@@ -107,7 +107,7 @@ class Book extends Component {
       } else {
         this.setState({ show: false });
       }
-      this.props.history.push("/list");
+      this.props.history.push("/Dashboard");
   };
 
   updateBook = (event) => {

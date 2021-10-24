@@ -20,7 +20,7 @@ class Dashboard extends Component {
                     <div className="row">
                       <div className="col-md-12 text-center">
                         <h1 className="display-3 mb-4">
-                          Dashboard
+                          Welcome to Bookaroo
                         </h1>
                         <hr />
                         <Link className="btn btn-lg btn-primary mr-2" to="/Profile">

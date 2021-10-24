@@ -17,7 +17,7 @@ class AdminBoard extends Component {
                 <Link className="btn btn-lg btn-primary mr-2" to="/UserManager">
                 <h1>User Manager</h1>
                 </Link>
-                <Link className="btn btn-lg btn-primary mr-2" to="/UserManager2">
+                <Link className="btn btn-lg btn-primary mr-2" to="/add">
                 <h1>Add Books</h1>
                 </Link>
                 <Footer />
