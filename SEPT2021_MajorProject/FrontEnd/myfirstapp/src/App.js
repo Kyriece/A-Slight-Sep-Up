@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 
+import {PayPalScriptProvider} from "@paypal/react-paypal-js"
+
 /* Redux / Memory Stores */
 import { Provider } from "react-redux";
 import store from "./store";
@@ -20,6 +22,7 @@ import Landing from "./components/Layout/Landing";
 import Register from "./components/UserManagement/Register";
 import Login from "./components/UserManagement/Login";
 import UserManager from "./components/UserManager";
+import RequestManager from "./components/RequestManager";
 //import UserToPublisher from "./components/UserToPublisher";
 import Update from "./components/UserManagement/Update";
 import profile from "./components/UserManagement/profile";
@@ -27,6 +30,7 @@ import Book from "./components/Books/Book";
 import BookList from "./components/Books/BookList";
 import ContactUs from "./components/Information/ContactUs";
 import AboutUs from "./components/Information/AboutUs";
+import EditBook from "./components/Books/EditBook";
 
 
 import "./App.css";
@@ -57,6 +61,7 @@ if (jwtToken) {
 const App = () => {
   return (
     <Provider store={store}>
+      <PayPalScriptProvider options={{ "client-id": "AZNkf83ly9F9U4wjt_1FcORPFEaBD2cEJaQelNZqF4KvjwVkQZrkyKiXhAwjgyrMEyl1nYZQ6QghrQPr" }}>
       <Router>
         <div className="App">
           <Switch>
@@ -65,12 +70,14 @@ const App = () => {
             <Route exact path="/login" component={Login} />
             <Route exact path="/userManager" component={UserManager} />
             <Route exact path="/userManager2" component={UserManager2} />
+            <Route exact path="/RequestManager" component={RequestManager} />
             {/* <Route exact path="/UserToPublisher" component={UserToPublisher} /> */}
             <Route exact path="/Update" component={Update} />
             <Route exact path="/profile" component={profile} />
             <Route path="/BookProfile/:id" component={BookProfile} />
             <Route path="/add" exact component={Book} />
-            <Route path="/edit/:id" exact component={Book} />
+            <Route path="/edit/:id" exact component={EditBook} />
+
             <Route path="/list" exact component={BookList} />
             <Route exact path="/ContactUs" component={ContactUs} />
             <Route exact path="/AboutUs" component={AboutUs} />
@@ -82,6 +89,7 @@ const App = () => {
           </Switch>
         </div>
       </Router>
+    </PayPalScriptProvider>
     </Provider>
   );
 };

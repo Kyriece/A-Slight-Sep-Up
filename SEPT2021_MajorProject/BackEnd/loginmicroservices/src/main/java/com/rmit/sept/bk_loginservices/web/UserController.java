@@ -63,11 +63,8 @@ public class UserController{
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest, BindingResult result){
-        System.out.println("step 0");
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
-        System.out.println("step 1");
         if(errorMap != null) return errorMap;
-        System.out.println("step 2");
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
@@ -75,13 +72,9 @@ public class UserController{
                         loginRequest.getPassword()
                 )
         );
-        System.out.println("step 3");
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        System.out.println("step 4");
         String jwt = TOKEN_PREFIX +  tokenProvider.generateToken(authentication);
-        System.out.println("step 5");
-
         return ResponseEntity.ok(new JWTLoginSucessReponse(true, jwt));
     }
     

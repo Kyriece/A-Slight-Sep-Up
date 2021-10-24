@@ -35,12 +35,14 @@ const Header = (props) => {
             {isLoggedIn ?
             <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-                <a className="nav-link" href="/add">
-                    add book
-                </a>
-                <a className="nav-link" href="/list">
-                    book list
-                </a>
+                {<a className="nav-link" href="/list"> Book List</a>}
+                {user.userStatus === "admin" &&  <a className="nav-link" href="/add"> Add Book</a>}
+                {user.userStatus === "publisher" &&  <a className="nav-link" href="/add"> Add Book</a>}
+            </li>
+            <li className="nav-item">   
+                {user.userStatus === "user" &&  <a className="nav-link" href="/ContactUs"> Suggest Book </a>}
+                {user.userStatus === "admin" &&  <a className="nav-link" href="/UserManager"> Manage Users</a>}
+                {user.userStatus === "admin" &&  <a className="nav-link" href="/RequestManager"> Manage Requests</a>}
             </li>
             </ul>
 
@@ -61,7 +63,7 @@ const Header = (props) => {
                     /* If user === true (Logged In) */
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
-                            <a className="nav-link" href="/UpdateUser">
+                            <a className="nav-link" href="/Profile">
                                 <FontAwesomeIcon icon ={faUserCog} />
                                 User Profile
                             </a>

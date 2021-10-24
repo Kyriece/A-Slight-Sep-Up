@@ -11,8 +11,6 @@ const reducer = (state = initialState, action) => {
     case BT.FETCH_BOOK_REQUEST:
     case BT.UPDATE_BOOK_REQUEST:
     case BT.DELETE_BOOK_REQUEST:
-    case BT.FETCH_LANGUAGES_REQUEST:
-    case BT.FETCH_GENRES_REQUEST:
     case BT.GET_BOOK:
       return {
         ...state,
@@ -25,26 +23,6 @@ const reducer = (state = initialState, action) => {
     case BT.BOOK_FAILURE:
       return {
         book: "",
-        error: action.payload,
-      };
-    case BT.LANGUAGES_SUCCESS:
-      return {
-        languages: action.payload,
-        error: "",
-      };
-    case BT.LANGUAGES_FAILURE:
-      return {
-        languages: "",
-        error: action.payload,
-      };
-    case BT.GENRES_SUCCESS:
-      return {
-        genres: action.payload,
-        error: "",
-      };
-    case BT.GENRES_FAILURE:
-      return {
-        genres: "",
         error: action.payload,
       };
       case BT.GET_BOOK:

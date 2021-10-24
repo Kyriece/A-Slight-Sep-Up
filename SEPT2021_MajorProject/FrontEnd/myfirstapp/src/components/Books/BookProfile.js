@@ -5,7 +5,9 @@ import Header from "../Layout/Header";
 import { Link} from "react-router-dom";
 import store from '../../store';
 import axios from 'axios';
+import {PayPalButtons} from '@paypal/react-paypal-js';
 
+import Footer from "../Layout/Footer"
 
 import { getBookbyId } from "../../actions/bookActions";
 
@@ -85,9 +87,10 @@ class BookProfile extends Component{
                     <div class = "column">
                         <div class="col-md-4" style={{ float:'left', width: '300px'}}>
                             <h3 >Rating: {this.state.rating}/5</h3>
-                            <Link className="btn btn-lg btn-secondary mr-2" to="/bookProfile">
-                            Add to cart: ${this.state.price}
-                            </Link>
+                            <div className="btn btn-lg btn-secondary mr-2">
+                            <PayPalButtons style={{ layout: "horizontal" }} />
+                            Buy Now: ${this.state.price}
+                            </div>
                         </div>
                     </div>
                     <div> 
@@ -107,6 +110,7 @@ class BookProfile extends Component{
                     <p>{this.state.tableOfContents}</p>
                     </div>
                 </div>
+                <Footer />
             </>
         );
     }

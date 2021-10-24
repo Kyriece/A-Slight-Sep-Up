@@ -5,8 +5,7 @@ import {
   saveBook,
   fetchBook,
   updateBook,
-  fetchLanguages,
-  fetchGenres,
+  getBookbyId
 } from "../../actions/bookActions";
 
 import { Card, Form, Button, Col, InputGroup, Image } from "react-bootstrap";
@@ -22,15 +21,19 @@ import MyToast from "../MyToast"
 
 import Header from "../Layout/Header";
 
+import Footer from "../Layout/Footer"
+
+import store from "../../store";
+
 class Book extends Component {
   constructor(props) {
     super(props);
     this.state = this.initialState;
-    this.state = {
-      genres: [],
-      languages: [],
-      show: false,
-    };
+    // this.state = {
+    //   genres: [],
+    //   languages: [],
+    //   show: false,
+    // };
   }
 
   initialState = {
@@ -51,44 +54,13 @@ class Book extends Component {
   componentDidMount() {
     const bookId = +this.props.match.params.id;
     if (bookId) {
-      this.findBookById(bookId);
+      this.props.fetchBook(bookId);
     }
-    this.findAllLanguages();
   }
-
-  findAllLanguages = () => {
-    this.props.fetchLanguages();
-      let bookLanguages = this.props.bookObject.languages;
-      if (bookLanguages) {
-        this.setState({
-          languages: [{ value: "", display: "Select Language" }].concat(
-            bookLanguages.map((language) => {
-              return { value: language, display: language };
-            })
-          ),
-        });
-        this.findAllGenres();
-      }
-  };
-
-  findAllGenres = () => {
-    this.props.fetchGenres();
-      let bookGenres = this.props.bookObject.genres;
-      if (bookGenres) {
-        this.setState({
-          genres: [{ value: "", display: "Select Genre" }].concat(
-            bookGenres.map((genre) => {
-              return { value: genre, display: genre };
-            })
-          ),
-        });
-      }
-  };
 
   findBookById = (bookId) => {
     this.props.fetchBook(bookId);
       let book = this.props.bookObject.book;
-      console.log(this.state);
       if (book != null) {
         this.setState({
           id: book.id,
@@ -135,7 +107,7 @@ class Book extends Component {
       } else {
         this.setState({ show: false });
       }
-    this.setState(this.initialState);
+      this.props.history.push("/list");
   };
 
   updateBook = (event) => {
@@ -417,6 +389,7 @@ class Book extends Component {
             </Card.Footer>
           </Form>
         </Card>
+        <Footer />
       </div>
       </>
     );
@@ -433,9 +406,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     saveBook: (book) => dispatch(saveBook(book)),
     fetchBook: (bookId) => dispatch(fetchBook(bookId)),
-    updateBook: (book) => dispatch(updateBook(book)),
-    fetchLanguages: () => dispatch(fetchLanguages()),
-    fetchGenres: () => dispatch(fetchGenres()),
+    updateBook: (book) => dispatch(updateBook(book))
   };
 };
 

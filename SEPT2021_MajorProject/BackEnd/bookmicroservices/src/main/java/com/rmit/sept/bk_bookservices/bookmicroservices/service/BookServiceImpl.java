@@ -33,7 +33,7 @@ public class BookServiceImpl implements IService<Book>, IPageService<Book> {
 
 	@Override
 	public Page<Book> findAll(Pageable pageable) {
-		return bookRepository.findAll(pageable);
+		return bookRepository.findAll(pageable);			
 	}
 
 	@Override
@@ -56,6 +56,12 @@ public class BookServiceImpl implements IService<Book>, IPageService<Book> {
 			e.printStackTrace();
 		}
 		return jsonObject.toString();
+	}
+
+	public void deleteAllBooks() {
+		if(bookRepository.count() > 0) {
+			bookRepository.deleteAll();
+		}
 	}
 
 }
