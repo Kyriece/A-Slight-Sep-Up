@@ -20,7 +20,7 @@ const RequestManager = ({ getRequest }) => {
     return <>
         <Header />
         <div>
-            <h1 className="display-4 text-center"> User Manager Page </h1>
+            <h1 className="display-4 text-center"> Request Manager Page </h1>
             <br />
             <br />
             <table className="table table-striped">
