@@ -8,6 +8,8 @@ workflows:
           context: vicarox-keyword
       - build-backend-book: 
           context: vicarox-keyword
+      - build-backend-requests:
+          context: vicarox-keyword
 jobs:
   build:
     docker:
