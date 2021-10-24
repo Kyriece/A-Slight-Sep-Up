@@ -1,13 +1,13 @@
-# That is why we tell node here to use the openjdk image with java 12 as base.
+# using openjdk with alpine, so dockerised containers can be used 
 FROM openjdk:13-alpine
 
 # Create an application directory
 RUN mkdir -p /app
 
-# The /app directory should act as the main application directory
+# The /app directory will act as the main application directory
 WORKDIR /app
 
-# Copy or project directory (locally) in the current directory of our docker image (/app)
+# Copy our project microservices in the current directory of our docker image (/app)
 ADD /target/bookmicroservices-0.0.1-SNAPSHOT.jar ./app.jar
 
 

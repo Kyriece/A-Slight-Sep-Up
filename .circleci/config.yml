@@ -1,4 +1,5 @@
 version: 2.1
+# define all the processes required to be built by circleci
 workflows:
   my-workflow:
     jobs:
@@ -11,6 +12,7 @@ workflows:
       - build-backend-requests:
           context: vicarox-keyword
 jobs:
+  #first build is building the frontend
   build:
     docker:
       - image: s3848845/sep-frontend
@@ -40,6 +42,8 @@ jobs:
           command: |
             docker push s3848845/sep-frontend:latest
 
+# the following builds are all essentially identical, building the back-end micro-services for respective
+#microservices
   build-backend-login: 
     docker:
       - image: vicarox/login-microservices:1.0
@@ -65,7 +69,9 @@ jobs:
           name: publish to dockerhub
           command: |
             docker push vicarox/login-microservices:1.0
-    
+  
+# the permissions for the mvnw file were required to be updated also, hence why its a little
+# different
   build-backend-book: 
     docker:
       - image: vicarox/book-microservices:1.0
@@ -79,7 +85,6 @@ jobs:
       - run:
           name: get the docker client
           command: apk add docker-cli
-
       - run: 
           name: login to docker
           command: |

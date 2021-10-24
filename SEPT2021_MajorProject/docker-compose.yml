@@ -1,4 +1,5 @@
 version: '3'
+# set up each individual service via calling it from dockerhub
 services:
   sep-it-up-login:
     image: vicarox/login-microservices:1.0
