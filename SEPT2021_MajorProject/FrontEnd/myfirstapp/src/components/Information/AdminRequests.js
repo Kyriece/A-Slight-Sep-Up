@@ -12,6 +12,7 @@ class UserManager extends Component {
       this.props.getUsers();
   }
 
+  // define data items
   getDataItems(data) {
     return data.map((dataItem)=>(
       <tr key={dataItem.id}>
