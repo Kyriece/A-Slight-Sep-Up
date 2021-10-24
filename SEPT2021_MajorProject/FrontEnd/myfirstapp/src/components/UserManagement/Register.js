@@ -13,10 +13,10 @@ class Register extends Component {
     super();
 
     this.state = {
-      username: "root@root.com",
-      fullName: "rooty",
-      password: "123qwe123qwe",
-      confirmPassword: "123qwe123qwe",
+      username: "",
+      fullName: "",
+      password: "",
+      confirmPassword: "",
       userStatus: "user",
       errors: {}
     };
