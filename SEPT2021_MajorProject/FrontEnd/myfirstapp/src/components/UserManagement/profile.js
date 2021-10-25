@@ -29,10 +29,7 @@ class Profile extends Component {
                     <div className="buttons">
                       <button class="btn btn-lg btn-primary mr-2">
                         {user.userStatus === "user" &&  <div onClick={() => { store.dispatch(UpdateUser(user.id)); }}> Become a publisher </div>}   
-                        {/* TODO add link to edit profile */}
-                          <div onClick={() => {  }}>
-                              Edit Profile
-                          </div>
+                        {user.userStatus === "Admin" &&  <div onClick={() => {  }}>  Edit Profile</div>}
                       </button>
                     </div>
                   </div>

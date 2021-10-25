@@ -25,7 +25,7 @@ import UserManager from "./components/UserManager";
 import RequestManager from "./components/RequestManager";
 //import UserToPublisher from "./components/UserToPublisher";
 import Update from "./components/UserManagement/Update";
-import Profile from "./components/UserManagement/Profile";
+import profile from "./components/UserManagement/profile";
 import Book from "./components/Books/Book";
 import BookList from "./components/Books/BookList";
 import ContactUs from "./components/Information/ContactUs";
@@ -71,7 +71,7 @@ const App = () => {
             <Route exact path="/RequestManager" component={RequestManager} />
             {/* <Route exact path="/UserToPublisher" component={UserToPublisher} /> */}
             <Route exact path="/Update" component={Update} />
-            <Route exact path="/Profile" component={Profile} />
+            <Route exact path="/profile" component={profile} />
             <Route path="/BookProfile/:id" component={BookProfile} />
             <Route path="/add" exact component={Book} />
             <Route path="/edit/:id" exact component={EditBook} />
