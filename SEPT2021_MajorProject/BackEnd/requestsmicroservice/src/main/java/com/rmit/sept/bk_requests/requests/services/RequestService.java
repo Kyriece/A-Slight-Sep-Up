@@ -25,7 +25,7 @@ public class RequestService {
        
     }
 
-	public Iterable<AdminRequests> findAllRequests() {
+	public Collection<AdminRequests> findAllRequests() {
 		return requestRepository.findAll();
 	}
 
