@@ -19,7 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 @Autowired
 RequestService requestService;
 
-
+//permissions for cross origin and prevents sprint security login prompt
 @Override
 protected void configure(HttpSecurity http) throws Exception {
 	http.cors().and().csrf().disable()
@@ -43,7 +43,4 @@ protected void configure(HttpSecurity http) throws Exception {
     .antMatchers("/api/requests/**").permitAll()
     .anyRequest().authenticated();
 	}
-
-   
-    
 }

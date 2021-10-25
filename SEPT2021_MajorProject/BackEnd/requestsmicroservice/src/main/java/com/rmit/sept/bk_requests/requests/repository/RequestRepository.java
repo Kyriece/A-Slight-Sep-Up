@@ -9,10 +9,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RequestRepository extends CrudRepository<AdminRequests, Long>{
-    
+  @Override
+  Iterable<AdminRequests> findAll();
 
-    @Override
-    Iterable<AdminRequests> findAll();
-
-    AdminRequests getById(Long id);
+  AdminRequests getById(Long id);
 }
