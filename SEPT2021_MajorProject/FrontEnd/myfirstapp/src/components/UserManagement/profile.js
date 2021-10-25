@@ -29,7 +29,8 @@ class Profile extends Component {
                     <div className="buttons">
                       <button class="btn btn-lg btn-primary mr-2">
                         {user.userStatus === "user" &&  <div onClick={() => { store.dispatch(UpdateUser(user.id)); }}> Become a publisher </div>}   
-                        {user.userStatus === "Admin" &&  <div onClick={() => {  }}>  Edit Profile</div>}
+                        {user.userStatus === "admin" &&  <div onClick={() => {  }}>  Edit Profile</div>}
+                        {user.userStatus === "publisher" &&  <div onClick={() => {  }}>  Edit Profile</div>}
                       </button>
                     </div>
                   </div>
