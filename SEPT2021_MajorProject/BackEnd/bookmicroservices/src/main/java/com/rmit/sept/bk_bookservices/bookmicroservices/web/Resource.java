@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+//Declares individual mappings so theres no overlap with id's
 public interface Resource<T> {
+
 	@GetMapping("/search/{searchText}")
 	ResponseEntity<Page<T>> findAll(Pageable pageable, @PathVariable String searchText);
 

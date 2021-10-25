@@ -51,6 +51,7 @@ class Book extends Component {
     tableOfContents: "",
   };
 
+  //Not working currently. Left because not sure what'll break
   componentDidMount() {
     const bookId = +this.props.match.params.id;
     if (bookId) {
@@ -83,7 +84,8 @@ class Book extends Component {
   resetBook = () => {
     this.setState(() => this.initialState);
   };
-
+  
+  //Posts book to database
   submitBook = (event) => {
     event.preventDefault();
 
@@ -142,6 +144,7 @@ class Book extends Component {
     });
   };
 
+  //Changes page
   bookList = () => {
     return this.props.history.push("/list");
   };
@@ -154,6 +157,7 @@ class Book extends Component {
       <Header/>
       <div>
         <div style={{ display: this.state.show ? "block" : "none" }}>
+          {/* Notification */}
           <MyToast
             show={this.state.show}
             message={
@@ -389,8 +393,8 @@ class Book extends Component {
             </Card.Footer>
           </Form>
         </Card>
-        <Footer />
       </div>
+      <Footer />
       </>
     );
   }

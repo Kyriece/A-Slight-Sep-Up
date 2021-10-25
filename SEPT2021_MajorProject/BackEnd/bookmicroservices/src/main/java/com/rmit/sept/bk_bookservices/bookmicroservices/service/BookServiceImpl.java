@@ -21,31 +21,37 @@ public class BookServiceImpl implements IService<Book>, IPageService<Book> {
 	@Autowired
 	private BookRepository bookRepository;
 	
+	//Gets all books
 	@Override
 	public Collection<Book> findAll() {
 		return (Collection<Book>) bookRepository.findAll();
 	}
 
+	//Gets books matching search query
 	@Override
 	public Page<Book> findAll(Pageable pageable, String searchText) {
 		return bookRepository.findAllBooks(pageable, searchText);
 	}
 
+	//Creates pagable of books (5 books)
 	@Override
 	public Page<Book> findAll(Pageable pageable) {
 		return bookRepository.findAll(pageable);			
 	}
 
+	//Gets book by ID
 	@Override
 	public Optional<Book> findById(Long id) {
 		return bookRepository.findById(id);
 	}
 
+	//Updates book object
 	@Override
 	public Book saveOrUpdate(Book book) {
 		return bookRepository.save(book);
 	}
 
+	//Deletes book by id, pops notification
 	@Override
 	public String deleteById(Long id) {
 		JSONObject jsonObject = new JSONObject();
@@ -58,6 +64,7 @@ public class BookServiceImpl implements IService<Book>, IPageService<Book> {
 		return jsonObject.toString();
 	}
 
+	//Clears Book Repository 
 	public void deleteAllBooks() {
 		if(bookRepository.count() > 0) {
 			bookRepository.deleteAll();
