@@ -14,27 +14,26 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class RequestService {
-
-    @Autowired
+// create some methods for the request service
+  @Autowired
 	private RequestRepository requestRepository;
 
-    public AdminRequests createRequest(AdminRequests newRequest, String userString, String requestString){
-        newRequest.setUser(userString);
-        newRequest.setrequestComment(requestString);
-        return requestRepository.save(newRequest);
-       
-    }
+  public AdminRequests createRequest(AdminRequests newRequest, String userString, String requestString){
+    newRequest.setUser(userString);
+    newRequest.setrequestComment(requestString);
+    return requestRepository.save(newRequest);
+  }
 
 	public Collection<AdminRequests> findAllRequests() {
 		return requestRepository.findAll();
 	}
 
-    public AdminRequests saveorUpdateRequest (AdminRequests request){
-        return requestRepository.save(request);
-    }
+  public AdminRequests saveorUpdateRequest (AdminRequests request){
+    return requestRepository.save(request);
+  }
 
 	public String deleteById(Long id) {
-		JSONObject jsonObject = new JSONObject();
+    JSONObject jsonObject = new JSONObject();
 		try {
 			requestRepository.deleteById(id);
 			jsonObject.put("message", "request deleted successfully");
