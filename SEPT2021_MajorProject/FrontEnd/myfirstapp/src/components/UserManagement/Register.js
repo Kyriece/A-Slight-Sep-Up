@@ -4,7 +4,6 @@ import * as PropTypes from 'prop-types'
 import { connect } from "react-redux";
 import classnames from "classnames";
 import Header from "../Layout/Header";
-// import MyToast from "../MyToast"
 import Footer from "../Layout/Footer";
 
 
@@ -12,6 +11,7 @@ class Register extends Component {
   constructor() {
     super();
 
+    //pre-filled values for the registration form
     this.state = {
       username: "",
       fullName: "",
@@ -35,6 +35,7 @@ class Register extends Component {
       userStatus: this.state.userStatus
     };
 
+    //take the user upon successful submit
     if(this.props.createNewUser(newUser, this.props.history)){
       this.props.history.push("/Login");
     }
@@ -44,95 +45,91 @@ class Register extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
+  // input variabes and submission for the registration
   render() {
     const { errors } = this.state;
     return (
       <>
-        <Header />
-        <div className="register">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-8 m-auto">
-                <h1 className="display-4 text-center">Sign Up</h1>
-                <p className="lead text-center">Create your Account</p>
-                <form onSubmit={this.onSubmit}>
-                  <div className="form-group">
-                    <input
-                      type="text"
-                      className={classnames("form-control form-control-lg", {
-                        "is-invalid": errors.username
-                      })}
-                      placeholder="Full Name"
-                      name="fullName"
-                      value={this.state.fullName}
-                      onChange={this.onChange}
-                    />
-                     {errors.username && (
-                      <div className="invalid-feedback">{errors.username}</div>
-                    )}
-                  </div>
-                  <div className="form-group">
-                    <input
-                      type="text"
-                      className className={classnames("form-control form-control-lg", {
-                        "is-invalid": errors.username
-                      })}
-                      placeholder="Email Address (Username)"
-                      name="username"
-                      value={this.state.username}
-                      onChange={this.onChange}
-                    />
-                     {errors.username && (
-                      <div className="invalid-feedback">{errors.username}</div>
-                    )}
-                  </div>
-                  <div className="form-group">
-                    <input
-                      type="password"
-                      className={classnames("form-control form-control-lg", {
-                        "is-invalid": errors.password
-                      })}
-                      placeholder="Password"
-                      name="password"
-                      value={this.state.password}
-                      onChange={this.onChange}
-                    />
-                     {errors.password && (
-                      <div className="invalid-feedback">{errors.password}</div>
-                    )}
-                  </div>
-                  <div className="form-group">
-                    <input
-                      type="password"
-                      className="form-control form-control-lg"
-                      placeholder="Confirm Password"
-                      name="confirmPassword"
-                      value={this.state.confirmPassword}
-                      onChange={this.onChange}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <select className="form-select" 
-                    aria-label="Default select example"
-                    value={this.state.userStatus}
-                    name="userStatus"
-                    onChange={this.onChange}>
-                      <option disabled value = "">Select user type</option>
-                      <option value="user">User</option>
-                      <option value="admin">Admin</option>
-                      <option value="publisher">Publisher</option>
-                    </select>
-                  </div>
-                  <input type="submit" className="btn btn-info btn-block mt-4" />
-                  <br/>
-                  <center><p>Already have an account? Sign in <a href="/Login">here</a></p></center>
-                </form>
-              </div>
+      <Header />
+      <div className="register">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-8 m-auto">
+              <h1 className="display-4 text-center">Sign Up</h1>
+              <p className="lead text-center">Create your Account</p>
+              <form onSubmit={this.onSubmit}>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    className={classnames("form-control form-control-lg", {
+                      "is-invalid": errors.username
+                    })}
+                    placeholder="Full Name"
+                    name="fullName"
+                    value={this.state.fullName}
+                    onChange={this.onChange} />
+                    {errors.username && (
+                    <div className="invalid-feedback">{errors.username}</div>
+                  )}
+                </div>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    className className={classnames("form-control form-control-lg", {
+                      "is-invalid": errors.username
+                    })}
+                    placeholder="Email Address (Username)"
+                    name="username"
+                    value={this.state.username}
+                    onChange={this.onChange} />
+                    {errors.username && (
+                    <div className="invalid-feedback">{errors.username}</div>
+                  )}
+                </div>
+                <div className="form-group">
+                  <input
+                    type="password"
+                    className={classnames("form-control form-control-lg", {
+                      "is-invalid": errors.password
+                    })}
+                    placeholder="Password"
+                    name="password"
+                    value={this.state.password}
+                    onChange={this.onChange} />
+                    {errors.password && (
+                    <div className="invalid-feedback">{errors.password}</div>
+                  )}
+                </div>
+                <div className="form-group">
+                  <input
+                    type="password"
+                    className="form-control form-control-lg"
+                    placeholder="Confirm Password"
+                    name="confirmPassword"
+                    value={this.state.confirmPassword}
+                    onChange={this.onChange} />
+                </div>
+                <div className="form-group">
+                  <select className="form-select" 
+                  aria-label="Default select example"
+                  value={this.state.userStatus}
+                  name="userStatus"
+                  onChange={this.onChange}>
+                    <option disabled value = "">Select user type</option>
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                    <option value="publisher">Publisher</option>
+                  </select>
+                </div>
+                <input type="submit" className="btn btn-info btn-block mt-4" />
+                <br/>
+                <center><p>Already have an account? Sign in <a href="/Login">here</a></p></center>
+              </form>
             </div>
           </div>
         </div>
-        <Footer />
-
+      </div>
+      <Footer />
       </>
     );
   }

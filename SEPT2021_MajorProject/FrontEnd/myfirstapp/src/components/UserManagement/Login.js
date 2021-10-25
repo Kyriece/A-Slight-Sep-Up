@@ -19,9 +19,9 @@ class Login extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  //on success, take the logged in user to dashboard
   componentDidMount() {
     if (this.props.security.validToken) {
-      const user = store.getState().security.user
       this.props.history.push("/dashboard");
     }
   }
@@ -45,13 +45,13 @@ class Login extends Component {
     }
   }
 
+  //submit actions , push the login request
   onSubmit(e) {
     e.preventDefault();
     const LoginRequest = {
       username: this.state.username,
       password: this.state.password
     };
-    console.log(LoginRequest);  
     this.props.login(LoginRequest, this.props.history);
   }
 
@@ -59,6 +59,7 @@ class Login extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
+  //constructing and defining the app, and error handling 
   render() {
     const { errors } = this.state;
     return (
