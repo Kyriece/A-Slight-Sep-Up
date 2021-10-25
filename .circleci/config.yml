@@ -31,9 +31,6 @@ jobs:
           command: |
             echo $DOCKERHUB_PASS | docker login -u s3848845 --password-stdin
       - run: 
-          name: fix
-          command: npx browserslist@latest --update-db
-      - run: 
           name: build dependancies
           command: cd ./SEPT2021_MajorProject/FrontEnd/myfirstapp && npm install
       - run:
