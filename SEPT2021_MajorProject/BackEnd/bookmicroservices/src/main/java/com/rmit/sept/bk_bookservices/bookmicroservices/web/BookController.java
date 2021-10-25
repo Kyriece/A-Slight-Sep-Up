@@ -23,11 +23,14 @@ import com.rmit.sept.bk_bookservices.bookmicroservices.service.IService;
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/api/books")   
+//Allows communication to database from frontend to backend
 public class BookController implements Resource<Book>{
 
+	//Connects to remote web service
     @Autowired
 	private IService<Book> bookService;
 	
+	//Pager extension
 	@Autowired
 	private IPageService<Book> bookPageService;
 

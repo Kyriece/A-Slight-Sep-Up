@@ -17,12 +17,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Book = (props) => {
+  //Gets id from link
   const { id } = useParams();
 
   const history = useHistory();
 
   const [book, setBook] = useState();
 
+  // Gets book by id 
   useEffect(() => {    
     async function fetchBook() {
       const newBook = await findBookById(id);
@@ -47,6 +49,7 @@ const Book = (props) => {
     tableOfContents
   } = book;
 
+  {/* Submits on button press. e.preventDefault? */}
   function handleSubmit(e) {
     e.preventDefault();
     props.updateBook(book);
@@ -56,11 +59,13 @@ const Book = (props) => {
   return (
     <>
       <Header />
+      {/* Will run handleSubmit on button press*/}
       <Form onSubmit={handleSubmit}>
         <Card.Body>
           <Form.Row>
             <Form.Group as={Col}>
               <Form.Label>Title</Form.Label>
+              {/* Updates const book on change */}
               <Form.Control
                 autoComplete="off"
                 type="text"
@@ -98,6 +103,7 @@ const Book = (props) => {
                   className={"bg-white text-black"}
                   placeholder="Enter Book Cover Photo URL"
                 />
+                {/* Sets properties of the book? */}
                 <InputGroup.Append>
                   {coverPhotoURL !== "" && (
                     <Image
@@ -149,6 +155,7 @@ const Book = (props) => {
             </Form.Group>
             <Form.Group as={Col} >
               <Form.Label>Language</Form.Label>
+              {/* Dropdown menu's */}
               <Form.Control
 
                 as="select"
@@ -241,6 +248,7 @@ const Book = (props) => {
             </Form.Group>
           </Form.Row>
         </Card.Body>
+        {/*Action buttons. */}
         <Card.Footer style={{ textAlign: "right" }}>
           <Button size="sm" variant="success" type="submit">
             <FontAwesomeIcon icon={faSave} />
@@ -250,6 +258,7 @@ const Book = (props) => {
             <FontAwesomeIcon icon={faUndo} /> 
             Reset
           </Button>
+            {/* TO DO */}
           <Button
             size="sm"
             variant="info"
@@ -260,11 +269,11 @@ const Book = (props) => {
           </Button>
         </Card.Footer>
       </Form>
-      <Footer />
     </>
   )
 }
 
+{/* Maps bookObject to the book? */}
 const mapStateToProps = (state) => {
   return {
     bookObject: state.book,
