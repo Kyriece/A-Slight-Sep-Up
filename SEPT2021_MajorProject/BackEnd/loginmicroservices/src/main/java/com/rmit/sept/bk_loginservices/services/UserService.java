@@ -45,20 +45,24 @@ public class UserService {
 
     }
 
+    //save input into repository and then sql
     public User saveorUpdateUser (User user){
         return userRepository.save(user);
     }
 
+    //set user to "want to be publisher"
     public void updatePubUser(User user){
         user.setpublisherrequest(true);
         userRepository.save(user);
     }
 
+    //grabs user by id
     public User findByID(Long id){
         return userRepository.getById(id);
 
     }
 
+    //grabs users based on whether they "want" to be a publisher
     public Iterable<User> findByPublisherRequest(boolean value){
         return userRepository.getBypublisherrequest(true);
 

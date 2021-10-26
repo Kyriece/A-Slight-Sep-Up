@@ -10,6 +10,7 @@ import javax.validation.constraints.NotBlank;
 import java.util.Date;
 import java.util.Collection;
 
+/*Schema model for users and by extension security/login*/
 
 @Table(name = "user", schema="login")
 @Entity
@@ -39,9 +40,11 @@ public class User implements UserDetails {
 
     //OneToMany with Project
 
+    //default constructor used in testing
     public User() {
     }
 
+    //constructor that takes in non-default input
     public User(String username, String fullName, String password, String userstatus) {
         this.username = username;
         this.fullName = fullName;

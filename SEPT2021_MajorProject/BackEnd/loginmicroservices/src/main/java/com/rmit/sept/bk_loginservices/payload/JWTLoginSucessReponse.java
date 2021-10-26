@@ -1,3 +1,5 @@
+/*logic that details how JWT is handled*/
+
 package com.rmit.sept.bk_loginservices.payload;
 
 public class JWTLoginSucessReponse {

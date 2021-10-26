@@ -15,6 +15,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
+    //grabs user based on username
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
@@ -23,6 +24,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
 
 
+    //grabs user based on id
     @Transactional
     public User loadUserById(Long id){
         User user = userRepository.getById(id);

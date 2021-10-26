@@ -1,3 +1,5 @@
+/* custom exception for invalid usernames and passwords for login */
+
 package com.rmit.sept.bk_loginservices.exceptions;
 
 public class InvalidLoginResponse {
@@ -5,9 +7,10 @@ public class InvalidLoginResponse {
         private String username;
         private String password;
 
+        //displays both in front end and back end
         public InvalidLoginResponse() {
-            this.username = "Invalid Username 8080";
-            this.password = "Invalid Password 8080";
+            this.username = "Invalid Username";
+            this.password = "Invalid Password";
         }
 
         public String getUsername() {

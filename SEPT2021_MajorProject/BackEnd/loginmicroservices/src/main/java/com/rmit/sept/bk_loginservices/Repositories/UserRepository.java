@@ -4,6 +4,8 @@ import com.rmit.sept.bk_loginservices.model.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+/*default crud repository that provides inbuilt methods for database manipulation*/
+
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
 

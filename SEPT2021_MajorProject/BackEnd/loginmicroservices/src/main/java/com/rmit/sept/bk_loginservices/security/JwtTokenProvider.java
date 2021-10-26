@@ -12,7 +12,7 @@ import java.util.Map;
 @Component
 public class JwtTokenProvider {
 
-    //Generate the token
+    //Generates the JWT
 
     public String generateToken(Authentication authentication){
         User user = (User)authentication.getPrincipal();

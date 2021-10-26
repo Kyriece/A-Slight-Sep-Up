@@ -12,6 +12,7 @@ import java.util.Map;
 @Service
 public class MapValidationErrorService {
 
+    //validates result and returns error if not a match
     public ResponseEntity<?> MapValidationService(BindingResult result){
 
         if(result.hasErrors()){

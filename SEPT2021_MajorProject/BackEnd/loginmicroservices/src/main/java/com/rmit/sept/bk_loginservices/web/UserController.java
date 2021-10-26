@@ -41,6 +41,7 @@ public class UserController{
     private UserValidator userValidator;
 
     @PostMapping("/register")
+    //POST method that handles registering a user
     public ResponseEntity<?> registerUser(@Valid @RequestBody User user, BindingResult result){
         // Validate passwords match
         userValidator.validate(user,result);
@@ -62,6 +63,7 @@ public class UserController{
 
 
     @PostMapping("/login")
+    //matches login input and authenticates valid user
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest, BindingResult result){
         ResponseEntity<?> errorMap = mapValidationErrorService.MapValidationService(result);
         if(errorMap != null) return errorMap;
@@ -78,11 +80,13 @@ public class UserController{
         return ResponseEntity.ok(new JWTLoginSucessReponse(true, jwt));
     }
     
+    //returns all users as an iterable
     @GetMapping("/all")
     public Iterable<User> getAllUsers(Principal principal) {
         return userService.findAllUsers();
     }
 
+    //test method for users who want to be publisher
     @GetMapping("/usertopublisher")
     public Iterable<User> getPubUsers(Principal principal) {
         System.out.println("test if works");
@@ -95,6 +99,7 @@ public class UserController{
     //     return userService.findAllpublisherrequests();
     // }
 
+    //sets users who request to be publishers to true
     @PutMapping("/updaterequest")
     public ResponseEntity<?> updateUser(@Valid @RequestBody String id){
         System.out.println(id);
@@ -111,6 +116,7 @@ public class UserController{
     
     }
 
+    //helper method convert string to int
     static String extractInt(String str)
     {
         str = str.replaceAll("[^\\d]", " ");

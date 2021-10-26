@@ -1,3 +1,5 @@
+/*exception called when login details are left blank in the front end*/
+
 package com.rmit.sept.bk_loginservices.payload;
 
 import javax.validation.constraints.NotBlank;
