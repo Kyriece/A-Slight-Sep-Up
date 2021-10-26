@@ -93,7 +93,7 @@ class BookList extends Component {
         this.setState({ show: false });
       }
   };
-
+ //renders the page with all the books fetched
   changePage = (event) => {
     let targetPage = parseInt(event.target.value);
     if (this.state.search) {
@@ -186,7 +186,7 @@ class BookList extends Component {
         });
       });
   };
-
+//book list page after the search
   render() {
     const { books, currentPage, totalPages, search } = this.state;
     const user = store.getState().security.user

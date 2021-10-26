@@ -13,7 +13,7 @@ import { getBookbyId } from "../../actions/bookActions";
 
 
 class BookProfile extends Component{
-
+//fetches the book info from the database
     constructor(){
         super();
         this.state = this.initialState;
@@ -61,9 +61,7 @@ class BookProfile extends Component{
             console.log(this.state)
 
 
-            // this.props.fetchBook(id);
-            // let book = this.props.book;
-            // console.log(book);
+            // renders the page with the information of the book
             return (
 
                 <>
@@ -81,11 +79,11 @@ class BookProfile extends Component{
 <div className="col-md-6">
     <div className="p-3 right-side">
                     <div className= "d-flex justify-content-between align-items-center">
-                        <h3 className="display-4 text-center"> {this.state.title} blah blah</h3>
+                        <h3 className="display-4 text-center"> {this.state.title} </h3>
                     </div>
 
                         <div className="mt-2 pr-3 content">
-                        <p1>{this.state.blurb} blah blah blah</p1>
+                        <p1>{this.state.blurb}</p1>
                         </div>
         <div>
             <h6 style={{ float:"left", width: '790px'}}> Genre: {this.state.genre}<br /> Language: {this.state.language}<br /> Author: {this.state.author} </h6>
