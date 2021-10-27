@@ -1,0 +1,19 @@
+version: '3'
+# set up each individual service via calling it from dockerhub
+services:
+  sep-it-up-login:
+    image: vicarox/login-microservices:1.0
+    ports:
+      - 8080:8080
+  sep-it-up-book:
+    image: vicarox/book-microservices:1.0
+    ports:
+      - 8081:8081
+  sep-it-up-requests:
+    image: vicarox/request-microservices:1.0
+    ports:
+      - 8082:8082
+  sep-it-up: 
+    image: s3848845/sep-frontend:latest
+    ports:
+      - 3000:3000

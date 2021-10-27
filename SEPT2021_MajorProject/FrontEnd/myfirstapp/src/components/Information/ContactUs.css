@@ -1,0 +1,13 @@
+.formBox {
+  padding: 10px;
+  margin: 10px 0;
+  border: 2px solid grey;
+  border-radius: 10px;
+  resize: vertical;
+  width: 100%;
+
+}
+
+*, *:before, *::after {
+  box-sizing: border-box;
+}

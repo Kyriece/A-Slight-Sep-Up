@@ -1,0 +1,130 @@
+version: 2.1
+# define all the processes required to be built by circleci
+workflows:
+  my-workflow:
+    jobs:
+      - build:
+          context: tanuki-keyword
+      - build-backend-login: 
+          context: vicarox-keyword
+      - build-backend-book: 
+          context: vicarox-keyword
+      - build-backend-requests:
+          context: vicarox-keyword
+jobs:
+  #first build is building the frontend
+  build:
+    docker:
+      - image: s3848845/sep-frontend
+        auth: 
+            username: s3848845
+            password: $DOCKERHUB_PASS
+    steps:
+      - checkout
+      - run:
+          name: get the docker client
+          command: apk add docker-cli
+      - setup_remote_docker:
+          version: 20.10.6
+      - run: 
+          name: login to docker
+          command: |
+            echo $DOCKERHUB_PASS | docker login -u s3848845 --password-stdin
+      - run: 
+          name: build dependancies
+          command: cd ./SEPT2021_MajorProject/FrontEnd/myfirstapp && npm install
+      - run:
+          name: build image
+          command: cd SEPT2021_MajorProject && docker build --file=FrontEnd/myfirstapp/frontend.dockerfile -t s3848845/sep-frontend:latest .
+
+      - run:
+          name: publish to dockerhub
+          command: |
+            docker push s3848845/sep-frontend:latest
+
+# the following builds are all essentially identical, building the back-end micro-services for respective
+#microservices
+  build-backend-login: 
+    docker:
+      - image: vicarox/login-microservices:1.0
+        auth: 
+            username: vicarox
+            password: $DOCKERHUB_PASS
+    steps:
+      - checkout      
+      - setup_remote_docker:
+          version: 20.10.6
+      - run:
+          name: get the docker client
+          command: apk add docker-cli
+
+      - run: 
+          name: login to docker
+          command: |
+            echo $DOCKERHUB_PASS | docker login -u vicarox --password-stdin
+      - run: 
+          name: build dependancies
+          command: cd SEPT2021_MajorProject/BackEnd/loginmicroservices && ./mvnw package && docker build -t vicarox/login-microservices:1.0 .
+      - run:
+          name: publish to dockerhub
+          command: |
+            docker push vicarox/login-microservices:1.0
+  
+# the permissions for the mvnw file were required to be updated also, hence why its a little
+# different
+  build-backend-book: 
+    docker:
+      - image: vicarox/book-microservices:1.0
+        auth: 
+            username: vicarox
+            password: $DOCKERHUB_PASS
+    steps:
+      - checkout      
+      - setup_remote_docker:
+          version: 20.10.6
+      - run:
+          name: get the docker client
+          command: apk add docker-cli
+      - run: 
+          name: login to docker
+          command: |
+            echo $DOCKERHUB_PASS | docker login -u vicarox --password-stdin
+      - run:
+          name: mvnw permissions
+          command: chmod a+x ./SEPT2021_MajorProject/BackEnd/bookmicroservices/mvnw
+      - run: 
+          name: build dependancies
+          command: cd SEPT2021_MajorProject/BackEnd/bookmicroservices && ./mvnw package && docker build -t vicarox/book-microservices:1.0 .
+      - run:
+          name: publish to dockerhub
+          command: |
+            docker push vicarox/book-microservices:1.0
+
+  build-backend-requests: 
+    docker:
+      - image: vicarox/request-microservices:1.0
+        auth: 
+            username: vicarox
+            password: $DOCKERHUB_PASS
+    steps:
+      - checkout      
+      - setup_remote_docker:
+          version: 20.10.6
+      - run:
+          name: get the docker client
+          command: apk add docker-cli
+
+      - run: 
+          name: login to docker
+          command: |
+            echo $DOCKERHUB_PASS | docker login -u vicarox --password-stdin
+      - run:
+          name: mvnw permissions
+          command: chmod a+x ./SEPT2021_MajorProject/BackEnd/requestsmicroservice/mvnw
+      - run: 
+          name: build dependancies
+          command: cd SEPT2021_MajorProject/BackEnd/requestsmicroservice && ./mvnw package && docker build -t vicarox/request-microservices:1.0 .
+      - run:
+          name: publish to dockerhub
+          command: |
+            docker push vicarox/request-microservices:1.0
